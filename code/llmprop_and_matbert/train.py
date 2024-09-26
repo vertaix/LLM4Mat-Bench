@@ -191,7 +191,7 @@ def train(
                 best_epoch = epoch+1
 
                 # save the best model checkpoint
-                save_to_path = checkpoints_directory + f"/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.pt"
+                save_to_path = checkpoints_path + f"/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.pt"
 
                 if isinstance(model, nn.DataParallel):
                     torch.save(model.module.state_dict(), save_to_path)
@@ -215,8 +215,8 @@ def train(
                     }
                 )
 
-                saveCSV(pd.DataFrame(data=training_stats), f"{statistics_directory}/{model_name}_training_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
-                saveCSV(pd.DataFrame(validation_predictions), f"{statistics_directory}/{model_name}_validation_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
+                saveCSV(pd.DataFrame(data=training_stats), f"{results_path}/{model_name}_training_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
+                saveCSV(pd.DataFrame(validation_predictions), f"{results_path}/{model_name}_validation_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
 
             else:
                 best_roc = best_roc
@@ -233,7 +233,7 @@ def train(
                 best_epoch = epoch+1
 
                 # save the best model checkpoint
-                save_to_path = checkpoints_directory + f"/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.pt"
+                save_to_path = checkpoints_path + f"/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.pt"
 
                 if isinstance(model, nn.DataParallel):
                     torch.save(model.module.state_dict(), save_to_path)
@@ -257,8 +257,8 @@ def train(
                     }
                 )
 
-                saveCSV(pd.DataFrame(data=training_stats), f"{statistics_directory}/{model_name}_training_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
-                saveCSV(pd.DataFrame(validation_predictions), f"{statistics_directory}/{model_name}_validation_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
+                saveCSV(pd.DataFrame(data=training_stats), f"{results_path}/{model_name}_training_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
+                saveCSV(pd.DataFrame(validation_predictions), f"{results_path}/{model_name}_validation_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
 
             else:
                 best_loss = best_loss
@@ -331,9 +331,9 @@ def evaluate(
             predictions_list.append(predictions[i][0])
             targets_list.append(targets[i])
         
-    # test_predictions = {f"{property}": predictions_list}
+    test_predictions = {f"{property}": predictions_list}
 
-    # saveCSV(pd.DataFrame(test_predictions), f"{statistics_directory}/{model_name}_test_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.csv")
+    saveCSV(pd.DataFrame(test_predictions), f"{results_path}/{model_name}_test_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.csv")
         
     if task_name == "classification":
         test_performance = get_roc_score(predictions_list, targets_list)
@@ -424,6 +424,9 @@ if __name__ == "__main__":
     input_type = config.get('input_type')
     dataset_name = config.get('dataset_name')
     model_name = config.get('model_name')
+    checkpoints_folder = config.get('checkpoints_folder')
+    results_folder = config.get('results_folder')
+    tokenizers_folder = config.get('tokenizers_folder')
 
     if model_name == "matbert":
         pooling = None
@@ -444,19 +447,19 @@ if __name__ == "__main__":
         inference_batch_size = 32 * n_gpus
 
     # checkpoints directory
-    checkpoints_directory = f"/n/fs/rnspace/projects/vertaix/nlp4matbench/checkpoints/{dataset_name}/"
-    if not os.path.exists(checkpoints_directory):
-        os.makedirs(checkpoints_directory)
+    checkpoints_path = f"{checkpoints_folder}/{dataset_name}/"
+    if not os.path.exists(checkpoints_path):
+        os.makedirs(checkpoints_path)
 
     # training statistics directory
-    statistics_directory = f"/n/fs/rnspace/projects/vertaix/nlp4matbench/statistics/{dataset_name}/"
-    if not os.path.exists(statistics_directory):
-        os.makedirs(statistics_directory)
+    results_path = f"{results_folder}/{dataset_name}/"
+    if not os.path.exists(results_path):
+        os.makedirs(results_path)
 
     # prepare the data
-    train_data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/train.csv")
-    valid_data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/validation.csv")
-    test_data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/test.csv")
+    train_data = pd.read_csv(f"{data_path}/{dataset_name}/train.csv")
+    valid_data = pd.read_csv(f"{data_path}/{dataset_name}/validation.csv")
+    test_data = pd.read_csv(f"{data_path}/{dataset_name}/test.csv")
 
     # drop samples with nan input values
     train_data = train_data.dropna(subset=[input_type]).reset_index(drop=True)
@@ -600,11 +603,11 @@ if __name__ == "__main__":
     if tokenizer_name == 't5_tokenizer':
         tokenizer = AutoTokenizer.from_pretrained("t5-small") 
 
-    elif tokenizer_name == 'modified':
-        tokenizer = AutoTokenizer.from_pretrained("/n/fs/rnspace/projects/vertaix/nlp4matbench/tokenizers/llmprop_nlp4matbench_32000_c4_and_separated_digits")
+    elif tokenizer_name == 'llmprop_tokenizer':
+        tokenizer = AutoTokenizer.from_pretrained(f"{tokenizer_path}/llmprop_tokenizer")
 
     elif tokenizer_name == 'matbert_tokenizer':
-        tokenizer = BertTokenizerFast.from_pretrained("/n/fs/rnspace/projects/vertaix/MatBERT/matbert-base-uncased", do_lower_case=True)
+        tokenizer = BertTokenizerFast.from_pretrained(f"{tokenizer_path}/matbert-base-uncased", do_lower_case=True)
 
     # add defined special tokens to the tokenizer
     if pooling == 'cls':
@@ -652,7 +655,7 @@ if __name__ == "__main__":
         base_model = T5EncoderModel.from_pretrained("google/t5-v1_1-small") 
         base_model_output_size = 512
     elif model_name == "matbert":
-        base_model = BertModel.from_pretrained("/n/fs/rnspace/projects/vertaix/MatBERT/matbert-base-uncased")
+        base_model = BertModel.from_pretrained(f"{tokenizers_folder}/matbert-base-uncased")
         base_model_output_size = 768
 
     # freeze the pre-trained LM's parameters
@@ -671,10 +674,8 @@ if __name__ == "__main__":
 
     if torch.cuda.device_count() > 1:
         model = nn.DataParallel(model, device_ids=device_ids).cuda()
-        # model = nn.DataParallel(model).cuda()
     else:
         model.to(device)
-        # model = model
 
     # print the model parameters
     model_trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
@@ -770,7 +771,7 @@ if __name__ == "__main__":
     show_gpu('after training')
     
     print("======= Evaluating on test set ========")
-    best_model_path = f"/n/fs/rnspace/projects/vertaix/nlp4matbench/checkpoints/{dataset_name}/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.pt" 
+    best_model_path = f"{checkpoints_folder}/{dataset_name}/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.pt" 
     best_model = Predictor(base_model, base_model_output_size, drop_rate=drop_rate, pooling=pooling, model_name=model_name)
 
     if torch.cuda.is_available():
@@ -806,6 +807,6 @@ if __name__ == "__main__":
 
     # save the averaged predictions
     test_predictions = {f"material_id":list(test_data['material_id']), f"actual_{property}":list(test_data[property]), f"predicted_{property}":averaged_predictions}
-    saveCSV(pd.DataFrame(test_predictions), f"{statistics_directory}/{model_name}_test_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
+    saveCSV(pd.DataFrame(test_predictions), f"{results_path}/{model_name}_test_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
     
     

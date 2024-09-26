@@ -2,7 +2,7 @@ import argparse
 
 def args_parser():
 
-    parser = argparse.ArgumentParser(description='LLM-Prop')
+    parser = argparse.ArgumentParser(description='LLM4Mat-Bench')
     
     parser.add_argument('--epochs',
                         help='Number of epochs',
@@ -68,22 +68,18 @@ def args_parser():
                         help="the path to the data",
                         type=str,
                         default="/n/fs/rnspace/projects/vertaix/nlp4matbench/data")                    
-    parser.add_argument('--train_data_path',
-                        help="the path to the training data",
-                        type=str,
-                        default="data/samples/textedge_prop_mp22_train.csv")
-    parser.add_argument('--valid_data_path',
-                        help="the path to the valid data",
-                        type=str,
-                        default="data/samples/textedge_prop_mp22_valid.csv")
-    parser.add_argument('--test_data_path',
-                        help="the path to the test data",
-                        type=str,
-                        default="data/samples/textedge_prop_mp22_test.csv")
-    parser.add_argument('--checkpoint',
-                        help="the path to the the best checkpoint for evaluation",
+    parser.add_argument('--checkpoint_folder',
+                        help="the path to the best checkpoint for evaluation",
                         type=str,
                         default="")
+    parser.add_argument('--results_folder',
+                        help="the path to the directory where results are saved",
+                        type=str,
+                        default="")
+    parser.add_argument('--tokenizers_folder',
+                        help="the path to the directory where tokenizers are saved",
+                        type=str,
+                        default="") 
     parser.add_argument('--input_type',
                         help="description, structure, or composition",
                         type=str,
