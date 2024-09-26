@@ -28,10 +28,10 @@ from tokenizers.pre_tokenizers import Whitespace
 pre_tokenizer = Whitespace()
 
 # pre-defined functions
-from llmprop_multimodal_model import Predictor
-from llmprop_utils import *
-from llmprop_multimodal_dataset import *
-from llmprop_multimodal_args_parser import *
+from model import Predictor
+from utils import *
+from dataset import *
+from create_args_parser import *
 
 # for metrics
 from torchmetrics.classification import BinaryAUROC
@@ -39,9 +39,6 @@ from sklearn import metrics
 from scipy.stats import pearsonr, spearmanr, kendalltau
 from statistics import stdev
 
-# for Weight&Biases
-import wandb
-from wandb import AlertLevel
 from datetime import timedelta
 
 import bitsandbytes as bnb
@@ -68,16 +65,6 @@ def evaluate(
     targets_list = []
 
     for step, batch in enumerate(test_dataloader):
-        # batch_inputs, batch_masks, batch_labels = tuple(b.to(device) for b in batch)
-        
-        # with torch.no_grad():
-        #     _, predictions = model(batch_inputs, batch_masks) 
-        # predictions = predictions.detach().cpu().numpy()
-        # targets = batch_labels.detach().cpu().numpy() 
-        # for i in range(len(predictions)):
-        #     predictions_list.append(predictions[i][0])
-        #     targets_list.append(targets[i])
-
         with torch.no_grad():
             if preprocessing_strategy == 'xVal':
                 batch_inputs, batch_masks, batch_labels, batch_x_num = tuple(b.to(device) for b in batch)
@@ -109,12 +96,6 @@ def evaluate(
             predictions_list.append(predictions_detached[i][0])
             targets_list.append(targets[i])
         
-    # test_predictions = {f"{property}_actual": targets_list, f"{property}_predicted": predictions_list}
-
-    # saveCSV(pd.DataFrame(test_predictions), f"{statistics_directory}/old_{model_name}_test_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.csv")
-    
-    # saveCSV(pd.DataFrame(test_predictions),f"checking_predicted_values_for_{prop}")
-        
     if task_name == "classification":
         test_performance = get_roc_score(predictions_list, targets_list)
         print(f"\n Test ROC score on predicting {property} = {test_performance}")
@@ -123,21 +104,21 @@ def evaluate(
         predictions_tensor = torch.tensor(predictions_list)
         targets_tensor = torch.tensor(targets_list)
         test_performance = mae_loss_function(predictions_tensor.squeeze(), targets_tensor.squeeze())
-        # rmse = metrics.mean_squared_error(targets_list, predictions_list, squared=False)
-        # r2 = metrics.r2_score(targets_list, predictions_list)
+        rmse = metrics.mean_squared_error(targets_list, predictions_list, squared=False)
+        r2 = metrics.r2_score(targets_list, predictions_list)
 
-        # # correlations between targets_list and predictions_list
-        # pearson_r, pearson_p_value = pearsonr(targets_list, predictions_list)
-        # spearman_r, spearman_p_value = spearmanr(targets_list, predictions_list)
-        # kendall_r, kendall_p_value = kendalltau(targets_list, predictions_list)
+        # correlations between targets_list and predictions_list
+        pearson_r, pearson_p_value = pearsonr(targets_list, predictions_list)
+        spearman_r, spearman_p_value = spearmanr(targets_list, predictions_list)
+        kendall_r, kendall_p_value = kendalltau(targets_list, predictions_list)
 
         print(f"\n The test performance on predicting {property}:")
         print(f"MAE error = {test_performance}")
-        # print(f"RMSE error = {rmse}")
-        # print(f"R2 score = {r2}")
-        # print(f"Pearson_r = {pearson_r}", f"Pearson_p_value = {pearson_p_value}")
-        # print(f"Spearman_r = {spearman_r}", f"Spearman_p_value = {spearman_p_value}")
-        # print(f"Kendall_r = {kendall_r}", f"Kendall_p_value = {kendall_p_value}")
+        print(f"RMSE error = {rmse}")
+        print(f"R2 score = {r2}")
+        print(f"Pearson_r = {pearson_r}", f"Pearson_p_value = {pearson_p_value}")
+        print(f"Spearman_r = {spearman_r}", f"Spearman_p_value = {spearman_p_value}")
+        print(f"Kendall_r = {kendall_r}", f"Kendall_p_value = {kendall_p_value}")
 
     average_test_loss = total_test_loss / len(test_dataloader)
     test_ending_time = time.time()
@@ -171,58 +152,44 @@ if __name__ == "__main__":
     pooling = config.get('pooling')
     normalizer_type = config.get('normalizer')
     property = config.get('property_name')
-    # task_name = config.get('task_name')
-    # train_data_path = config.get('train_data_path')
-    # valid_data_path = config.get('valid_data_path')
-    # test_data_path = config.get('test_data_path')
     data_path = config.get('data_path')
     input_type = config.get('input_type')
     dataset_name = config.get('dataset_name')
     model_name = config.get('model_name')
+    checkpoints_folder = config.get('checkpoints_folder')
+    results_folder = config.get('results_folder')
     
     if model_name == "matbert":
         pooling = None
 
     # checkpoints directory
-    checkpoints_directory = f"/n/fs/rnspace/projects/vertaix/nlp4matbench/checkpoints/{dataset_name}/"
-    if not os.path.exists(checkpoints_directory):
-        os.makedirs(checkpoints_directory)
+    checkpoints_path = f"{checkpoints_folder}/{dataset_name}/"
+    if not os.path.exists(checkpoints_path):
+        os.makedirs(checkpoints_path)
 
     # training statistics directory
-    statistics_directory = f"/n/fs/rnspace/projects/vertaix/nlp4matbench/statistics/{dataset_name}/"
-    if not os.path.exists(statistics_directory):
-        os.makedirs(statistics_directory)
+    results_path = f"{results_folder}/{dataset_name}/"
+    if not os.path.exists(results_path):
+        os.makedirs(results_path)
 
-    # # prepare the data
-    # train_data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/train.csv")
-    # valid_data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/validation.csv")
-    # test_data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/test.csv")
-
-    # train_data = pd.read_csv(f"{data_path}/llmprop_v.2_data_train.csv")
-    # # valid_data = pd.read_csv(f"{data_path}/llmprop_v.2_data_validation.csv")
-    # test_data = pd.read_csv(f"{data_path}/llmprop_v.2_data_test.csv")
-    
-    train_data = pd.read_csv(f"/n/fs/rnspace/projects/vertaix/nlp4matbench/data/{dataset_name}/unfiltered/train.csv")
-    # valid_data = pd.read_csv(f"/n/fs/rnspace/projects/vertaix/nlp4matbench/data/{dataset_name}/unfiltered/validation.csv")
-    test_data = pd.read_csv(f"/n/fs/rnspace/projects/vertaix/nlp4matbench/data/{dataset_name}/unfiltered/test.csv")
+    # prepare the data
+    train_data = pd.read_csv(f"{data_path}/{dataset_name}/train.csv")
+    test_data = pd.read_csv(f"/{data_path}/{dataset_name}/test.csv")
     
     # drop duplicates in test data
     test_data = test_data.drop_duplicates(subset=['material_id']).reset_index(drop=True)
     
     # drop samples with nan input values
     train_data = train_data.dropna(subset=[input_type]).reset_index(drop=True)
-    # valid_data = valid_data.dropna(subset=[input_type]).reset_index(drop=True)
     test_data = test_data.dropna(subset=[input_type]).reset_index(drop=True)
 
     if dataset_name in ["gnome"]:
         # changing 'inf' values to 'NaN'
         train_data[property] = train_data[property][np.isfinite(train_data[property])]
-        # valid_data[property] = valid_data[property][np.isfinite(valid_data[property])]
         test_data[property] = test_data[property][np.isfinite(test_data[property])]
 
     # drop samples with nan property values
     train_data = train_data.dropna(subset=[property]).reset_index(drop=True)
-    # valid_data = valid_data.dropna(subset=[property]).reset_index(drop=True)
     test_data = test_data.dropna(subset=[property]).reset_index(drop=True)
     
     print("\n number of test samples = ", len(test_data),'\n')
@@ -238,11 +205,6 @@ if __name__ == "__main__":
             train_data.loc[train_data[property] == "Indirect", property] = 0.0
             train_data[property] = train_data[property].astype(float)
 
-            # valid_data = valid_data.drop(valid_data[valid_data[property] == 'Null'].index).reset_index(drop=True)
-            # valid_data.loc[valid_data[property] == "Direct", property] = 1.0
-            # valid_data.loc[valid_data[property] == "Indirect", property] = 0.0
-            # valid_data[property] = valid_data[property].astype(float)
-
             test_data = test_data.drop(test_data[test_data[property] == 'Null'].index).reset_index(drop=True)
             test_data.loc[test_data[property] == "Direct", property] = 1.0
             test_data.loc[test_data[property] == "Indirect", property] = 0.0
@@ -250,7 +212,6 @@ if __name__ == "__main__":
         else:
             #converting True->1.0 and False->0.0
             train_data[property] = train_data[property].astype(float)
-            # valid_data[property] = valid_data[property].astype(float) 
             test_data[property] = test_data[property].astype(float)  
     else:
         task_name = 'regression'
@@ -262,21 +223,15 @@ if __name__ == "__main__":
     train_labels_max = torch.max(torch.tensor(train_labels_array))
 
     if preprocessing_strategy == "none":
-        # train_data = train_data
-        # valid_data = valid_data
         test_data = test_data
 
     elif preprocessing_strategy == "bond_lengths_replaced_with_num":
-        # train_data['description'] = train_data['description'].apply(replace_bond_lengths_with_num)
-        # valid_data['description'] = valid_data['description'].apply(replace_bond_lengths_with_num)
         test_data['description'] = test_data['description'].apply(replace_bond_lengths_with_num)
         print(train_data['description'][0])
         print('-'*50)
         print(test_data['description'][3])
 
     elif preprocessing_strategy == "bond_angles_replaced_with_ang":
-        # train_data['description'] = train_data['description'].apply(replace_bond_angles_with_ang)
-        # valid_data['description'] = valid_data['description'].apply(replace_bond_angles_with_ang)
         test_data['description'] = test_data['description'].apply(replace_bond_angles_with_ang) 
         print(train_data['description'][0])
         print('-'*50)
@@ -284,8 +239,6 @@ if __name__ == "__main__":
 
     elif preprocessing_strategy == "no_stopwords":
         if input_type == "description":
-            # train_data[input_type] = train_data[input_type].apply(remove_mat_stopwords)
-            # valid_data[input_type] = valid_data[input_type].apply(remove_mat_stopwords)
             test_data[input_type] = test_data[input_type].apply(remove_mat_stopwords)
 
         print(train_data.head(1))
@@ -296,12 +249,6 @@ if __name__ == "__main__":
 
     elif preprocessing_strategy == "no_stopwords_and_lengths_and_angles_replaced":
         if input_type == "description":
-            # train_data['description'] = train_data['description'].apply(replace_bond_lengths_with_num)
-            # train_data['description'] = train_data['description'].apply(replace_bond_angles_with_ang)
-            # train_data['description'] = train_data['description'].apply(remove_mat_stopwords) 
-            # valid_data['description'] = valid_data['description'].apply(replace_bond_lengths_with_num)
-            # valid_data['description'] = valid_data['description'].apply(replace_bond_angles_with_ang)
-            # valid_data['description'] = valid_data['description'].apply(remove_mat_stopwords)
             test_data['description'] = test_data['description'].apply(replace_bond_lengths_with_num)
             test_data['description'] = test_data['description'].apply(replace_bond_angles_with_ang)
             test_data['description'] = test_data['description'].apply(remove_mat_stopwords)
@@ -311,10 +258,6 @@ if __name__ == "__main__":
 
     elif preprocessing_strategy == "no_stopwords_and_remove_bond_lengths_and_angles":
         if input_type == "description":
-            # train_data['description'] = train_data['description'].apply(remove_bond_lengths_and_angles)
-            # train_data['description'] = train_data['description'].apply(remove_mat_stopwords)
-            # valid_data['description'] = valid_data['description'].apply(remove_bond_lengths_and_angles)
-            # valid_data['description'] = valid_data['description'].apply(remove_mat_stopwords)
             test_data['description'] = test_data['description'].apply(remove_bond_lengths_and_angles)
             test_data['description'] = test_data['description'].apply(remove_mat_stopwords)
         print(train_data['description'][0])
@@ -322,28 +265,10 @@ if __name__ == "__main__":
         print(test_data['description'][3])
 
     elif preprocessing_strategy == "xVal":
-        # train_data['list_of_numbers_in_input'] = train_data[input_type].apply(get_numbers_in_a_sentence)
-        # valid_data['list_of_numbers_in_input'] = valid_data[input_type].apply(get_numbers_in_a_sentence)
         test_data['list_of_numbers_in_input'] = test_data[input_type].apply(get_numbers_in_a_sentence)
-
-        # # list_of_all_numbers_in_data = list(train_data['list_of_numbers_in_input']) + list(valid_data['list_of_numbers_in_input']) + list(test_data['list_of_numbers_in_input'])
-        # # normalized_list_of_all_numbers_in_data = normalize_values(list_of_all_numbers_in_data, min_value=-5, max_value=5)
-
-        # # train_data['normalized_list_of_numbers_in_input'] = normalized_list_of_all_numbers_in_data[0:len(train_data)]
-        # # valid_data['normalized_list_of_numbers_in_input'] = normalized_list_of_all_numbers_in_data[len(train_data):len(train_data)+len(valid_data)]
-        # # test_data['normalized_list_of_numbers_in_input'] = normalized_list_of_all_numbers_in_data[len(train_data)+len(valid_data):len(normalized_list_of_all_numbers_in_data)]
-
-        # train_data['normalized_list_of_numbers_in_input'] = normalize_values(list(train_data['list_of_numbers_in_input']), min_value=-5, max_value=5)
-        # valid_data['normalized_list_of_numbers_in_input'] = normalize_values(list(valid_data['list_of_numbers_in_input']), min_value=-5, max_value=5)
-        # test_data['normalized_list_of_numbers_in_input'] = normalize_values(list(test_data['list_of_numbers_in_input']), min_value=-5, max_value=5)
-
-        # train_data[input_type] = train_data[input_type].apply(replace_numbers_with_num)
-        # valid_data[input_type] = valid_data[input_type].apply(replace_numbers_with_num)
         test_data[input_type] = test_data[input_type].apply(replace_numbers_with_num)
 
         if input_type == "description":
-            # train_data[input_type] = train_data[input_type].apply(remove_mat_stopwords)
-            # valid_data[input_type] = valid_data[input_type].apply(remove_mat_stopwords)
             test_data[input_type] = test_data[input_type].apply(remove_mat_stopwords)
 
         print(train_data.head(1))
@@ -361,16 +286,12 @@ if __name__ == "__main__":
     # define the tokenizer
     if tokenizer_name == 't5_tokenizer':
         tokenizer = AutoTokenizer.from_pretrained("t5-small") 
-        # tokenizer = AutoTokenizer.from_pretrained("t5-small", device_map='auto')
 
-    elif tokenizer_name == 'modified':
-        # tokenizer = AutoTokenizer.from_pretrained("/n/fs/rnspace/projects/vertaix/nlp4matbench/tokenizers/llmprop_nlp4matbench_32000_new_separated_digits")
-        # tokenizer = AutoTokenizer.from_pretrained("/n/fs/rnspace/projects/vertaix/nlp4matbench/tokenizers/llmprop_nlp4matbench_32000_c4_and_separated_digits") #for nlp4matbench
-        # tokenizer = AutoTokenizer.from_pretrained("/n/fs/rnspace/projects/vertaix/nlp4matbench/tokenizers/llmprop_nlp4matbench_32000_c4_and_separated_digits", device_map='auto')
-        tokenizer = AutoTokenizer.from_pretrained("/n/fs/rnspace/projects/vertaix/LLM-Prop/tokenizers/new_pretrained_t5_tokenizer_on_modified_oneC4files_and_mp22_web_descriptions_32k_vocab") #old_version_trained_on_mp_web_only
+    elif tokenizer_name == 'llmprop_tokenizer':
+        tokenizer = AutoTokenizer.from_pretrained(f"{tokenizer_path}/llmprop_tokenizer") 
 
     elif tokenizer_name == 'matbert_tokenizer':
-        tokenizer = BertTokenizerFast.from_pretrained("/n/fs/rnspace/projects/vertaix/MatBERT/matbert-base-uncased", do_lower_case=True)
+        tokenizer = BertTokenizerFast.from_pretrained(f"{tokenizer_path}/matbert-base-uncased", do_lower_case=True)
 
     # add defined special tokens to the tokenizer
     if pooling == 'cls':
@@ -397,12 +318,8 @@ if __name__ == "__main__":
     print('max length:', max_length)
 
     print('-'*50)
-    # print(f"train data = {len(train_data)} samples")
-    # print(f"valid data = {len(valid_data)} samples")
     print(f"test data = {len(test_data)} samples") 
     print('-'*50)
-    # print(f"training on {get_sequence_len_stats(train_data, tokenizer, max_length, input_type)}% samples with whole sequence")
-    # print(f"validating on {get_sequence_len_stats(valid_data, tokenizer, max_length, input_type)}% samples with whole sequence")
     print(f"testing on {get_sequence_len_stats(test_data, tokenizer, max_length, input_type)}% samples with whole sequence")
     print('-'*50)
 
@@ -415,7 +332,7 @@ if __name__ == "__main__":
     
     print("======= Evaluating on test set ========")
     
-    print('\nResults for', f"old_{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.pt\n")
+    print('\nResults for', f"{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.pt\n")
     
     # averaging the results over 5 runs
     predictions = []
@@ -423,27 +340,25 @@ if __name__ == "__main__":
     seed = 42
     offset = 10
     
-    for i in range(1):
-        # torch.manual_seed(42 + (i*10))
-        # np.random.seed(42 + (i*10))
-        
+    for i in range(5):
         np.random.seed(seed + (i*offset))
         random.seed(seed + (i*offset))
         torch.manual_seed(seed + (i*offset))
         torch.cuda.manual_seed(seed + (i*offset))
+        
         # When running on the CuDNN backend, two further options must be set
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
+        
         # Set a fixed value for the hash seed
         os.environ["PYTHONHASHSEED"] = str(seed + (i*offset))
 
         # define the model
         if model_name == "llmprop":
-            base_model = T5EncoderModel.from_pretrained("google/t5-v1_1-small") #, torch_dtype=torch.float16
-            # base_model = T5EncoderModel.from_pretrained("google/t5-v1_1-small", device_map='auto', load_in_8bit=True, torch_dtype=torch.float16)
+            base_model = T5EncoderModel.from_pretrained("google/t5-v1_1-small")
             base_model_output_size = 512
         elif model_name == "matbert":
-            base_model = BertModel.from_pretrained("/n/fs/rnspace/projects/vertaix/MatBERT/matbert-base-uncased")
+            base_model = BertModel.from_pretrained(f"{tokenizer_path}/matbert-base-uncased")
             base_model_output_size = 768
 
         # freeze the pre-trained LM's parameters
@@ -455,8 +370,7 @@ if __name__ == "__main__":
         # this is to avoid the "RuntimeError: CUDA error: device-side assert triggered" error
         base_model.resize_token_embeddings(len(tokenizer))
         
-        best_model_path = f"/n/fs/rnspace/projects/vertaix/nlp4matbench/checkpoints/{dataset_name}/old_{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_len}_tokens.pt"
-        # best_model_path = "/n/fs/rnspace/projects/vertaix/LLM-Prop/model_checkpoints/main_paper/formation_energy/t5-small/linear/wandb_mp22_web_stopwords_num_removed_updated_str_descr_is_gap_direct_bce_after_29_epochs_0.2dpt_200epochs_888ml_256bs_linear_scheduler_100000ws_0.001lr_oneC4_mp22_web_tokenizer_cls_pooling_z_norm_normalizer.pt"
+        best_model_path = f"{checkpoints_path}/{dataset_name}/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_len}_tokens.pt"
         best_model = Predictor(base_model, base_model_output_size, drop_rate=drop_rate, pooling=pooling, model_name=model_name)
 
         device_ids = [d for d in range(torch.cuda.device_count())]
@@ -498,5 +412,5 @@ if __name__ == "__main__":
 
     # save the averaged predictions
     test_predictions = {f"material_id":list(test_data['material_id']), f"actual_{property}":list(test_data[property]), f"predicted_{property}":averaged_predictions}
-    saveCSV(pd.DataFrame(test_predictions), f"{statistics_directory}/old_{model_name}_test_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.csv")
+    saveCSV(pd.DataFrame(test_predictions), f"{results_path}/{model_name}_test_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.csv")
     
