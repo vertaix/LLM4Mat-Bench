@@ -30,10 +30,10 @@ from tokenizers.pre_tokenizers import Whitespace
 pre_tokenizer = Whitespace()
 
 # pre-defined functions
-from llmprop_multimodal_model import Predictor
-from llmprop_utils import *
-from llmprop_multimodal_dataset import *
-from llmprop_multimodal_args_parser import *
+from model import Predictor
+from utils import *
+from dataset import *
+from create_args_parser import *
 
 # for metrics
 from torchmetrics.classification import BinaryAUROC
@@ -41,17 +41,11 @@ from sklearn import metrics
 from scipy.stats import pearsonr, spearmanr, kendalltau
 from statistics import stdev
 
-# for Weight&Biases
-import wandb
-from wandb import AlertLevel
 from datetime import timedelta
 
 import bitsandbytes as bnb
 from bitsandbytes.optim import Adam8bit
 import subprocess
-
-api_key="617f892ac466a96ab02ed044e943ac983a71411a"
-wandb.login(key=api_key)
 
 # set the random seed for reproducibility
 torch.manual_seed(42)
@@ -90,9 +84,6 @@ def train(
         model.train()
 
         for step, batch in tqdm(enumerate(train_dataloader), total=len(train_dataloader)):
-            
-            # print(f"Step {step+1}/{len(train_dataloader)}")
-
             if preprocessing_strategy == 'xVal':
                 batch_inputs, batch_masks, batch_labels, batch_norm_labels, batch_x_num = tuple(b.to(device) for b in batch)
                 _, predictions = model(batch_inputs, batch_masks, x_num=batch_x_num)
@@ -157,7 +148,6 @@ def train(
         targets_list = []
 
         for step, batch in tqdm(enumerate(valid_dataloader), total=len(valid_dataloader)):
-            # batch_inputs, batch_masks, batch_labels = tuple(b.to(device) for b in batch)
             with torch.no_grad():
                 if preprocessing_strategy == 'xVal':
                     batch_inputs, batch_masks, batch_labels, batch_x_num = tuple(b.to(device) for b in batch)
@@ -201,14 +191,12 @@ def train(
                 best_epoch = epoch+1
 
                 # save the best model checkpoint
-                save_to_path = checkpoints_directory + f"/old_{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.pt"
+                save_to_path = checkpoints_directory + f"/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.pt"
 
                 if isinstance(model, nn.DataParallel):
                     torch.save(model.module.state_dict(), save_to_path)
-                    # compressCheckpointsWithTar(save_to_path)
                 else:
                     torch.save(model.state_dict(), save_to_path)
-                    # compressCheckpointsWithTar(save_to_path)
                 
                 # save statistics of the best model
                 training_stats.append(
@@ -227,8 +215,8 @@ def train(
                     }
                 )
 
-                saveCSV(pd.DataFrame(data=training_stats), f"{statistics_directory}/old_{model_name}_training_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
-                saveCSV(pd.DataFrame(validation_predictions), f"{statistics_directory}/old_{model_name}_validation_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
+                saveCSV(pd.DataFrame(data=training_stats), f"{statistics_directory}/{model_name}_training_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
+                saveCSV(pd.DataFrame(validation_predictions), f"{statistics_directory}/{model_name}_validation_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
 
             else:
                 best_roc = best_roc
@@ -245,14 +233,12 @@ def train(
                 best_epoch = epoch+1
 
                 # save the best model checkpoint
-                save_to_path = checkpoints_directory + f"/old_{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.pt"
+                save_to_path = checkpoints_directory + f"/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.pt"
 
                 if isinstance(model, nn.DataParallel):
                     torch.save(model.module.state_dict(), save_to_path)
-                    # compressCheckpointsWithTar(save_to_path)
                 else:
                     torch.save(model.state_dict(), save_to_path)
-                    # compressCheckpointsWithTar(save_to_path)
                 
                 # save statistics of the best model
                 training_stats.append(
@@ -271,19 +257,14 @@ def train(
                     }
                 )
 
-                saveCSV(pd.DataFrame(data=training_stats), f"{statistics_directory}/old_{model_name}_training_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
-                saveCSV(pd.DataFrame(validation_predictions), f"{statistics_directory}/old_{model_name}_validation_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
+                saveCSV(pd.DataFrame(data=training_stats), f"{statistics_directory}/{model_name}_training_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
+                saveCSV(pd.DataFrame(validation_predictions), f"{statistics_directory}/{model_name}_validation_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
 
             else:
                 best_loss = best_loss
             
             print(f"Validation mae error = {valid_performance}")
         print(f"validation took {validation_time}")
-
-        wandb.log({
-            'train_loss':average_training_loss, 
-            'val_loss': valid_performance
-        })
 
     train_ending_time = time.time()
     total_training_time = train_ending_time-training_starting_time
@@ -319,8 +300,6 @@ def evaluate(
     targets_list = []
 
     for step, batch in enumerate(test_dataloader):
-        # batch_inputs, batch_masks, batch_labels = tuple(b.to(device) for b in batch)
-
         with torch.no_grad():
             if preprocessing_strategy == 'xVal':
                 batch_inputs, batch_masks, batch_labels, batch_x_num = tuple(b.to(device) for b in batch)
@@ -354,7 +333,7 @@ def evaluate(
         
     # test_predictions = {f"{property}": predictions_list}
 
-    # saveCSV(pd.DataFrame(test_predictions), f"{statistics_directory}/old_{model_name}_test_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.csv")
+    # saveCSV(pd.DataFrame(test_predictions), f"{statistics_directory}/{model_name}_test_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.csv")
         
     if task_name == "classification":
         test_performance = get_roc_score(predictions_list, targets_list)
@@ -364,21 +343,21 @@ def evaluate(
         predictions_tensor = torch.tensor(predictions_list)
         targets_tensor = torch.tensor(targets_list)
         test_performance = mae_loss_function(predictions_tensor.squeeze(), targets_tensor.squeeze())
-        # rmse = metrics.mean_squared_error(targets_list, predictions_list, squared=False)
-        # r2 = metrics.r2_score(targets_list, predictions_list)
+        rmse = metrics.mean_squared_error(targets_list, predictions_list, squared=False)
+        r2 = metrics.r2_score(targets_list, predictions_list)
 
-        # # correlations between targets_list and predictions_list
-        # pearson_r, pearson_p_value = pearsonr(targets_list, predictions_list)
-        # spearman_r, spearman_p_value = spearmanr(targets_list, predictions_list)
-        # kendall_r, kendall_p_value = kendalltau(targets_list, predictions_list)
+        # correlations between targets_list and predictions_list
+        pearson_r, pearson_p_value = pearsonr(targets_list, predictions_list)
+        spearman_r, spearman_p_value = spearmanr(targets_list, predictions_list)
+        kendall_r, kendall_p_value = kendalltau(targets_list, predictions_list)
 
         print(f"\n The test performance on predicting {property}:")
         print(f"MAE error = {test_performance}")
-        # print(f"RMSE error = {rmse}")
-        # print(f"R2 score = {r2}")
-        # print(f"Pearson_r = {pearson_r}", f"Pearson_p_value = {pearson_p_value}")
-        # print(f"Spearman_r = {spearman_r}", f"Spearman_p_value = {spearman_p_value}")
-        # print(f"Kendall_r = {kendall_r}", f"Kendall_p_value = {kendall_p_value}")
+        print(f"RMSE error = {rmse}")
+        print(f"R2 score = {r2}")
+        print(f"Pearson_r = {pearson_r}", f"Pearson_p_value = {pearson_p_value}")
+        print(f"Spearman_r = {spearman_r}", f"Spearman_p_value = {spearman_p_value}")
+        print(f"Kendall_r = {kendall_r}", f"Kendall_p_value = {kendall_p_value}")
 
     average_test_loss = total_test_loss / len(test_dataloader)
     test_ending_time = time.time()
@@ -407,14 +386,11 @@ def show_gpu(msg):
 if __name__ == "__main__":
     show_gpu("before doing anything")
     torch.cuda.empty_cache()
-    show_gpu("after empty cache")
+    show_gpu("after emptying cache")
 
     # parse Arguments
     args = args_parser()
-    # config = vars(args)
-
-    wandb.init(project='llmprop_npj_rebuttal',
-                config=args)
+    config = vars(args)
 
     # check if the GPU is available
     if torch.cuda.is_available():
@@ -429,34 +405,31 @@ if __name__ == "__main__":
         device = torch.device("cpu")
 
     # set parameters
-    train_batch_size = wandb.config.get('train_bs')
-    inference_batch_size = wandb.config.get('inference_bs')
-    max_length = wandb.config.get('max_len')
-    learning_rate = wandb.config.get('lr')
-    drop_rate = wandb.config.get('dr')
-    epochs = wandb.config.get('epochs')
-    warmup_steps = wandb.config.get('warmup_steps')
-    preprocessing_strategy = wandb.config.get('preprocessing_strategy')
-    tokenizer_name = wandb.config.get('tokenizer')
-    pooling = wandb.config.get('pooling')
-    scheduler_type = wandb.config.get('scheduler')
-    normalizer_type = wandb.config.get('normalizer')
-    property = wandb.config.get('property_name')
-    optimizer_type = wandb.config.get('optimizer')
-    task_name = wandb.config.get('task_name')
-    # train_data_path = wandb.config.get('train_data_path')
-    # valid_data_path = wandb.config.get('valid_data_path')
-    # test_data_path = wandb.config.get('test_data_path')
-    data_path = wandb.config.get('data_path')
-    input_type = wandb.config.get('input_type')
-    dataset_name = wandb.config.get('dataset_name')
-    model_name = wandb.config.get('model_name')
+    train_batch_size = config.get('train_bs')
+    inference_batch_size = config.get('inference_bs')
+    max_length = config.get('max_len')
+    learning_rate = config.get('lr')
+    drop_rate = config.get('dr')
+    epochs = config.get('epochs')
+    warmup_steps = config.get('warmup_steps')
+    preprocessing_strategy = config.get('preprocessing_strategy')
+    tokenizer_name = config.get('tokenizer')
+    pooling = config.get('pooling')
+    scheduler_type = config.get('scheduler')
+    normalizer_type = config.get('normalizer')
+    property = config.get('property_name')
+    optimizer_type = config.get('optimizer')
+    task_name = config.get('task_name')
+    data_path = config.get('data_path')
+    input_type = config.get('input_type')
+    dataset_name = config.get('dataset_name')
+    model_name = config.get('model_name')
 
     if model_name == "matbert":
         pooling = None
     
-    # if model_name == "llmprop" and property == "energy_above_hull":
-    #     learning_rate = 0.0001
+    if model_name == "llmprop" and property == "energy_above_hull":
+        learning_rate = 0.0001
     
     n_gpus = torch.cuda.device_count()
     
@@ -481,19 +454,10 @@ if __name__ == "__main__":
         os.makedirs(statistics_directory)
 
     # prepare the data
-    # train_data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/train.csv")
-    # valid_data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/validation.csv")
-    # test_data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/test.csv")
+    train_data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/train.csv")
+    valid_data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/validation.csv")
+    test_data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/test.csv")
 
-    if input_type == 'description':
-        train_data = pd.read_csv(f"{data_path}/llmprop_v.2_data_train.csv")
-        valid_data = pd.read_csv(f"{data_path}/llmprop_v.2_data_validation.csv")
-        test_data = pd.read_csv(f"{data_path}/llmprop_v.2_data_test.csv")
-    else:
-        train_data = pd.read_csv(f"/n/fs/rnspace/projects/vertaix/nlp4matbench/data/{dataset_name}/unfiltered/train.csv")
-        valid_data = pd.read_csv(f"/n/fs/rnspace/projects/vertaix/nlp4matbench/data/{dataset_name}/unfiltered/validation.csv")
-        test_data = pd.read_csv(f"/n/fs/rnspace/projects/vertaix/nlp4matbench/data/{dataset_name}/unfiltered/test.csv")
-    
     # drop samples with nan input values
     train_data = train_data.dropna(subset=[input_type]).reset_index(drop=True)
     valid_data = valid_data.dropna(subset=[input_type]).reset_index(drop=True)
@@ -582,9 +546,11 @@ if __name__ == "__main__":
             train_data['description'] = train_data['description'].apply(replace_bond_lengths_with_num)
             train_data['description'] = train_data['description'].apply(replace_bond_angles_with_ang)
             train_data['description'] = train_data['description'].apply(remove_mat_stopwords) 
+            
             valid_data['description'] = valid_data['description'].apply(replace_bond_lengths_with_num)
             valid_data['description'] = valid_data['description'].apply(replace_bond_angles_with_ang)
             valid_data['description'] = valid_data['description'].apply(remove_mat_stopwords)
+            
             test_data['description'] = test_data['description'].apply(replace_bond_lengths_with_num)
             test_data['description'] = test_data['description'].apply(replace_bond_angles_with_ang)
             test_data['description'] = test_data['description'].apply(remove_mat_stopwords)
@@ -608,18 +574,7 @@ if __name__ == "__main__":
         train_data['list_of_numbers_in_input'] = train_data[input_type].apply(get_numbers_in_a_sentence)
         valid_data['list_of_numbers_in_input'] = valid_data[input_type].apply(get_numbers_in_a_sentence)
         test_data['list_of_numbers_in_input'] = test_data[input_type].apply(get_numbers_in_a_sentence)
-
-        # # list_of_all_numbers_in_data = list(train_data['list_of_numbers_in_input']) + list(valid_data['list_of_numbers_in_input']) + list(test_data['list_of_numbers_in_input'])
-        # # normalized_list_of_all_numbers_in_data = normalize_values(list_of_all_numbers_in_data, min_value=-5, max_value=5)
-
-        # # train_data['normalized_list_of_numbers_in_input'] = normalized_list_of_all_numbers_in_data[0:len(train_data)]
-        # # valid_data['normalized_list_of_numbers_in_input'] = normalized_list_of_all_numbers_in_data[len(train_data):len(train_data)+len(valid_data)]
-        # # test_data['normalized_list_of_numbers_in_input'] = normalized_list_of_all_numbers_in_data[len(train_data)+len(valid_data):len(normalized_list_of_all_numbers_in_data)]
-
-        # train_data['normalized_list_of_numbers_in_input'] = normalize_values(list(train_data['list_of_numbers_in_input']), min_value=-5, max_value=5)
-        # valid_data['normalized_list_of_numbers_in_input'] = normalize_values(list(valid_data['list_of_numbers_in_input']), min_value=-5, max_value=5)
-        # test_data['normalized_list_of_numbers_in_input'] = normalize_values(list(test_data['list_of_numbers_in_input']), min_value=-5, max_value=5)
-
+        
         train_data[input_type] = train_data[input_type].apply(replace_numbers_with_num)
         valid_data[input_type] = valid_data[input_type].apply(replace_numbers_with_num)
         test_data[input_type] = test_data[input_type].apply(replace_numbers_with_num)
@@ -644,13 +599,9 @@ if __name__ == "__main__":
     # define the tokenizer
     if tokenizer_name == 't5_tokenizer':
         tokenizer = AutoTokenizer.from_pretrained("t5-small") 
-        # tokenizer = AutoTokenizer.from_pretrained("t5-small", device_map='auto')
 
     elif tokenizer_name == 'modified':
-        # tokenizer = AutoTokenizer.from_pretrained("/n/fs/rnspace/projects/vertaix/nlp4matbench/tokenizers/llmprop_nlp4matbench_32000_new_separated_digits")
-        # tokenizer = AutoTokenizer.from_pretrained("/n/fs/rnspace/projects/vertaix/nlp4matbench/tokenizers/llmprop_nlp4matbench_32000_c4_and_separated_digits") #for nlp4matbench
-        # tokenizer = AutoTokenizer.from_pretrained("/n/fs/rnspace/projects/vertaix/nlp4matbench/tokenizers/llmprop_nlp4matbench_32000_c4_and_separated_digits", device_map='auto')
-        tokenizer = AutoTokenizer.from_pretrained("/n/fs/rnspace/projects/vertaix/LLM-Prop/tokenizers/new_pretrained_t5_tokenizer_on_modified_oneC4files_and_mp22_web_descriptions_32k_vocab") #old_version_trained_on_mp_web_only
+        tokenizer = AutoTokenizer.from_pretrained("/n/fs/rnspace/projects/vertaix/nlp4matbench/tokenizers/llmprop_nlp4matbench_32000_c4_and_separated_digits")
 
     elif tokenizer_name == 'matbert_tokenizer':
         tokenizer = BertTokenizerFast.from_pretrained("/n/fs/rnspace/projects/vertaix/MatBERT/matbert-base-uncased", do_lower_case=True)
@@ -698,8 +649,7 @@ if __name__ == "__main__":
 
     # define the model
     if model_name == "llmprop":
-        base_model = T5EncoderModel.from_pretrained("google/t5-v1_1-small") #, torch_dtype=torch.float16
-        # base_model = T5EncoderModel.from_pretrained("google/t5-v1_1-small", device_map='auto', load_in_8bit=True, torch_dtype=torch.float16)
+        base_model = T5EncoderModel.from_pretrained("google/t5-v1_1-small") 
         base_model_output_size = 512
     elif model_name == "matbert":
         base_model = BertModel.from_pretrained("/n/fs/rnspace/projects/vertaix/MatBERT/matbert-base-uncased")
@@ -771,11 +721,7 @@ if __name__ == "__main__":
             model.parameters(),
             lr = learning_rate
         )
-    # if optimizer_type == 'adamw':
-    #     optimizer = Adam8bit(
-    #         model.parameters(),
-    #         lr = learning_rate
-    #     ) 
+
     elif optimizer_type == 'sgd':
         optimizer = SGD(
             model.parameters(),
@@ -785,7 +731,7 @@ if __name__ == "__main__":
     # set up the scheduler
     total_training_steps = len(train_dataloader) * epochs 
     if scheduler_type == 'linear':
-        scheduler = get_linear_schedule_with_warmup( #get_linear_schedule_with_warmup
+        scheduler = get_linear_schedule_with_warmup( 
             optimizer,
             num_warmup_steps= warmup_steps, #steps_ratio*total_training_steps,
             num_training_steps=total_training_steps 
@@ -805,7 +751,6 @@ if __name__ == "__main__":
         )
     
     elif scheduler_type == 'step':
-         # pct_start = config.warmup_steps / (config.epochs * steps_per_epoch)
         scheduler = torch.optim.lr_scheduler.StepLR(
             optimizer,
             step_size=warmup_steps
@@ -825,7 +770,7 @@ if __name__ == "__main__":
     show_gpu('after training')
     
     print("======= Evaluating on test set ========")
-    best_model_path = f"/n/fs/rnspace/projects/vertaix/nlp4matbench/checkpoints/{dataset_name}/old_{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.pt" 
+    best_model_path = f"/n/fs/rnspace/projects/vertaix/nlp4matbench/checkpoints/{dataset_name}/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.pt" 
     best_model = Predictor(base_model, base_model_output_size, drop_rate=drop_rate, pooling=pooling, model_name=model_name)
 
     if torch.cuda.is_available():
@@ -861,7 +806,6 @@ if __name__ == "__main__":
 
     # save the averaged predictions
     test_predictions = {f"material_id":list(test_data['material_id']), f"actual_{property}":list(test_data[property]), f"predicted_{property}":averaged_predictions}
-    saveCSV(pd.DataFrame(test_predictions), f"{statistics_directory}/old_{model_name}_test_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
+    saveCSV(pd.DataFrame(test_predictions), f"{statistics_directory}/{model_name}_test_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
     
-    wandb.finish()
     
