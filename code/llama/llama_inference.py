@@ -9,10 +9,8 @@ import json
 import argparse
 
 from huggingface_hub import login
-
-login("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")
-
-# token = "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"
+token = "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" # get the token from <https://huggingface.co/meta-llama/Llama-2-7b-chat-hf>
+login(token)
 
 def extract_ans_from_chat_llm(result):
     # Find the content within curly braces
@@ -64,26 +62,16 @@ def generate(model, tokenizer, prompts, max_len, batch_size):
     sequences = pipe(
             prompts,
             do_sample=True,
-            # temperature=0.1,
             top_k=10,
             num_return_sequences=1,
             eos_token_id=tokenizer.eos_token_id,
             max_length=max_len,
-            return_full_text=False,
-            # pad_token_id=tokenizer.eos_token_id,
+            return_full_text=False
         )
 
     for seqs in sequences:
-        # print(seqs)
         for seq in seqs:
-            # print(seq['generated_text'], "\n", "-"*50)
-            # print(extract_ans(seq['generated_text']), "\n", "-"*50)
             results.append(extract_ans_from_chat_llm(seq['generated_text']))
-    # for seqs in sequences:
-    #     print(seqs, "\n", "-"*50)
-    #     # print(extract_ans(seq['generated_text']), "\n", "-"*50)
-    #     results.append(extract_ans_from_chat_llm(seqs['generated_text']))
-    #     # results.append(seqs)
     
     return results
 
@@ -101,7 +89,7 @@ if __name__ == "__main__":
     parser.add_argument('--batch_size',
                         help='Batch size',
                         type=int,
-                        default=32)
+                        default=8)
     parser.add_argument('--prompt_type',
                         help='Type of the prompt',
                         type=str,
@@ -113,19 +101,25 @@ if __name__ == "__main__":
     parser.add_argument('--max_len',
                         help='Max output sequence length',
                         type=int,
-                        default=200)
+                        default=800)
     parser.add_argument('--model_name',
                         help='Name of the model',
                         type=str,
                         default="llama")
+    parser.add_argument('--data_path',
+                        help='A path to prompts',
+                        type=str,
+                        default="")
+    parser.add_argument('--results_path',
+                        help='A path of where the results will be saved',
+                        type=str,
+                        default="")
     args = parser.parse_args()
     config = vars(args)
 
     # print(os.environ['TRANSFORMERS_CACHE'])
     print(os.environ['HF_HOME'])
     print(os.environ['HF_DATASETS_CACHE'])
-    
-    cache_directory = "/n/fs/rnspace/.hf_cache/"
 
     # check if the GPU is available
     if torch.cuda.is_available():
@@ -140,7 +134,6 @@ if __name__ == "__main__":
         device = torch.device("cpu")
 
     # set parameters
-
     dataset_name = config.get('dataset_name')
     input_type = config.get('input_type')
     prompt_type = config.get('prompt_type')
@@ -148,59 +141,27 @@ if __name__ == "__main__":
     max_len = config.get('max_len')
     property_name = config.get("property_name")
     model_name = config.get("model_name")
-
-    statistics_directory = f"/n/fs/rnspace/projects/vertaix/nlp4matbench/statistics/{dataset_name}/"
-    model = "meta-llama/Llama-2-7b-chat-hf" 
-    # model = "daryl149/llama-2-7b-chat-hf"
-    tokenizer = AutoTokenizer.from_pretrained(model, 
-                                            padding=True,
-                                            # truncation='longest_first',
-                                            # max_length=8000
-                                            ) #, use_auth_token=token, cache_dir=cache_directory
-    # tokenizer = AutoTokenizer.from_pretrained(model, padding=True)
-
+    data_path = config.get("data_path")
+    results_path = config.get("results_path")
+    
+    results_path = f"{results_path}/{dataset_name}"
+    if not os.path.exists(results_path):
+        os.makedirs(results_path)
+        
     start = time.time()
+    
+    model = "meta-llama/Llama-2-7b-chat-hf" 
+    tokenizer = AutoTokenizer.from_pretrained(model, padding=True) 
 
-    input_path = "/n/fs/rnspace/projects/vertaix/nlp4matbench/data"
-    # train = pd.read_csv(f"{input_path}/{dataset_name}/unfiltered/train.csv")
-    data = pd.read_csv(f"{input_path}/{dataset_name}/unfiltered/{dataset_name}_prompting_data_chat_struct_and_descr.csv")
-    # text = """<s>[INST] <<SYS>>
-    # You are a material scientist. 
-    # Look at the chemical formula of the given crystalline material and predict its property.
-    # The output must be in a json format. For example: {property_name:predicted_property_value}.
-    # Answer as precise as possible and in few words as possible.
-    # <</SYS>>
-
-    # chemical formula: KPrMnNbO6.
-    # property name: band_gap. [/INST]"""
-
+    data = pd.read_csv(f"{data_path}/{dataset_name}/{dataset_name}_prompting_data_chat_struct_and_descr.csv")
     data = data.dropna(subset=[property_name])
 
     prompts = list(data[f'{property_name}_{input_type}_{prompt_type}'])
 
-    results = generate(model, tokenizer, prompts, max_len, batch_size) #prompts_all[property][0:10]
+    results = generate(model, tokenizer, prompts, max_len, batch_size)
 
-    save_path = f"{statistics_directory}{model_name}_test_stats_for_{property_name}_{input_type}_{prompt_type}_{max_len}_{batch_size}.json"
+    save_path = f"{results_path}/{model_name}_test_stats_for_{property_name}_{input_type}_{prompt_type}_{max_len}_{batch_size}.json"
     writeToJSON(results, save_path)
-    # print(results)
 
     end = time.time()
     print('took:', end-start)
-
-    # pipeline = transformers.pipeline(
-    #     "text-generation",
-    #     model=model,
-    #     torch_dtype=torch.float16,
-    #     device_map="auto",
-    # )
-
-    # sequences = pipeline(
-    #     'I liked "Breaking Bad" and "Band of Brothers". Do you have any recommendations of other shows I might like?\n',
-    #     do_sample=True,
-    #     top_k=10,
-    #     num_return_sequences=1,
-    #     eos_token_id=tokenizer.eos_token_id,
-    #     max_length=200,
-    # )
-    # for seq in sequences:
-    #     print(f"Result: {seq['generated_text']}")
