@@ -156,24 +156,11 @@ def extract_snumat_soc_predictions(sentence):
         result = None
     return result 
 
-    
-
-def extract_predictions(dataset_name, input_type="formula", prompt_type="zero_shot"):
+def extract_predictions(dataset_name, data_path, results_path, input_type="formula", prompt_type="zero_shot"):
     print(f"Results on {dataset_name}:\n")
-    if input_type == "formula":
-        if prompt_type == "zero_shot":
-            max_len = 300
-            batch_size = 16 #32
-        elif prompt_type == "few_shot":
-            max_len = 800
-            batch_size = 4
-    elif input_type in ["cif_structure", "description"]:
-        max_len = 800
-        batch_size = 8
-
-    data_path = "/n/fs/rnspace/projects/vertaix/nlp4matbench/data"
-    predictions_path = "/n/fs/rnspace/projects/vertaix/nlp4matbench/statistics"
-
+    
+    max_len = 800
+    batch_size = 8
     data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/{dataset_name}_prompting_data_chat.csv")
 
     if dataset_name == "mp":
@@ -196,9 +183,10 @@ def extract_predictions(dataset_name, input_type="formula", prompt_type="zero_sh
         property_names = ["bandgap", "energy_total",  "lcd", "pld"]
     elif dataset_name == "jarvis":
         property_names = ["formation_energy_peratom","optb88vdw_bandgap","optb88vdw_total_energy","ehull","mbj_bandgap","bulk_modulus_kv","shear_modulus_gv","slme", "spillage","mepsx","dfpt_piezo_max_dielectric","dfpt_piezo_max_dij","dfpt_piezo_max_eij","max_efg","exfoliation_energy","avg_elec_mass","n-Seebeck","n-powerfact","p-Seebeck","p-powerfact"] 
+    
     for property_name in property_names:
         data_dp = data.dropna(subset=[property_name])
-        predictions = readJSON(f"{predictions_path}/{dataset_name}/llama_test_stats_for_{property_name}_{input_type}_{prompt_type}_{max_len}_{batch_size}.json")
+        predictions = readJSON(f"{results_path}/{dataset_name}/llama_test_stats_for_{property_name}_{input_type}_{prompt_type}_{max_len}_{batch_size}.json")
 
         results_df = pd.DataFrame({f'{property_name}_target': list(data_dp[property_name]), f'{property_name}_predicted': predictions})
         print(f'original results for {property_name}:', len(results_df))
@@ -308,15 +296,36 @@ def extract_predictions(dataset_name, input_type="formula", prompt_type="zero_sh
             else:
                 print("Invalid")
 
-        results_df.to_csv(f"{predictions_path}/{dataset_name}/llama_test_stats_for_{property_name}_{input_type}_{prompt_type}_{max_len}_{batch_size}.csv", index=False)
+        results_df.to_csv(f"{results_path}/{dataset_name}/llama_test_stats_for_{property_name}_{input_type}_{prompt_type}_{max_len}_{batch_size}.csv", index=False)
         print('-'*50)
         
-dataset_names = ["hmof"]
-for dataset_name in dataset_names:
-    for input_type in ["description", "cif_structure", "composition"]:
-        for prompt_type in ["zero_shot", "few_shot"]: 
-            extract_predictions(dataset_name, input_type=input_type, prompt_type=prompt_type)
-            print(f"Finished {prompt_type} results.")
-            print("@"*50)
-        print(f'Finished {input_type} results.')
-        print("+"*50)
+if __name__=='__main__':
+    # parse Arguments
+    parser = argparse.ArgumentParser(description='evaluate')
+    parser.add_argument('--dataset_names',
+                        help='A list of dataset names',
+                        type=list,
+                        default=['mp'])
+    parser.add_argument('--data_path',
+                        help='A path to prompts',
+                        type=str,
+                        default="")
+    parser.add_argument('--results_path',
+                        help='A path of where the results will be saved',
+                        type=str,
+                        default="")
+    args = parser.parse_args()
+    config = vars(args)
+    
+    dataset_names = config.get('dataset_names')
+    data_path = config.get('data_path')
+    results_path = config.get('results_path')
+
+    for dataset_name in dataset_names:
+        for input_type in ["description", "cif_structure", "formula"]:
+            for prompt_type in ["zero_shot", "few_shot"]: 
+                extract_predictions(dataset_name, data_path, results_path, input_type=input_type, prompt_type=prompt_type)
+                print(f"Finished {prompt_type} results.")
+                print("@"*50)
+            print(f'Finished {input_type} results.')
+            print("+"*50)
