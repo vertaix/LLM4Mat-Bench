@@ -12,6 +12,6 @@ The data collected for the LLM4Mat-Bench can be found [here](https://drive.googl
 
 ## TODOs
 - Adding the link to the paper
-- Adding the detailed guidelines to run the models we evaluated on LLM4Mat-Bench
+- Adding the detailed guidelines on how to run the models we evaluated on LLM4Mat-Bench
 - Adding how to cite LLM4Mat-Bench
 - Adding the leaderboard (Optional)
