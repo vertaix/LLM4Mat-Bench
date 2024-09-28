@@ -185,7 +185,7 @@ if __name__=='__main__':
     config = vars(args)
     
     data_path = config.get('data_path')
-    dataset_names = "".join(i for i in config.get('dataset_names'))
+    dataset_names = config.get('dataset_names')
     zs_max_words = config.get('zs_max_words')
     fs_max_words = config.get('fs_max_words')
     tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf")
