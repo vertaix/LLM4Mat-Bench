@@ -9,7 +9,7 @@ import json
 import argparse
 
 from huggingface_hub import login
-token = "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" # get the token from <https://huggingface.co/meta-llama/Llama-2-7b-chat-hf>
+token = "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"
 login(token)
 
 def extract_ans_from_chat_llm(result):
@@ -153,7 +153,7 @@ if __name__ == "__main__":
     model = "meta-llama/Llama-2-7b-chat-hf" 
     tokenizer = AutoTokenizer.from_pretrained(model, padding=True) 
 
-    data = pd.read_csv(f"{data_path}/{dataset_name}/{dataset_name}_prompting_data_chat_struct_and_descr.csv")
+    data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/{dataset_name}_prompting_data_chat_struct_and_descr.csv")
     data = data.dropna(subset=[property_name])
 
     prompts = list(data[f'{property_name}_{input_type}_{prompt_type}'])
