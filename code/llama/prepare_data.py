@@ -99,7 +99,7 @@ def generate_prompt(data_path, dataset_name, tokenizer, zs_max_words, fs_max_wor
         e.g: use llama tokenizer to truncate the description or structure string to fit within the length limit
     4. Save each dataset as a whole separately
     """
-    # input_path = "/n/fs/rnspace/projects/vertaix/nlp4matbench/data"
+   
     train = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/train.csv")
     test = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/test.csv")
 
@@ -159,15 +159,14 @@ def generate_prompt(data_path, dataset_name, tokenizer, zs_max_words, fs_max_wor
         print(f"Finished {property_name} data")
         print('-'*50)
     data_df = pd.DataFrame(data)
-    data_df.to_csv(f"{input_path}/{dataset_name}/unfiltered/{dataset_name}_inference_prompts_data.csv", index=False)
+    data_df.to_csv(f"{data_path}/{dataset_name}/unfiltered/{dataset_name}_inference_prompts_data.csv", index=False)
 
 if __name__=='__main__':
     # parse Arguments
     parser = argparse.ArgumentParser(description='prepare_prompts')
     parser.add_argument('--dataset_name',
-                        nargs='*',
                         help='Any dataset name that is in LLM4MatBench',
-                        type=list,
+                        type=str,
                         default='mp')
     parser.add_argument('--zs_max_words',
                         help='input sequence length limit before tokenization',
@@ -191,9 +190,9 @@ if __name__=='__main__':
     tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf")
     
     # ["mp","oqmd","qe_tb","jarvis","qmof","hea","snumat","gnome","hmof","omdb"]
-    dataset_path = f"{data_path}/{dataset_name}/"
-    if not os.path.exists(dataset_path):
-        os.makedirs(dataset_path)
-    generate_prompt(dataset_path, dataset_name,  tokenizer, zs_max_words, fs_max_words)
+    # dataset_path = f"{data_path}/{dataset_name}/"
+    # if not os.path.exists(dataset_path):
+    #     os.makedirs(dataset_path)
+    generate_prompt(data_path, dataset_name,  tokenizer, zs_max_words, fs_max_words)
     print("Finished to process the data for ", dataset_name)
     print('@'*50)
