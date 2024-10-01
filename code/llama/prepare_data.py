@@ -164,11 +164,11 @@ def generate_prompt(data_path, dataset_name, tokenizer, zs_max_words, fs_max_wor
 if __name__=='__main__':
     # parse Arguments
     parser = argparse.ArgumentParser(description='prepare_prompts')
-    parser.add_argument('--dataset_names',
+    parser.add_argument('--dataset_name',
                         nargs='*',
-                        help='A list of dataset names',
+                        help='Any dataset name that is in LLM4MatBench',
                         type=list,
-                        default=['mp'])
+                        default='mp')
     parser.add_argument('--zs_max_words',
                         help='input sequence length limit before tokenization',
                         type=int,
@@ -178,21 +178,22 @@ if __name__=='__main__':
                         type=int,
                         default=10)
     parser.add_argument('--data_path',
-                        help='A path to save prompts',
+                        help='A path tom load data from and also save prompts',
                         type=str,
                         default="")
     args = parser.parse_args()
     config = vars(args)
     
     data_path = config.get('data_path')
-    dataset_names = config.get('dataset_names')
+    dataset_name = config.get('dataset_name')
     zs_max_words = config.get('zs_max_words')
     fs_max_words = config.get('fs_max_words')
     tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf")
     
     # ["mp","oqmd","qe_tb","jarvis","qmof","hea","snumat","gnome","hmof","omdb"]
-
-    for dataset_name in dataset_names:
-        generate_prompt(data_path, dataset_name,  tokenizer, zs_max_words, fs_max_words)
-        print("Finished to process the data for ", dataset_name)
-        print('@'*50)
+    dataset_path = f"{data_path}/{dataset_name}/"
+    if not os.path.exists(dataset_path):
+        os.makedirs(dataset_path)
+    generate_prompt(dataset_path, dataset_name,  tokenizer, zs_max_words, fs_max_words)
+    print("Finished to process the data for ", dataset_name)
+    print('@'*50)
