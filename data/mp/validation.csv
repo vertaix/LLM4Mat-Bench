@@ -1,0 +1,576 @@
+material_id,formula_pretty,structure,description,formation_energy_per_atom,energy_above_hull,energy_per_atom,is_stable,band_gap,efermi,density,density_atomic,volume,is_gap_direct,cif_structure
+mp-771027,Li2FeAsCO7,"{'@module': 'pymatgen.core.structure', '@class': 'Structure', 'charge': 0, 'lattice': {'matrix': [[0.21956299999999998, -0.000521, 5.175997], [8.664936, 0.001134, 0.157558], [0.001749, 13.220671, -0.00141]], 'pbc': [True, True, True], 'a': 5.180651805170755, 'b': 8.666368425898822, 'c': 13.220671190879152, 'alpha': 89.98503533584737, 'beta': 90.01154596405856, 'gamma': 86.52928367861215, 'volume': 592.4855281847055}, 'sites': [{'species': [{'element': 'Li', 'occu': 1}], 'abc': [0.206286, 0.205783, 0.256697], 'xyz': [1.828838260959, 3.393832466603, 1.099796532286], 'label': 'Li', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Li', 'occu': 1}], 'abc': [0.20629799999999998, 0.205781, 0.756691], 'xyz': [1.829698055349, 10.004088634057, 1.099153337594], 'label': 'Li', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Li', 'occu': 1}], 'abc': [0.20641199999999998, 0.205776, 0.49330399999999996], 'xyz': [1.829219096988, 6.521935696316, 1.100113989132], 'label': 'Li', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Li', 'occu': 1}], 'abc': [0.206425, 0.205759, 0.99331], 'xyz': [1.8299491578890001, 13.132350494291, 1.099473590147], 'label': 'Li', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Li', 'occu': 1}], 'abc': [0.7937059999999999, 0.7942119999999999, 0.243304], 'xyz': [7.056490159606001, 3.217129252565999, 4.233011270537999], 'label': 'Li', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Li', 'occu': 1}], 'abc': [0.793708, 0.794217, 0.743308], 'xyz': [7.057408430408, 9.827517639878, 4.232317404682], 'label': 'Li', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Li', 'occu': 1}], 'abc': [0.7935869999999999, 0.794227, 0.006697], 'xyz': [7.0561801800060024, 0.089026028277999, 4.232731306135], 'label': 'Li', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Li', 'occu': 1}], 'abc': [0.793578, 0.794241, 0.5066900000000001], 'xyz': [7.057174000800001, 6.699269004145999, 4.231981937844], 'label': 'Li', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Fe', 'occu': 1}], 'abc': [0.787473, 0.342477, 0.875018], 'xyz': [3.141971627253, 11.568303192562999, 4.128684101366999], 'label': 'Fe', 'properties': {'magmom': -4.319}}, {'species': [{'element': 'Fe', 'occu': 1}], 'abc': [0.212507, 0.6575219999999999, 0.6249800000000001], 'xyz': [5.745137813053001, 8.263289875381, 1.202652223955], 'label': 'Fe', 'properties': {'magmom': -4.319}}, {'species': [{'element': 'Fe', 'occu': 1}], 'abc': [0.787465, 0.34248, 0.37502], 'xyz': [3.141121369055, 4.957994141475, 4.129348163245], 'label': 'Fe', 'properties': {'magmom': 4.319}}, {'species': [{'element': 'Fe', 'occu': 1}], 'abc': [0.212531, 0.6575200000000001, 0.12498000000000001], 'xyz': [5.744251252693001, 1.652954360608999, 1.203481132766999], 'label': 'Fe', 'properties': {'magmom': 4.319}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.722885, 0.422015, 0.12500899999999998], 'xyz': [3.8156704060360003, 1.652804802964, 3.807966168024999], 'label': 'As', 'properties': {'magmom': 0.013000000000000001}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.7228800000000001, 0.42203, 0.625011], 'xyz': [3.816673785759, 8.263166763921, 3.8072376485899992], 'label': 'As', 'properties': {'magmom': -0.013000000000000001}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.27711399999999997, 0.577985, 0.37499099999999996], 'xyz': [5.069702874401, 4.958143697557, 1.524878655978], 'label': 'As', 'properties': {'magmom': 0.013000000000000001}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.277126, 0.5779679999999999, 0.8749889999999999], 'xyz': [5.070432701747001, 11.568452730685, 1.524233092276], 'label': 'As', 'properties': {'magmom': -0.013000000000000001}}, {'species': [{'element': 'C', 'occu': 1}], 'abc': [0.738197, 0.053817, 0.37498699999999996], 'xyz': [0.629057460886, 4.957256184118, 3.828856024625], 'label': 'C', 'properties': {'magmom': -0.002}}, {'species': [{'element': 'C', 'occu': 1}], 'abc': [0.738215, 0.053806, 0.8749889999999999], 'xyz': [0.629840602222, 11.567618103608, 3.8282424566129993], 'label': 'C', 'properties': {'magmom': 0.002}}, {'species': [{'element': 'C', 'occu': 1}], 'abc': [0.261796, 0.946183, 0.12501299999999999], 'xyz': [8.256314502173002, 1.653692319529, 1.5039577433959992], 'label': 'C', 'properties': {'magmom': -0.002}}, {'species': [{'element': 'C', 'occu': 1}], 'abc': [0.261793, 0.946193, 0.625011], 'xyz': [8.257274989346001, 8.26400139109, 1.503238793805], 'label': 'C', 'properties': {'magmom': 0.002}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.29029699999999997, 0.09039599999999999, 0.125025], 'xyz': [0.8472327035920001, 1.6528656561019992, 1.5166427288270001], 'label': 'O', 'properties': {'magmom': 0.02}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.29029499999999997, 0.09041, 0.6250169999999999], 'xyz': [0.8482280595780001, 8.263095407652001, 1.5159295939250002], 'label': 'O', 'properties': {'magmom': -0.02}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.709693, 0.909604, 0.374976], 'xyz': [8.038138602527, 4.958096069779, 3.816155509793], 'label': 'O', 'properties': {'magmom': 0.02}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.7097049999999999, 0.909592, 0.874983], 'xyz': [8.038911770294, 11.568524094615999, 3.815510721190999], 'label': 'O', 'properties': {'magmom': -0.02}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.966881, 0.112589, 0.375037], 'xyz': [1.18852371202, 4.957864720752, 5.021783650849], 'label': 'O', 'properties': {'magmom': 0.08600000000000001}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.966901, 0.112577, 0.875034], 'xyz': [1.189298618801, 11.568160534711, 5.021180284322999], 'label': 'O', 'properties': {'magmom': -0.08600000000000001}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.033113, 0.887409, 0.12496299999999999], 'xyz': [7.696831140730001, 1.653083780105999, 0.311034978052999], 'label': 'O', 'properties': {'magmom': 0.08600000000000001}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.033103, 0.887423, 0.624966], 'xyz': [7.697824759451, 8.263458963205, 0.31028041966500003], 'label': 'O', 'properties': {'magmom': -0.08600000000000001}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.54178, 0.158168, 0.375], 'xyz': [1.4901263143880001, 4.957648720132, 2.828643538404], 'label': 'O', 'properties': {'magmom': 0.089}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.5418000000000001, 0.158157, 0.875004], 'xyz': [1.490909898348, 11.568037079922, 2.828040319565999], 'label': 'O', 'properties': {'magmom': -0.089}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.458215, 0.8418329999999999, 0.124999], 'xyz': [7.395254750984002, 1.6532865629359992, 2.5041807405789998], 'label': 'O', 'properties': {'magmom': 0.089}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.458206, 0.841845, 0.624996], 'xyz': [7.3962312489020015, 8.263582419219999, 2.503431051532], 'label': 'O', 'properties': {'magmom': -0.089}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.16619299999999998, 0.394014, 0.375064], 'xyz': [3.451251913699, 4.958957973267, 0.921765686993], 'label': 'O', 'properties': {'magmom': 0.068}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.166212, 0.393993, 0.875057], 'xyz': [3.451948609497, 11.569200894857, 0.9211557320879991], 'label': 'O', 'properties': {'magmom': -0.068}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.8338059999999999, 0.605986, 0.12493599999999999], 'xyz': [5.434121366738, 1.651990527254, 4.411079137010001], 'label': 'O', 'properties': {'magmom': 0.068}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.833793, 0.606005, 0.624943], 'xyz': [5.435157658446001, 8.26241860027, 4.410309832780999], 'label': 'O', 'properties': {'magmom': -0.068}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.389772, 0.44965299999999997, 0.125016], 'xyz': [3.982012629828, 1.653102241025999, 2.088128857498], 'label': 'O', 'properties': {'magmom': 0.092}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.389765, 0.44966000000000006, 0.625016], 'xyz': [3.982946247439, 8.263437752610999, 2.0873887284249992], 'label': 'O', 'properties': {'magmom': -0.092}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.610228, 0.5503469999999999, 0.374984], 'xyz': [4.9033608701719995, 4.9578462589739996, 3.244721142502], 'label': 'O', 'properties': {'magmom': 0.092}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.610244, 0.5503439999999999, 0.874984], 'xyz': [4.904212888372001, 11.568181747235998, 3.24409848578], 'label': 'O', 'properties': {'magmom': -0.092}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.828874, 0.31554299999999996, 0.023205999999999997], 'xyz': [2.916190549604, 0.306724873634, 4.339932940911999], 'label': 'O', 'properties': {'magmom': -0.057}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.828847, 0.315564, 0.523204], 'xyz': [2.917241081561, 6.917033970173, 4.339091500531], 'label': 'O', 'properties': {'magmom': 0.057}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.829433, 0.315556, 0.22677599999999998], 'xyz': [2.916781973419, 2.998056592607, 4.342541337788999], 'label': 'O', 'properties': {'magmom': 0.068}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.829421, 0.315567, 0.726776], 'xyz': [2.917749152959, 9.608392111333, 4.341775958962999], 'label': 'O', 'properties': {'magmom': -0.068}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.170563, 0.6844439999999999, 0.27322399999999997], 'xyz': [5.968590648329001, 3.612891909477, 0.9902879582229991], 'label': 'O', 'properties': {'magmom': 0.068}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.17059000000000002, 0.6844319999999999, 0.7732239999999999], 'xyz': [5.969367097298001, 10.223227381802, 0.989720819446], 'label': 'O', 'properties': {'magmom': -0.068}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.17113, 0.6844549999999999, 0.476794], 'xyz': [5.969166498776, 6.304223622014, 0.992937447959999], 'label': 'O', 'properties': {'magmom': -0.057}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.171159, 0.684439, 0.9767939999999999], 'xyz': [5.969908727127001, 12.914559088761001, 0.9923800309449999], 'label': 'O', 'properties': {'magmom': 0.057}}]}","Li2FeCAsO7 crystallizes in the monoclinic P2_1/m space group. Li(1) is bonded in a 5-coordinate geometry to one O(1), one O(2), one O(3), one O(4), and one O(6) atom. The Li(1)–O(1) bond length is 2.04 Å. The Li(1)–O(2) bond length is 2.18 Å. The Li(1)–O(3) bond length is 2.36 Å. The Li(1)–O(4) bond length is 2.26 Å. The Li(1)–O(6) bond length is 2.16 Å. Fe(1) is bonded to one O(2), one O(3), one O(4), one O(5), and two equivalent O(6) atoms to form distorted FeO6 octahedra that share corners with four equivalent As(1)O4 tetrahedra. The Fe(1)–O(2) bond length is 2.15 Å. The Fe(1)–O(3) bond length is 2.10 Å. The Fe(1)–O(4) bond length is 2.04 Å. The Fe(1)–O(5) bond length is 1.97 Å. Both Fe(1)–O(6) bond lengths are 1.98 Å. C(1) is bonded in a trigonal planar geometry to one O(1), one O(2), and one O(3) atom. The C(1)–O(1) bond length is 1.27 Å. The C(1)–O(2) bond length is 1.32 Å. The C(1)–O(3) bond length is 1.32 Å. As(1) is bonded to one O(4), one O(5), and two equivalent O(6) atoms to form AsO4 tetrahedra that share corners with four equivalent Fe(1)O6 octahedra. The corner-sharing octahedral tilt angles range from 47–58°. The As(1)–O(4) bond length is 1.73 Å. The As(1)–O(5) bond length is 1.73 Å. Both As(1)–O(6) bond lengths are 1.70 Å. There are six inequivalent O sites. In the first O site, O(1) is bonded in a trigonal planar geometry to two equivalent Li(1) and one C(1) atom. In the second O site, O(2) is bonded in a distorted trigonal pyramidal geometry to two equivalent Li(1), one Fe(1), and one C(1) atom. In the third O site, O(3) is bonded in a rectangular see-saw-like geometry to two equivalent Li(1), one Fe(1), and one C(1) atom. In the fourth O site, O(4) is bonded in a rectangular see-saw-like geometry to two equivalent Li(1), one Fe(1), and one As(1) atom. In the fifth O site, O(5) is bonded in a bent 120 degrees geometry to one Fe(1) and one As(1) atom. In the sixth O site, O(6) is bonded in a distorted T-shaped geometry to one Li(1), one Fe(1), and one As(1) atom.",-1.9540012328472216,0.0231361064166684,-7.021457926458333,False,1.8906,0.53763725,3.0118020965552126,12.34344850384803,592.4855281847055,False,"# generated using pymatgen
+data_Li2FeAsCO7
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   5.18065181
+_cell_length_b   8.66636843
+_cell_length_c   13.22067119
+_cell_angle_alpha   89.98503534
+_cell_angle_beta   90.01154596
+_cell_angle_gamma   86.52928368
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Li2FeAsCO7
+_chemical_formula_sum   'Li8 Fe4 As4 C4 O28'
+_cell_volume   592.48552818
+_cell_formula_units_Z   4
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Li  Li0  1  0.20628600  0.20578300  0.25669700  1
+  Li  Li1  1  0.20629800  0.20578100  0.75669100  1
+  Li  Li2  1  0.20641200  0.20577600  0.49330400  1
+  Li  Li3  1  0.20642500  0.20575900  0.99331000  1
+  Li  Li4  1  0.79370600  0.79421200  0.24330400  1
+  Li  Li5  1  0.79370800  0.79421700  0.74330800  1
+  Li  Li6  1  0.79358700  0.79422700  0.00669700  1
+  Li  Li7  1  0.79357800  0.79424100  0.50669000  1
+  Fe  Fe8  1  0.78747300  0.34247700  0.87501800  1
+  Fe  Fe9  1  0.21250700  0.65752200  0.62498000  1
+  Fe  Fe10  1  0.78746500  0.34248000  0.37502000  1
+  Fe  Fe11  1  0.21253100  0.65752000  0.12498000  1
+  As  As12  1  0.72288500  0.42201500  0.12500900  1
+  As  As13  1  0.72288000  0.42203000  0.62501100  1
+  As  As14  1  0.27711400  0.57798500  0.37499100  1
+  As  As15  1  0.27712600  0.57796800  0.87498900  1
+  C  C16  1  0.73819700  0.05381700  0.37498700  1
+  C  C17  1  0.73821500  0.05380600  0.87498900  1
+  C  C18  1  0.26179600  0.94618300  0.12501300  1
+  C  C19  1  0.26179300  0.94619300  0.62501100  1
+  O  O20  1  0.29029700  0.09039600  0.12502500  1
+  O  O21  1  0.29029500  0.09041000  0.62501700  1
+  O  O22  1  0.70969300  0.90960400  0.37497600  1
+  O  O23  1  0.70970500  0.90959200  0.87498300  1
+  O  O24  1  0.96688100  0.11258900  0.37503700  1
+  O  O25  1  0.96690100  0.11257700  0.87503400  1
+  O  O26  1  0.03311300  0.88740900  0.12496300  1
+  O  O27  1  0.03310300  0.88742300  0.62496600  1
+  O  O28  1  0.54178000  0.15816800  0.37500000  1
+  O  O29  1  0.54180000  0.15815700  0.87500400  1
+  O  O30  1  0.45821500  0.84183300  0.12499900  1
+  O  O31  1  0.45820600  0.84184500  0.62499600  1
+  O  O32  1  0.16619300  0.39401400  0.37506400  1
+  O  O33  1  0.16621200  0.39399300  0.87505700  1
+  O  O34  1  0.83380600  0.60598600  0.12493600  1
+  O  O35  1  0.83379300  0.60600500  0.62494300  1
+  O  O36  1  0.38977200  0.44965300  0.12501600  1
+  O  O37  1  0.38976500  0.44966000  0.62501600  1
+  O  O38  1  0.61022800  0.55034700  0.37498400  1
+  O  O39  1  0.61024400  0.55034400  0.87498400  1
+  O  O40  1  0.82887400  0.31554300  0.02320600  1
+  O  O41  1  0.82884700  0.31556400  0.52320400  1
+  O  O42  1  0.82943300  0.31555600  0.22677600  1
+  O  O43  1  0.82942100  0.31556700  0.72677600  1
+  O  O44  1  0.17056300  0.68444400  0.27322400  1
+  O  O45  1  0.17059000  0.68443200  0.77322400  1
+  O  O46  1  0.17113000  0.68445500  0.47679400  1
+  O  O47  1  0.17115900  0.68443900  0.97679400  1
+"
+mp-1024051,Na2Zn2Se3,"{'@module': 'pymatgen.core.structure', '@class': 'Structure', 'charge': 0, 'lattice': {'matrix': [[7.778733, 0.0, 0.0], [0.0, 7.778733, 0.0], [0.0, 0.0, 11.873095]], 'pbc': [True, True, True], 'a': 7.778733, 'b': 7.778733, 'c': 11.873095, 'alpha': 90.0, 'beta': 90.0, 'gamma': 90.0, 'volume': 718.4253900889094}, 'sites': [{'species': [{'element': 'Na', 'occu': 1}], 'abc': [0.968854, 0.25002199999999997, 0.40391499999999997], 'xyz': [7.536456581982, 1.944854382126, 4.795721166925], 'label': 'Na', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Na', 'occu': 1}], 'abc': [0.031146, 0.7499779999999999, 0.9039149999999999], 'xyz': [0.242276418017999, 5.833878617874, 10.732268666925], 'label': 'Na', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Na', 'occu': 1}], 'abc': [0.750022, 0.531146, 0.653915], 'xyz': [5.834220882126, 4.131642918018, 7.763994916925], 'label': 'Na', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Na', 'occu': 1}], 'abc': [0.24997799999999998, 0.468854, 0.153915], 'xyz': [1.944512117874, 3.6470900819820002, 1.8274474169250001], 'label': 'Na', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Na', 'occu': 1}], 'abc': [0.7499779999999999, 0.031146, 0.09608499999999999], 'xyz': [5.833878617874, 0.242276418017999, 1.140826333075], 'label': 'Na', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Na', 'occu': 1}], 'abc': [0.25002199999999997, 0.968854, 0.596085], 'xyz': [1.944854382126, 7.536456581982, 7.077373833074999], 'label': 'Na', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Na', 'occu': 1}], 'abc': [0.531146, 0.750022, 0.346085], 'xyz': [4.131642918018, 5.834220882126, 4.109100083074999], 'label': 'Na', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Na', 'occu': 1}], 'abc': [0.468854, 0.24997799999999998, 0.846085], 'xyz': [3.6470900819820002, 1.944512117874, 10.045647583074999], 'label': 'Na', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Zn', 'occu': 1}], 'abc': [0.22094799999999998, 0.9524800000000001, 0.132322], 'xyz': [1.718695498884, 7.40908760784, 1.57107167659], 'label': 'Zn', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Zn', 'occu': 1}], 'abc': [0.779052, 0.04752000000000001, 0.6323219999999999], 'xyz': [6.060037501116, 0.36964539216, 7.5076191765899996], 'label': 'Zn', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Zn', 'occu': 1}], 'abc': [0.45248000000000005, 0.27905199999999997, 0.382322], 'xyz': [3.519721107839999, 2.170671001116, 4.53934542659], 'label': 'Zn', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Zn', 'occu': 1}], 'abc': [0.54752, 0.7209479999999999, 0.8823219999999999], 'xyz': [4.25901189216, 5.608061998884001, 10.47589292659], 'label': 'Zn', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Zn', 'occu': 1}], 'abc': [0.04752000000000001, 0.779052, 0.367678], 'xyz': [0.36964539216, 6.060037501116, 4.36547582341], 'label': 'Zn', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Zn', 'occu': 1}], 'abc': [0.9524800000000001, 0.22094799999999998, 0.867678], 'xyz': [7.40908760784, 1.718695498884, 10.30202332341], 'label': 'Zn', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Zn', 'occu': 1}], 'abc': [0.27905199999999997, 0.45248000000000005, 0.617678], 'xyz': [2.170671001116, 3.519721107839999, 7.333749573409999], 'label': 'Zn', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Zn', 'occu': 1}], 'abc': [0.7209479999999999, 0.54752, 0.11767799999999999], 'xyz': [5.608061998884001, 4.25901189216, 1.39720207341], 'label': 'Zn', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Se', 'occu': 1}], 'abc': [0.52627, 0.239283, 0.5841419999999999], 'xyz': [4.09371381591, 1.8613185684390001, 6.93557345949], 'label': 'Se', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Se', 'occu': 1}], 'abc': [0.47373000000000004, 0.760717, 0.084142], 'xyz': [3.685019184089999, 5.917414431560999, 0.9990259594899991], 'label': 'Se', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Se', 'occu': 1}], 'abc': [0.7392829999999999, 0.9737300000000001, 0.8341419999999999], 'xyz': [5.750685068439, 7.57438568409, 9.90384720949], 'label': 'Se', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Se', 'occu': 1}], 'abc': [0.260717, 0.02627, 0.334142], 'xyz': [2.028047931561, 0.20434731591000002, 3.967299709489999], 'label': 'Se', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Se', 'occu': 1}], 'abc': [0.760717, 0.47373000000000004, 0.915858], 'xyz': [5.917414431560999, 3.685019184089999, 10.87406904051], 'label': 'Se', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Se', 'occu': 1}], 'abc': [0.239283, 0.52627, 0.415858], 'xyz': [1.8613185684390001, 4.09371381591, 4.93752154051], 'label': 'Se', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Se', 'occu': 1}], 'abc': [0.9737300000000001, 0.7392829999999999, 0.165858], 'xyz': [7.57438568409, 5.750685068439, 1.969247790509999], 'label': 'Se', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Se', 'occu': 1}], 'abc': [0.02627, 0.260717, 0.665858], 'xyz': [0.20434731591000002, 2.028047931561, 7.9057952905099995], 'label': 'Se', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Se', 'occu': 1}], 'abc': [0.686908, 0.313092, 0.25], 'xyz': [5.343273927564, 2.4354590724359992, 2.96827375], 'label': 'Se', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Se', 'occu': 1}], 'abc': [0.313092, 0.686908, 0.75], 'xyz': [2.4354590724359992, 5.343273927564, 8.90482125], 'label': 'Se', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Se', 'occu': 1}], 'abc': [0.8130919999999999, 0.8130919999999999, 0.5], 'xyz': [6.324825572436, 6.324825572436, 5.9365475], 'label': 'Se', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Se', 'occu': 1}], 'abc': [0.186908, 0.186908, 0.0], 'xyz': [1.453907427563999, 1.453907427563999, 0.0], 'label': 'Se', 'properties': {'magmom': 0.0}}]}","Na2Zn2Se3 crystallizes in the tetragonal P4_32_12 space group. Na(1) is bonded in a 4-coordinate geometry to one Se(2) and three equivalent Se(1) atoms. The Na(1)–Se(2) bond length is 2.90 Å. There are a spread of Na(1)–Se(1) bond distances ranging from 2.98–3.14 Å. Zn(1) is bonded to one Se(2) and three equivalent Se(1) atoms to form a mixture of distorted edge and corner-sharing ZnSe4 tetrahedra. The Zn(1)–Se(2) bond length is 2.42 Å. There are a spread of Zn(1)–Se(1) bond distances ranging from 2.48–2.57 Å. There are two inequivalent Se sites. In the first Se site, Se(1) is bonded to three equivalent Na(1) and three equivalent Zn(1) atoms to form distorted SeNa3Zn3 pentagonal pyramids that share corners with six equivalent Se(2)Na2Zn2 tetrahedra and edges with six equivalent Se(1)Na3Zn3 pentagonal pyramids. In the second Se site, Se(2) is bonded to two equivalent Na(1) and two equivalent Zn(1) atoms to form distorted corner-sharing SeNa2Zn2 tetrahedra.",-1.0293381428763857,0.0461597385714287,-3.2653770342857142,False,1.4395,0.73184521,3.8246293810345233,25.65804964603248,718.4253900889094,True,"# generated using pymatgen
+data_Na2Zn2Se3
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   7.77873300
+_cell_length_b   7.77873300
+_cell_length_c   11.87309500
+_cell_angle_alpha   90.00000000
+_cell_angle_beta   90.00000000
+_cell_angle_gamma   90.00000000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Na2Zn2Se3
+_chemical_formula_sum   'Na8 Zn8 Se12'
+_cell_volume   718.42539009
+_cell_formula_units_Z   4
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Na  Na0  1  0.96885400  0.25002200  0.40391500  1
+  Na  Na1  1  0.03114600  0.74997800  0.90391500  1
+  Na  Na2  1  0.75002200  0.53114600  0.65391500  1
+  Na  Na3  1  0.24997800  0.46885400  0.15391500  1
+  Na  Na4  1  0.74997800  0.03114600  0.09608500  1
+  Na  Na5  1  0.25002200  0.96885400  0.59608500  1
+  Na  Na6  1  0.53114600  0.75002200  0.34608500  1
+  Na  Na7  1  0.46885400  0.24997800  0.84608500  1
+  Zn  Zn8  1  0.22094800  0.95248000  0.13232200  1
+  Zn  Zn9  1  0.77905200  0.04752000  0.63232200  1
+  Zn  Zn10  1  0.45248000  0.27905200  0.38232200  1
+  Zn  Zn11  1  0.54752000  0.72094800  0.88232200  1
+  Zn  Zn12  1  0.04752000  0.77905200  0.36767800  1
+  Zn  Zn13  1  0.95248000  0.22094800  0.86767800  1
+  Zn  Zn14  1  0.27905200  0.45248000  0.61767800  1
+  Zn  Zn15  1  0.72094800  0.54752000  0.11767800  1
+  Se  Se16  1  0.52627000  0.23928300  0.58414200  1
+  Se  Se17  1  0.47373000  0.76071700  0.08414200  1
+  Se  Se18  1  0.73928300  0.97373000  0.83414200  1
+  Se  Se19  1  0.26071700  0.02627000  0.33414200  1
+  Se  Se20  1  0.76071700  0.47373000  0.91585800  1
+  Se  Se21  1  0.23928300  0.52627000  0.41585800  1
+  Se  Se22  1  0.97373000  0.73928300  0.16585800  1
+  Se  Se23  1  0.02627000  0.26071700  0.66585800  1
+  Se  Se24  1  0.68690800  0.31309200  0.25000000  1
+  Se  Se25  1  0.31309200  0.68690800  0.75000000  1
+  Se  Se26  1  0.81309200  0.81309200  0.50000000  1
+  Se  Se27  1  0.18690800  0.18690800  0.00000000  1
+"
+mp-1197854,Bi14Mo5O36,"{'@module': 'pymatgen.core.structure', '@class': 'Structure', 'charge': 0, 'lattice': {'matrix': [[2.866601, 17.448772, 0.0], [-2.866601, 17.448772, 0.0], [0.0, 1.505841, 8.635193]], 'pbc': [True, True, True], 'a': 17.682676426411955, 'b': 17.682676426411955, 'c': 8.765507131052372, 'alpha': 80.24013348712137, 'beta': 80.24013348712137, 'gamma': 18.65918817835022, 'volume': 863.8416908543603}, 'sites': [{'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.265123, 0.250525, 0.811674], 'xyz': [0.041846641398000005, 10.219676372090001, 7.008961643081999], 'label': 'Bi', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.749475, 0.734877, 0.188326], 'xyz': [0.041846641398000005, 26.183708627910004, 1.626231356917999], 'label': 'Bi', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.276669, 0.144536, 0.46776799999999996], 'xyz': [0.378772589933, 8.053894243148001, 4.039266959223999], 'label': 'Bi', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.855464, 0.723331, 0.5322319999999999], 'xyz': [0.378772589933, 28.349490756852003, 4.595926040776], 'label': 'Bi', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.688182, 0.670928, 0.771196], 'xyz': [0.049460333654, 24.876099068755998, 6.659426300828], 'label': 'Bi', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.329072, 0.311818, 0.22880399999999998], 'xyz': [0.049460333654, 11.527285931244, 1.975766699172], 'label': 'Bi', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.610873, 0.650295, 0.439602], 'xyz': [-0.11300714462199901, 22.667803600978, 3.796048113185999], 'label': 'Bi', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.349705, 0.389127, 0.560398], 'xyz': [-0.11300714462200001, 13.735581399022001, 4.839144886813999], 'label': 'Bi', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.083023, 0.125184, 0.727308], 'xyz': [-0.12085876476099901, 4.728166677832, 6.280444950443999], 'label': 'Bi', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.8748159999999999, 0.9169769999999999, 0.272692], 'xyz': [-0.120858764761, 31.675218322168003, 2.354748049555999], 'label': 'Bi', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.055470000000000005, 0.047517, 0.388492], 'xyz': [0.022798077753000003, 2.382003863736, 3.354703398955999], 'label': 'Bi', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.952483, 0.9445300000000001, 0.6115079999999999], 'xyz': [0.022798077752999003, 34.021381136264, 5.280489601044], 'label': 'Bi', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.5272, 0.527251, 0.668998], 'xyz': [-0.00014619665100000002, 19.40627970149, 5.776926846613999], 'label': 'Bi', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Bi', 'occu': 1}], 'abc': [0.472749, 0.4728, 0.33100199999999996], 'xyz': [-0.00014619665100000002, 16.997105298510004, 2.858266153386], 'label': 'Bi', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Mo', 'occu': 1}], 'abc': [0.9943700000000001, 0.0056300000000000005, 0.0], 'xyz': [2.83432307274, 17.448772, 0.0], 'label': 'Mo', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Mo', 'occu': 1}], 'abc': [0.41276599999999997, 0.429403, 0.9465300000000001], 'xyz': [-0.047691640836999005, 16.120138548198003, 8.17346923029], 'label': 'Mo', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Mo', 'occu': 1}], 'abc': [0.570597, 0.5872339999999999, 0.053470000000000004], 'xyz': [-0.047691640837000004, 20.283246451802004, 0.461723769709999], 'label': 'Mo', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Mo', 'occu': 1}], 'abc': [0.8669, 0.808701, 0.902532], 'xyz': [0.166833311598999, 30.596249501384005, 7.793538008675999], 'label': 'Mo', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Mo', 'occu': 1}], 'abc': [0.191299, 0.1331, 0.097468], 'xyz': [0.166833311599, 5.807135498616001, 0.841654991323999], 'label': 'Mo', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.953496, 0.51124, 0.691785], 'xyz': [1.2677714918560001, 26.599562720377005, 5.973696989504999], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.48876000000000003, 0.046504, 0.30821499999999996], 'xyz': [1.2677714918560001, 9.803822279623, 2.661496010495], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.471794, 0.990351, 0.660125], 'xyz': [-1.4864960147569999, 26.506678026065003, 5.700306779124999], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.009649, 0.528206, 0.339875], 'xyz': [-1.486496014756999, 9.896706973935, 2.934886220874999], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.8721700000000001, 0.42797199999999996, 0.6165579999999999], 'xyz': [1.273338430998, 23.614319640902004, 5.324097325694], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.572028, 0.12783, 0.383442], 'xyz': [1.273338430998, 12.789065359098, 3.311095674306], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.386613, 0.9182739999999999, 0.6060829999999999], 'xyz': [-1.5240599542609998, 23.681340379567004, 5.233643679019], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.081726, 0.613387, 0.39391699999999996], 'xyz': [-1.5240599542609998, 12.722044620433001, 3.4015493209809993], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.847799, 0.301189, 0.5600649999999999], 'xyz': [1.566912772609999, 20.891798482401, 4.836269367544999], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.698811, 0.152201, 0.43993499999999996], 'xyz': [1.5669127726099998, 15.511586517599001, 3.798923632454999], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.339642, 0.8128700000000001, 0.548697], 'xyz': [-1.356555858028, 20.936169554441, 4.738104493521], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.18713000000000002, 0.660358, 0.45130299999999995], 'xyz': [-1.356555858028, 15.467215445559, 3.8970885064789993], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.736448, 0.263552, 0.5], 'xyz': [1.355604146496, 18.2016925, 4.3175965], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.232256, 0.767744, 0.5], 'xyz': [-1.5350304362879998, 18.2016925, 4.3175965], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.295012, 0.622933, 0.8177519999999999], 'xyz': [-0.940018666521, 17.248417502972, 7.061446346136], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.377067, 0.704988, 0.182248], 'xyz': [-0.940018666521, 19.154967497028, 1.573746653863999], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.564797, 0.293524, 0.125935], 'xyz': [0.7776314530730001, 15.166285518147001, 1.087473030454999], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.706476, 0.435203, 0.874065], 'xyz': [0.7776314530730001, 21.237099481853, 7.547719969544999], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.17043899999999998, 0.594299, 0.017619], 'xyz': [-1.21503749986, 13.370270414315003, 0.152143465466999], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.405701, 0.829561, 0.982381], 'xyz': [-1.21503749986, 23.033114585685002, 8.483049534532999], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.58325, 0.217609, 0.8235739999999999], 'xyz': [1.048146856241, 15.214177590882002, 7.111720439781999], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.782391, 0.41675, 0.176426], 'xyz': [1.048146856241, 21.189207409118, 1.523472560218], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.98689, 0.7578389999999999, 0.730992], 'xyz': [0.656597825651, 31.544136247060006, 6.312257001455999], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.242161, 0.013110000000000002, 0.26900799999999997], 'xyz': [0.656597825651, 4.859248752939999, 2.322935998544], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.719815, 0.970872, 0.07793000000000001], 'xyz': [-0.7196802472569991, 29.617762175494004, 0.6729405904899991], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.029127999999999998, 0.28018499999999996, 0.9220700000000001], 'xyz': [-0.7196802472570001, 6.7856228245059995, 7.962252409509999], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.067596, 0.5399539999999999, 0.963545], 'xyz': [-1.354061915158, 12.051946994945002, 8.320397039185], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.46004599999999995, 0.932404, 0.036455], 'xyz': [-1.354061915158, 24.351438005055, 0.314795960815], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.6362829999999999, 0.9767859999999999, 0.8207559999999999], 'xyz': [-0.976086240303, 29.382001237064006, 7.087386465908], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.023212999999999998, 0.36371699999999996, 0.179244], 'xyz': [-0.9760891069040001, 7.021366314164001, 1.547806534091999], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.20205199999999998, 0.8728279999999999, 0.880941], 'xyz': [-1.9228471523760002, 20.081893123741004, 7.607095556612999], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.127172, 0.797948, 0.119059], 'xyz': [-1.922847152376, 16.321491876259, 1.028097443386999], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.8310500000000001, 0.20907299999999998, 0.133901], 'xyz': [1.7829598901769992, 18.350502694697, 1.156260977892999], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.7909269999999999, 0.16895000000000002, 0.866099], 'xyz': [1.782959890177, 18.052882305303005, 7.478932022106999], 'label': 'O', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.217391, 0.38641899999999996, 0.625182], 'xyz': [-0.48453583382800003, 11.477167709382002, 5.398567230126], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.6135809999999999, 0.782609, 0.374818], 'xyz': [-0.484535833828, 24.926217290618002, 3.236625769873999], 'label': 'O', 'properties': {'magmom': 0.0}}]}","Bi14Mo5O36 crystallizes in the monoclinic C2 space group. There are three inequivalent Mo sites. In the first Mo site, Mo(1) is bonded in a tetrahedral geometry to two equivalent O(17) and two equivalent O(18) atoms. Both Mo(1)–O(17) bond lengths are 1.81 Å. Both Mo(1)–O(18) bond lengths are 1.80 Å. In the second Mo site, Mo(2) is bonded in a tetrahedral geometry to one O(10), one O(11), one O(12), and one O(9) atom. The Mo(2)–O(10) bond length is 1.84 Å. The Mo(2)–O(11) bond length is 1.81 Å. The Mo(2)–O(12) bond length is 1.77 Å. The Mo(2)–O(9) bond length is 1.82 Å. In the third Mo site, Mo(3) is bonded to one O(13), one O(14), one O(15), and one O(16) atom to form distorted MoO4 tetrahedra that share corners with two equivalent Bi(1)O5 square pyramids. The Mo(3)–O(13) bond length is 1.83 Å. The Mo(3)–O(14) bond length is 1.83 Å. The Mo(3)–O(15) bond length is 1.81 Å. The Mo(3)–O(16) bond length is 1.81 Å. There are seven inequivalent Bi sites. In the first Bi site, Bi(1) is bonded to one O(1), one O(15), one O(16), one O(19), and one O(2) atom to form distorted BiO5 square pyramids that share corners with two equivalent Mo(3)O4 tetrahedra. The Bi(1)–O(1) bond length is 2.21 Å. The Bi(1)–O(15) bond length is 2.65 Å. The Bi(1)–O(16) bond length is 2.52 Å. The Bi(1)–O(19) bond length is 2.11 Å. The Bi(1)–O(2) bond length is 2.20 Å. In the second Bi site, Bi(2) is bonded in a 4-coordinate geometry to one O(1), one O(19), one O(2), and one O(4) atom. The Bi(2)–O(1) bond length is 2.40 Å. The Bi(2)–O(19) bond length is 2.23 Å. The Bi(2)–O(2) bond length is 2.18 Å. The Bi(2)–O(4) bond length is 2.38 Å. In the third Bi site, Bi(3) is bonded in a 5-coordinate geometry to one O(1), one O(14), one O(2), one O(3), and one O(4) atom. The Bi(3)–O(1) bond length is 2.22 Å. The Bi(3)–O(14) bond length is 2.55 Å. The Bi(3)–O(2) bond length is 2.44 Å. The Bi(3)–O(3) bond length is 2.21 Å. The Bi(3)–O(4) bond length is 2.44 Å. In the fourth Bi site, Bi(4) is bonded in a 6-coordinate geometry to one O(13), one O(19), one O(3), one O(4), one O(5), and one O(6) atom. The Bi(4)–O(13) bond length is 2.59 Å. The Bi(4)–O(19) bond length is 2.36 Å. The Bi(4)–O(3) bond length is 2.27 Å. The Bi(4)–O(4) bond length is 2.25 Å. The Bi(4)–O(5) bond length is 2.66 Å. The Bi(4)–O(6) bond length is 2.33 Å. In the fifth Bi site, Bi(5) is bonded in a 7-coordinate geometry to one O(10), one O(14), one O(17), one O(3), one O(4), one O(5), and one O(6) atom. The Bi(5)–O(10) bond length is 2.52 Å. The Bi(5)–O(14) bond length is 2.72 Å. The Bi(5)–O(17) bond length is 2.70 Å. The Bi(5)–O(3) bond length is 2.27 Å. The Bi(5)–O(4) bond length is 2.35 Å. The Bi(5)–O(5) bond length is 2.26 Å. The Bi(5)–O(6) bond length is 2.56 Å. In the sixth Bi site, Bi(6) is bonded in a 6-coordinate geometry to one O(13), one O(5), one O(6), one O(7), one O(8), and one O(9) atom. The Bi(6)–O(13) bond length is 2.76 Å. The Bi(6)–O(5) bond length is 2.25 Å. The Bi(6)–O(6) bond length is 2.31 Å. The Bi(6)–O(7) bond length is 2.44 Å. The Bi(6)–O(8) bond length is 2.30 Å. The Bi(6)–O(9) bond length is 2.69 Å. In the seventh Bi site, Bi(7) is bonded in a 8-coordinate geometry to one O(10), one O(17), one O(18), one O(5), one O(6), one O(7), one O(8), and one O(9) atom. The Bi(7)–O(10) bond length is 2.66 Å. The Bi(7)–O(17) bond length is 2.74 Å. The Bi(7)–O(18) bond length is 2.81 Å. The Bi(7)–O(5) bond length is 2.36 Å. The Bi(7)–O(6) bond length is 2.29 Å. The Bi(7)–O(7) bond length is 2.33 Å. The Bi(7)–O(8) bond length is 2.44 Å. The Bi(7)–O(9) bond length is 2.68 Å. There are nineteen inequivalent O sites. In the first O site, O(1) is bonded in a distorted trigonal planar geometry to one Bi(1), one Bi(2), and one Bi(3) atom. In the second O site, O(2) is bonded in a 3-coordinate geometry to one Bi(1), one Bi(2), and one Bi(3) atom. In the third O site, O(3) is bonded in a trigonal non-coplanar geometry to one Bi(3), one Bi(4), and one Bi(5) atom. In the fourth O site, O(4) is bonded to one Bi(2), one Bi(3), one Bi(4), and one Bi(5) atom to form a mixture of edge and corner-sharing OBi4 tetrahedra. In the fifth O site, O(5) is bonded to one Bi(4), one Bi(5), one Bi(6), and one Bi(7) atom to form a mixture of edge and corner-sharing OBi4 tetrahedra. In the sixth O site, O(6) is bonded to one Bi(4), one Bi(5), one Bi(6), and one Bi(7) atom to form a mixture of edge and corner-sharing OBi4 tetrahedra. In the seventh O site, O(7) is bonded to two equivalent Bi(6) and two equivalent Bi(7) atoms to form a mixture of edge and corner-sharing OBi4 tetrahedra. In the eighth O site, O(8) is bonded to two equivalent Bi(6) and two equivalent Bi(7) atoms to form a mixture of edge and corner-sharing OBi4 tetrahedra. In the ninth O site, O(9) is bonded in a distorted single-bond geometry to one Mo(2), one Bi(6), and one Bi(7) atom. In the tenth O site, O(10) is bonded in a 3-coordinate geometry to one Mo(2), one Bi(5), and one Bi(7) atom. In the eleventh O site, O(11) is bonded in a distorted single-bond geometry to one Mo(2) atom. In the twelfth O site, O(12) is bonded in a single-bond geometry to one Mo(2) atom. In the thirteenth O site, O(13) is bonded in a distorted single-bond geometry to one Mo(3), one Bi(4), and one Bi(6) atom. In the fourteenth O site, O(14) is bonded in a distorted single-bond geometry to one Mo(3), one Bi(3), and one Bi(5) atom. In the fifteenth O site, O(15) is bonded in a distorted single-bond geometry to one Mo(3) and one Bi(1) atom. In the sixteenth O site, O(16) is bonded in a distorted bent 150 degrees geometry to one Mo(3) and one Bi(1) atom. In the seventeenth O site, O(17) is bonded in a distorted single-bond geometry to one Mo(1), one Bi(5), and one Bi(7) atom. In the eighteenth O site, O(18) is bonded in a single-bond geometry to one Mo(1) and one Bi(7) atom. In the nineteenth O site, O(19) is bonded in a distorted trigonal non-coplanar geometry to one Bi(1), one Bi(2), and one Bi(4) atom.",-1.824826536545456,0.0026710430000003,-7.039650021454546,False,2.6027,3.3306553,7.653343143671144,15.70621256098837,863.8416908543603,True,"# generated using pymatgen
+data_Bi14Mo5O36
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   17.68267643
+_cell_length_b   17.68267643
+_cell_length_c   8.76550713
+_cell_angle_alpha   80.24013349
+_cell_angle_beta   80.24013349
+_cell_angle_gamma   18.65918818
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Bi14Mo5O36
+_chemical_formula_sum   'Bi14 Mo5 O36'
+_cell_volume   863.84169085
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Bi  Bi0  1  0.26512300  0.25052500  0.81167400  1
+  Bi  Bi1  1  0.74947500  0.73487700  0.18832600  1
+  Bi  Bi2  1  0.27666900  0.14453600  0.46776800  1
+  Bi  Bi3  1  0.85546400  0.72333100  0.53223200  1
+  Bi  Bi4  1  0.68818200  0.67092800  0.77119600  1
+  Bi  Bi5  1  0.32907200  0.31181800  0.22880400  1
+  Bi  Bi6  1  0.61087300  0.65029500  0.43960200  1
+  Bi  Bi7  1  0.34970500  0.38912700  0.56039800  1
+  Bi  Bi8  1  0.08302300  0.12518400  0.72730800  1
+  Bi  Bi9  1  0.87481600  0.91697700  0.27269200  1
+  Bi  Bi10  1  0.05547000  0.04751700  0.38849200  1
+  Bi  Bi11  1  0.95248300  0.94453000  0.61150800  1
+  Bi  Bi12  1  0.52720000  0.52725100  0.66899800  1
+  Bi  Bi13  1  0.47274900  0.47280000  0.33100200  1
+  Mo  Mo14  1  0.99437000  0.00563000  0.00000000  1
+  Mo  Mo15  1  0.41276600  0.42940300  0.94653000  1
+  Mo  Mo16  1  0.57059700  0.58723400  0.05347000  1
+  Mo  Mo17  1  0.86690000  0.80870100  0.90253200  1
+  Mo  Mo18  1  0.19129900  0.13310000  0.09746800  1
+  O  O19  1  0.95349600  0.51124000  0.69178500  1
+  O  O20  1  0.48876000  0.04650400  0.30821500  1
+  O  O21  1  0.47179400  0.99035100  0.66012500  1
+  O  O22  1  0.00964900  0.52820600  0.33987500  1
+  O  O23  1  0.87217000  0.42797200  0.61655800  1
+  O  O24  1  0.57202800  0.12783000  0.38344200  1
+  O  O25  1  0.38661300  0.91827400  0.60608300  1
+  O  O26  1  0.08172600  0.61338700  0.39391700  1
+  O  O27  1  0.84779900  0.30118900  0.56006500  1
+  O  O28  1  0.69881100  0.15220100  0.43993500  1
+  O  O29  1  0.33964200  0.81287000  0.54869700  1
+  O  O30  1  0.18713000  0.66035800  0.45130300  1
+  O  O31  1  0.73644800  0.26355200  0.50000000  1
+  O  O32  1  0.23225600  0.76774400  0.50000000  1
+  O  O33  1  0.29501200  0.62293300  0.81775200  1
+  O  O34  1  0.37706700  0.70498800  0.18224800  1
+  O  O35  1  0.56479700  0.29352400  0.12593500  1
+  O  O36  1  0.70647600  0.43520300  0.87406500  1
+  O  O37  1  0.17043900  0.59429900  0.01761900  1
+  O  O38  1  0.40570100  0.82956100  0.98238100  1
+  O  O39  1  0.58325000  0.21760900  0.82357400  1
+  O  O40  1  0.78239100  0.41675000  0.17642600  1
+  O  O41  1  0.98689000  0.75783900  0.73099200  1
+  O  O42  1  0.24216100  0.01311000  0.26900800  1
+  O  O43  1  0.71981500  0.97087200  0.07793000  1
+  O  O44  1  0.02912800  0.28018500  0.92207000  1
+  O  O45  1  0.06759600  0.53995400  0.96354500  1
+  O  O46  1  0.46004600  0.93240400  0.03645500  1
+  O  O47  1  0.63628300  0.97678600  0.82075600  1
+  O  O48  1  0.02321300  0.36371700  0.17924400  1
+  O  O49  1  0.20205200  0.87282800  0.88094100  1
+  O  O50  1  0.12717200  0.79794800  0.11905900  1
+  O  O51  1  0.83105000  0.20907300  0.13390100  1
+  O  O52  1  0.79092700  0.16895000  0.86609900  1
+  O  O53  1  0.21739100  0.38641900  0.62518200  1
+  O  O54  1  0.61358100  0.78260900  0.37481800  1
+"
+mp-1407092,ZnMoF6,"{'@module': 'pymatgen.core.structure', '@class': 'Structure', 'charge': 0, 'lattice': {'matrix': [[4.9193922, -2.52597675, 0.09225945], [4.91929032, 2.52616365, 0.09256733], [3.5441835900000003, -0.0001869, 4.24597007]], 'pbc': [True, True, True], 'a': 5.530776615004054, 'b': 5.530776505122075, 'c': 5.530777448957127, 'alpha': 54.352562039943166, 'beta': 54.3525672883038, 'gamma': 54.352569685612124, 'volume': 103.87122767643251}, 'sites': [{'species': [{'element': 'Zn', 'occu': 1}], 'abc': [0.5, 0.5, 0.5], 'xyz': [6.691433054999999, 5.04425060748881e-17, 2.215398425], 'label': 'Zn', 'properties': {'magmom': 0.012}}, {'species': [{'element': 'Mo', 'occu': 1}], 'abc': [-0.0, -0.0, 0.0], 'xyz': [0.0, 0.0, 0.0], 'label': 'Mo', 'properties': {'magmom': 1.732}}, {'species': [{'element': 'F', 'occu': 1}], 'abc': [0.62009144, 0.88856287, 0.2422296], 'xyz': [8.28007789165745, 0.678273389907415, 1.167960819285217], 'label': 'F', 'properties': {'magmom': 0.027}}, {'species': [{'element': 'F', 'occu': 1}], 'abc': [0.88856287, 0.2422296, 0.62009144], 'xyz': [7.760504884332556, -1.632693435149368, 2.73729056389879], 'label': 'F', 'properties': {'magmom': 0.027}}, {'species': [{'element': 'F', 'occu': 1}], 'abc': [0.7577704, 0.37990856, 0.11143713000000001], 'xyz': [5.991603944306716, -0.9544200452419521, 0.578237320040323], 'label': 'F', 'properties': {'magmom': 0.027}}, {'species': [{'element': 'F', 'occu': 1}], 'abc': [0.11143713000000001, 0.7577704, 0.37990856], 'xyz': [5.622361225667444, 1.632693435149368, 1.6935062861012091], 'label': 'F', 'properties': {'magmom': 0.027}}, {'species': [{'element': 'F', 'occu': 1}], 'abc': [0.37990856, 0.11143713000000001, 0.7577704], 'xyz': [5.10278821834255, -0.678273389907415, 3.262836030714783], 'label': 'F', 'properties': {'magmom': 0.027}}, {'species': [{'element': 'F', 'occu': 1}], 'abc': [0.2422296, 0.62009144, 0.88856287], 'xyz': [7.391262165693284, 0.9544200452419531, 3.852559529959676], 'label': 'F', 'properties': {'magmom': 0.027}}]}",MoZnF6 crystallizes in the trigonal R-3 space group. Mo(1) is bonded to six equivalent F(1) atoms to form MoF6 octahedra that share corners with six equivalent Zn(1)F6 octahedra. The corner-sharing octahedral tilt angles are 40°. All Mo(1)–F(1) bond lengths are 1.96 Å. Zn(1) is bonded to six equivalent F(1) atoms to form ZnF6 octahedra that share corners with six equivalent Mo(1)F6 octahedra. The corner-sharing octahedral tilt angles are 40°. All Zn(1)–F(1) bond lengths are 2.02 Å. F(1) is bonded in a bent 150 degrees geometry to one Mo(1) and one Zn(1) atom.,-2.7006620206250007,0.0,-5.647444576250001,True,0.0,-0.16009204,4.401718092529019,12.983903459554064,103.87122767643253,False,"# generated using pymatgen
+data_ZnMoF6
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   5.53077662
+_cell_length_b   5.53077651
+_cell_length_c   5.53077745
+_cell_angle_alpha   54.35256204
+_cell_angle_beta   54.35256729
+_cell_angle_gamma   54.35256969
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   ZnMoF6
+_chemical_formula_sum   'Zn1 Mo1 F6'
+_cell_volume   103.87122768
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Zn  Zn0  1  0.50000000  0.50000000  0.50000000  1
+  Mo  Mo1  1  -0.00000000  -0.00000000  0.00000000  1
+  F  F2  1  0.62009144  0.88856287  0.24222960  1
+  F  F3  1  0.88856287  0.24222960  0.62009144  1
+  F  F4  1  0.75777040  0.37990856  0.11143713  1
+  F  F5  1  0.11143713  0.75777040  0.37990856  1
+  F  F6  1  0.37990856  0.11143713  0.75777040  1
+  F  F7  1  0.24222960  0.62009144  0.88856287  1
+"
+mp-758547,Li2Fe3TeO8,"{'@module': 'pymatgen.core.structure', '@class': 'Structure', 'charge': 0, 'lattice': {'matrix': [[6.183641, 0.078485, 0.060356], [3.159755, 5.317835, 0.061596], [3.163628, 1.82834, 4.997192]], 'pbc': [True, True, True], 'a': 6.18443358431813, 'b': 6.18605001713258, 'c': 6.190581326729179, 'alpha': 58.46894310897035, 'beta': 58.49321568769255, 'gamma': 58.55173451299571, 'volume': 161.73848198900637}, 'sites': [{'species': [{'element': 'Li', 'occu': 1}], 'abc': [0.137185, 0.137172, 0.13711099999999998], 'xyz': [1.715500902152999, 0.9909105530849991, 0.701899176684], 'label': 'Li', 'properties': {'magmom': 0.009000000000000001}}, {'species': [{'element': 'Li', 'occu': 1}], 'abc': [0.862814, 0.862834, 0.862888], 'xyz': [10.791532709107999, 6.233779447099999, 4.417240135344], 'label': 'Li', 'properties': {'magmom': 0.009000000000000001}}, {'species': [{'element': 'Fe', 'occu': 1}], 'abc': [6e-06, 0.499986, 0.500006], 'xyz': [3.161703347044, 3.573024491259999, 2.529423482944], 'label': 'Fe', 'properties': {'magmom': 4.193}}, {'species': [{'element': 'Fe', 'occu': 1}], 'abc': [0.49999699999999997, 0.999988, 0.500002], 'xyz': [7.833339359272999, 6.271187107205, 2.590379074164], 'label': 'Fe', 'properties': {'magmom': 4.193}}, {'species': [{'element': 'Fe', 'occu': 1}], 'abc': [0.499998, 0.49999699999999997, 0.9999939999999999], 'xyz': [7.835285171685, 4.526472919485, 5.058137711348], 'label': 'Fe', 'properties': {'magmom': 4.3}}, {'species': [{'element': 'Te', 'occu': 1}], 'abc': [0.49999899999999997, 0.500003, 0.499998], 'xyz': [6.253508968368001, 3.61234221834, 2.559562130048], 'label': 'Te', 'properties': {'magmom': -0.06}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.268275, 0.268102, 0.26764899999999997], 'xyz': [3.352794794857, 1.9361311352050001, 1.3701994583000001], 'label': 'O', 'properties': {'magmom': 0.259}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.269019, 0.268947, 0.7186389999999999], 'xyz': [4.7868300084560005, 2.76524615522, 3.623980031864], 'label': 'O', 'properties': {'magmom': 0.097}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.26898299999999997, 0.718707, 0.26876099999999997], 'xyz': [4.784492168796, 4.334462856839999, 1.403554533432], 'label': 'O', 'properties': {'magmom': 0.10300000000000001}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.718731, 0.268891, 0.268738], 'xyz': [6.14419122274, 1.97767200844, 1.402877721968], 'label': 'O', 'properties': {'magmom': 0.10300000000000001}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.281271, 0.731116, 0.7312609999999999], 'xyz': [6.362864099199, 5.247023545035, 3.7162618327240002], 'label': 'O', 'properties': {'magmom': 0.10300000000000001}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.731018, 0.281298, 0.7312369999999999], 'xyz': [7.722547486363999, 2.89022015414, 3.7155798405200002], 'label': 'O', 'properties': {'magmom': 0.10300000000000001}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.730981, 0.731058, 0.281362], 'xyz': [7.720212953947, 4.459442262295, 1.495169273308], 'label': 'O', 'properties': {'magmom': 0.097}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.7317239999999999, 0.7319009999999999, 0.7323529999999999], 'xyz': [9.154238828023, 5.288548396495, 3.748954660516], 'label': 'O', 'properties': {'magmom': 0.259}}]}","Li2Fe3TeO8 is Spinel-derived structured and crystallizes in the trigonal R-3m space group. Li(1) is bonded to one O(1) and three equivalent O(2) atoms to form LiO4 tetrahedra that share corners with three equivalent Te(1)O6 octahedra and corners with nine equivalent Fe(1)O6 octahedra. The corner-sharing octahedral tilt angles range from 57–61°. The Li(1)–O(1) bond length is 2.01 Å. All Li(1)–O(2) bond lengths are 2.08 Å. Fe(1) is bonded to two equivalent O(1) and four equivalent O(2) atoms to form FeO6 octahedra that share corners with six equivalent Li(1)O4 tetrahedra, edges with two equivalent Te(1)O6 octahedra, and edges with four equivalent Fe(1)O6 octahedra. Both Fe(1)–O(1) bond lengths are 2.01 Å. All Fe(1)–O(2) bond lengths are 2.12 Å. Te(1) is bonded to six equivalent O(2) atoms to form TeO6 octahedra that share corners with six equivalent Li(1)O4 tetrahedra and edges with six equivalent Fe(1)O6 octahedra. All Te(1)–O(2) bond lengths are 2.00 Å. There are two inequivalent O sites. In the first O site, O(1) is bonded to one Li(1) and three equivalent Fe(1) atoms to form distorted OLiFe3 tetrahedra that share corners with three equivalent O(1)LiFe3 tetrahedra, corners with nine equivalent O(2)LiFe2Te trigonal pyramids, and edges with three equivalent O(2)LiFe2Te trigonal pyramids. In the second O site, O(2) is bonded to one Li(1), two equivalent Fe(1), and one Te(1) atom to form distorted OLiFe2Te trigonal pyramids that share corners with three equivalent O(1)LiFe3 tetrahedra, corners with nine equivalent O(2)LiFe2Te trigonal pyramids,  an edgeedge with one O(1)LiFe3 tetrahedra, and edges with two equivalent O(2)LiFe2Te trigonal pyramids.",-1.7811421590476186,0.0539815849999998,-6.92077502,False,0.0,4.27653811,4.486723392953186,11.552748713500453,161.73848198900637,False,"# generated using pymatgen
+data_Li2Fe3TeO8
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   6.18443358
+_cell_length_b   6.18605002
+_cell_length_c   6.19058133
+_cell_angle_alpha   58.46894311
+_cell_angle_beta   58.49321569
+_cell_angle_gamma   58.55173451
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Li2Fe3TeO8
+_chemical_formula_sum   'Li2 Fe3 Te1 O8'
+_cell_volume   161.73848199
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Li  Li0  1  0.13718500  0.13717200  0.13711100  1
+  Li  Li1  1  0.86281400  0.86283400  0.86288800  1
+  Fe  Fe2  1  0.00000600  0.49998600  0.50000600  1
+  Fe  Fe3  1  0.49999700  0.99998800  0.50000200  1
+  Fe  Fe4  1  0.49999800  0.49999700  0.99999400  1
+  Te  Te5  1  0.49999900  0.50000300  0.49999800  1
+  O  O6  1  0.26827500  0.26810200  0.26764900  1
+  O  O7  1  0.26901900  0.26894700  0.71863900  1
+  O  O8  1  0.26898300  0.71870700  0.26876100  1
+  O  O9  1  0.71873100  0.26889100  0.26873800  1
+  O  O10  1  0.28127100  0.73111600  0.73126100  1
+  O  O11  1  0.73101800  0.28129800  0.73123700  1
+  O  O12  1  0.73098100  0.73105800  0.28136200  1
+  O  O13  1  0.73172400  0.73190100  0.73235300  1
+"
+mp-1016078,CrN2,"{'@module': 'pymatgen.core.structure', '@class': 'Structure', 'charge': 0, 'lattice': {'matrix': [[-9.860133, 9.860133, 9.860133], [9.860133, -9.860133, 9.860133], [9.860133, 9.860133, -9.860133]], 'pbc': [True, True, True], 'a': 17.078251325386535, 'b': 17.078251325386535, 'c': 17.078251325386535, 'alpha': 109.47122063449069, 'beta': 109.47122063449069, 'gamma': 109.47122063449069, 'volume': 3834.496188574571}, 'sites': [{'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.27227799999999996, 0.575108, 0.6971700000000001], 'xyz': [9.860132999999998, 3.88824484722, 1.481149738728], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.30283000000000004, 0.727722, 0.424892], 'xyz': [8.378983261272, -6.666852968706393e-17, 5.971888152779999], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.424892, 0.6971700000000001, 0.12206199999999999], 'xyz': [3.8882448472199993, -1.481149738727999, 9.860132999999998], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.6971700000000001, 0.424892, 0.12206199999999999], 'xyz': [-1.481149738727999, 3.8882448472199993, 9.860132999999998], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.575108, 0.27227799999999996, 0.6971700000000001], 'xyz': [3.88824484722, 9.860132999999998, 1.481149738728], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.727722, 0.30283000000000004, 0.424892], 'xyz': [-6.666852968706393e-17, 8.378983261272, 5.971888152779999], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.12206199999999999, 0.424892, 0.6971700000000001], 'xyz': [9.860133, 3.8882448472199993, -1.481149738727999], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.6971700000000001, 0.27227799999999996, 0.575108], 'xyz': [1.481149738727999, 9.860133, 3.88824484722], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.424892, 0.30283000000000004, 0.727722], 'xyz': [5.971888152779999, 8.378983261272, 4.097389771686721e-16], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.6971700000000001, 0.575108, 0.27227799999999996], 'xyz': [1.481149738728, 3.88824484722, 9.860132999999998], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.424892, 0.727722, 0.30283000000000004], 'xyz': [5.971888152779999, 1.0101876236845439e-16, 8.378983261272], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.12206199999999999, 0.6971700000000001, 0.424892], 'xyz': [9.860133, -1.481149738728, 3.88824484722], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.727722, 0.424892, 0.30283000000000004], 'xyz': [-3.430704474816082e-16, 5.97188815278, 8.378983261272], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.6971700000000001, 0.12206199999999999, 0.424892], 'xyz': [-1.481149738728, 9.860133, 3.88824484722], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.575108, 0.6971700000000001, 0.27227799999999996], 'xyz': [3.88824484722, 1.481149738727999, 9.860132999999998], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.30283000000000004, 0.424892, 0.727722], 'xyz': [8.378983261272, 5.971888152779999, -4.784394425314531e-16], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.424892, 0.12206199999999999, 0.6971700000000001], 'xyz': [3.8882448472199993, 9.860133, -1.481149738727999], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.27227799999999996, 0.6971700000000001, 0.575108], 'xyz': [9.860132999999998, 1.481149738728, 3.88824484722], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.877938, 0.575108, 0.30283000000000004], 'xyz': [1.0101876236845439e-16, 5.971888152779999, 11.341282738727998], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.30283000000000004, 0.877938, 0.575108], 'xyz': [11.341282738728, -4.80678804436252e-16, 5.97188815278], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.575108, 0.30283000000000004, 0.877938], 'xyz': [5.97188815278, 11.341282738728, -6.11776501905581e-16], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.30283000000000004, 0.575108, 0.877938], 'xyz': [11.341282738728, 5.97188815278, -6.11776501905581e-16], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.575108, 0.877938, 0.30283000000000004], 'xyz': [5.97188815278, -7.871596573316708e-16, 11.341282738727998], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Cr', 'occu': 1}], 'abc': [0.877938, 0.30283000000000004, 0.575108], 'xyz': [4.074996152638732e-16, 11.341282738727998, 5.97188815278], 'label': 'Cr', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.82137, 0.5, 0.17863], 'xyz': [-1.4074353844200012, 4.930066500000001, 11.26756838442], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.6786300000000001, 0.17863, 0.357259], 'xyz': [-1.4074452445530001, 8.452687755447, 4.930076360133], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.5, 0.32137000000000004, 0.6786300000000001], 'xyz': [4.930066499999999, 8.452697615579998, 1.407435384419999], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.32137000000000004, 0.5, 0.6786300000000001], 'xyz': [8.45269761558, 4.930066499999999, 1.407435384419999], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.5, 0.82137, 0.17863], 'xyz': [4.930066500000001, -1.40743538442, 11.267568384419999], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.17863, 0.6786300000000001, 0.357259], 'xyz': [8.452687755446998, -1.407445244552999, 4.930076360132999], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.6786300000000001, 0.5, 0.32137000000000004], 'xyz': [1.40743538442, 4.9300665, 8.45269761558], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.17863, 0.82137, 0.5], 'xyz': [11.267568384419999, -1.40743538442, 4.9300665], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.357259, 0.6786300000000001, 0.17863], 'xyz': [4.930076360132999, -1.407445244552999, 8.452687755446998], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.17863, 0.5, 0.82137], 'xyz': [11.26756838442, 4.9300665, -1.40743538442], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.357259, 0.17863, 0.6786300000000001], 'xyz': [4.930076360132999, 8.452687755446998, -1.4074452445530001], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.6786300000000001, 0.32137000000000004, 0.5], 'xyz': [1.407435384419999, 8.45269761558, 4.9300665], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.17863, 0.357259, 0.6786300000000001], 'xyz': [8.452687755446998, 4.930076360132999, -1.4074452445530001], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.32137000000000004, 0.6786300000000001, 0.5], 'xyz': [8.45269761558, 1.40743538442, 4.9300665], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.5, 0.17863, 0.82137], 'xyz': [4.930066500000001, 11.267568384419999, -1.40743538442], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.6786300000000001, 0.357259, 0.17863], 'xyz': [-1.4074452445530001, 4.930076360132999, 8.452687755446998], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.5, 0.6786300000000001, 0.32137000000000004], 'xyz': [4.930066499999999, 1.40743538442, 8.452697615579998], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.82137, 0.17863, 0.5], 'xyz': [-1.4074353844200012, 11.26756838442, 4.930066500000001], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.32137000000000004, 0.642741, 0.82137], 'xyz': [11.267578244553, 4.930056639867, 1.4074452445530001], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.82137, 0.32137000000000004, 0.642741], 'xyz': [1.407445244552999, 11.267578244553, 4.930056639867001], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.642741, 0.82137, 0.32137000000000004], 'xyz': [4.930056639867, 1.407445244552999, 11.267578244553], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.82137, 0.642741, 0.32137000000000004], 'xyz': [1.407445244552998, 4.930056639867001, 11.267578244553], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.642741, 0.32137000000000004, 0.82137], 'xyz': [4.930056639867, 11.267578244553, 1.4074452445530001], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.32137000000000004, 0.82137, 0.642741], 'xyz': [11.267578244553, 1.407445244552999, 4.930056639866999], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.149929, 0.5, 0.649929], 'xyz': [9.860133, 2.956639761113999, 1.1259540571017942e-18], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.35007099999999997, 0.8500709999999999, 0.5], 'xyz': [9.860133, 0.0, 6.903493238886001], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.5, 0.649929, 0.149929], 'xyz': [2.956639761114, 2.725477130045561e-16, 9.860132999999998], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.649929, 0.5, 0.149929], 'xyz': [2.725477130045561e-16, 2.956639761114, 9.860133], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.5, 0.149929, 0.649929], 'xyz': [2.956639761114, 9.860133, 1.1259540571017942e-18], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.8500709999999999, 0.35007099999999997, 0.5], 'xyz': [-8.881784197001252e-16, 9.860133000000001, 6.903493238886001], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.649929, 0.149929, 0.5], 'xyz': [0.0, 9.860133, 2.956639761113999], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.5, 0.35007099999999997, 0.8500709999999999], 'xyz': [6.903493238886, 9.860133, 8.870524656430234e-16], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.5, 0.8500709999999999, 0.35007099999999997], 'xyz': [6.903493238886, 1.1259540571017942e-18, 9.860133], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.149929, 0.649929, 0.5], 'xyz': [9.860133, 0.0, 2.956639761113999], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.8500709999999999, 0.5, 0.35007099999999997], 'xyz': [-8.870524656430234e-16, 6.903493238886001, 9.860133000000001], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.35007099999999997, 0.5, 0.8500709999999999], 'xyz': [9.860133, 6.903493238886, -8.89304373757227e-16], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.35420199999999996, 0.645798, 0.0], 'xyz': [2.8751753422679993, -2.8751753422679993, 9.860133], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.29159599999999997, 0.645798, 0.645798], 'xyz': [9.860133, 2.875175342268, 2.875175342268001], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.35420199999999996, 0.7084039999999999, 0.35420199999999996], 'xyz': [6.984957657732, -8.612378311312343e-17, 6.984957657732], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.7084039999999999, 0.35420199999999996, 0.35420199999999996], 'xyz': [-8.612378311312343e-17, 6.984957657732, 6.984957657732], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.645798, 0.35420199999999996, 0.0], 'xyz': [-2.8751753422679993, 2.8751753422679993, 9.860133], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.645798, 0.29159599999999997, 0.645798], 'xyz': [2.875175342268, 9.860133, 2.8751753422679993], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.35420199999999996, 0.35420199999999996, 0.7084039999999999], 'xyz': [6.984957657732, 6.984957657732, 1.7224756622624681e-16], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.0, 0.35420199999999996, 0.645798], 'xyz': [9.860133, 2.8751753422679993, -2.8751753422679993], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.0, 0.645798, 0.35420199999999996], 'xyz': [9.860133, -2.8751753422679993, 2.8751753422679993], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.645798, 0.645798, 0.29159599999999997], 'xyz': [2.875175342268, 2.8751753422679993, 9.860133], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.645798, 0.0, 0.35420199999999996], 'xyz': [-2.8751753422679993, 9.860133, 2.8751753422679993], 'label': 'N', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'N', 'occu': 1}], 'abc': [0.35420199999999996, 0.0, 0.645798], 'xyz': [2.8751753422679993, 9.860133, -2.8751753422679993], 'label': 'N', 'properties': {'magmom': -0.0}}]}","CrN2 crystallizes in the cubic Im-3m space group. Cr(1) is bonded to one N(2), one N(3), and two equivalent N(1) atoms to form corner-sharing CrN4 tetrahedra. The Cr(1)–N(2) bond length is 1.75 Å. The Cr(1)–N(3) bond length is 1.72 Å. Both Cr(1)–N(1) bond lengths are 1.75 Å. There are three inequivalent N sites. In the first N site, N(1) is bonded in a bent 120 degrees geometry to two equivalent Cr(1) atoms. In the second N site, N(2) is bonded in a bent 120 degrees geometry to two equivalent Cr(1) atoms. In the third N site, N(3) is bonded in a bent 150 degrees geometry to two equivalent Cr(1) atoms.",0.0817377595833351,0.5427622379166639,-8.69360801375,False,0.415,-4.8318247,0.8315599896226561,53.25689150798016,3834.496188574571,True,"# generated using pymatgen
+data_CrN2
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   17.07825133
+_cell_length_b   17.07825133
+_cell_length_c   17.07825133
+_cell_angle_alpha   109.47122063
+_cell_angle_beta   109.47122063
+_cell_angle_gamma   109.47122063
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   CrN2
+_chemical_formula_sum   'Cr24 N48'
+_cell_volume   3834.49618857
+_cell_formula_units_Z   24
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Cr  Cr0  1  0.27227800  0.57510800  0.69717000  1
+  Cr  Cr1  1  0.30283000  0.72772200  0.42489200  1
+  Cr  Cr2  1  0.42489200  0.69717000  0.12206200  1
+  Cr  Cr3  1  0.69717000  0.42489200  0.12206200  1
+  Cr  Cr4  1  0.57510800  0.27227800  0.69717000  1
+  Cr  Cr5  1  0.72772200  0.30283000  0.42489200  1
+  Cr  Cr6  1  0.12206200  0.42489200  0.69717000  1
+  Cr  Cr7  1  0.69717000  0.27227800  0.57510800  1
+  Cr  Cr8  1  0.42489200  0.30283000  0.72772200  1
+  Cr  Cr9  1  0.69717000  0.57510800  0.27227800  1
+  Cr  Cr10  1  0.42489200  0.72772200  0.30283000  1
+  Cr  Cr11  1  0.12206200  0.69717000  0.42489200  1
+  Cr  Cr12  1  0.72772200  0.42489200  0.30283000  1
+  Cr  Cr13  1  0.69717000  0.12206200  0.42489200  1
+  Cr  Cr14  1  0.57510800  0.69717000  0.27227800  1
+  Cr  Cr15  1  0.30283000  0.42489200  0.72772200  1
+  Cr  Cr16  1  0.42489200  0.12206200  0.69717000  1
+  Cr  Cr17  1  0.27227800  0.69717000  0.57510800  1
+  Cr  Cr18  1  0.87793800  0.57510800  0.30283000  1
+  Cr  Cr19  1  0.30283000  0.87793800  0.57510800  1
+  Cr  Cr20  1  0.57510800  0.30283000  0.87793800  1
+  Cr  Cr21  1  0.30283000  0.57510800  0.87793800  1
+  Cr  Cr22  1  0.57510800  0.87793800  0.30283000  1
+  Cr  Cr23  1  0.87793800  0.30283000  0.57510800  1
+  N  N24  1  0.82137000  0.50000000  0.17863000  1
+  N  N25  1  0.67863000  0.17863000  0.35725900  1
+  N  N26  1  0.50000000  0.32137000  0.67863000  1
+  N  N27  1  0.32137000  0.50000000  0.67863000  1
+  N  N28  1  0.50000000  0.82137000  0.17863000  1
+  N  N29  1  0.17863000  0.67863000  0.35725900  1
+  N  N30  1  0.67863000  0.50000000  0.32137000  1
+  N  N31  1  0.17863000  0.82137000  0.50000000  1
+  N  N32  1  0.35725900  0.67863000  0.17863000  1
+  N  N33  1  0.17863000  0.50000000  0.82137000  1
+  N  N34  1  0.35725900  0.17863000  0.67863000  1
+  N  N35  1  0.67863000  0.32137000  0.50000000  1
+  N  N36  1  0.17863000  0.35725900  0.67863000  1
+  N  N37  1  0.32137000  0.67863000  0.50000000  1
+  N  N38  1  0.50000000  0.17863000  0.82137000  1
+  N  N39  1  0.67863000  0.35725900  0.17863000  1
+  N  N40  1  0.50000000  0.67863000  0.32137000  1
+  N  N41  1  0.82137000  0.17863000  0.50000000  1
+  N  N42  1  0.32137000  0.64274100  0.82137000  1
+  N  N43  1  0.82137000  0.32137000  0.64274100  1
+  N  N44  1  0.64274100  0.82137000  0.32137000  1
+  N  N45  1  0.82137000  0.64274100  0.32137000  1
+  N  N46  1  0.64274100  0.32137000  0.82137000  1
+  N  N47  1  0.32137000  0.82137000  0.64274100  1
+  N  N48  1  0.14992900  0.50000000  0.64992900  1
+  N  N49  1  0.35007100  0.85007100  0.50000000  1
+  N  N50  1  0.50000000  0.64992900  0.14992900  1
+  N  N51  1  0.64992900  0.50000000  0.14992900  1
+  N  N52  1  0.50000000  0.14992900  0.64992900  1
+  N  N53  1  0.85007100  0.35007100  0.50000000  1
+  N  N54  1  0.64992900  0.14992900  0.50000000  1
+  N  N55  1  0.50000000  0.35007100  0.85007100  1
+  N  N56  1  0.50000000  0.85007100  0.35007100  1
+  N  N57  1  0.14992900  0.64992900  0.50000000  1
+  N  N58  1  0.85007100  0.50000000  0.35007100  1
+  N  N59  1  0.35007100  0.50000000  0.85007100  1
+  N  N60  1  0.35420200  0.64579800  0.00000000  1
+  N  N61  1  0.29159600  0.64579800  0.64579800  1
+  N  N62  1  0.35420200  0.70840400  0.35420200  1
+  N  N63  1  0.70840400  0.35420200  0.35420200  1
+  N  N64  1  0.64579800  0.35420200  0.00000000  1
+  N  N65  1  0.64579800  0.29159600  0.64579800  1
+  N  N66  1  0.35420200  0.35420200  0.70840400  1
+  N  N67  1  0.00000000  0.35420200  0.64579800  1
+  N  N68  1  0.00000000  0.64579800  0.35420200  1
+  N  N69  1  0.64579800  0.64579800  0.29159600  1
+  N  N70  1  0.64579800  0.00000000  0.35420200  1
+  N  N71  1  0.35420200  0.00000000  0.64579800  1
+"
+mp-1217910,TaMoS4,"{'@module': 'pymatgen.core.structure', '@class': 'Structure', 'charge': 0, 'lattice': {'matrix': [[3.27439165, 0.0, 0.0], [0.0, 5.68300361, 0.00375043], [0.0, 1.90714077, 6.28693672]], 'pbc': [True, True, True], 'a': 3.27439165, 'b': 5.68300484752549, 'c': 6.569837078488366, 'alpha': 73.08702672507567, 'beta': 90.0, 'gamma': 90.0, 'volume': 116.96628439560813}, 'sites': [{'species': [{'element': 'Ta', 'occu': 1}], 'abc': [0.5, 0.66259802, 0.50010078], 'xyz': [1.637195825, 4.719309526285652, 3.14658698497479], 'label': 'Ta', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Mo', 'occu': 1}], 'abc': [-0.0, 0.16908231, 0.50002043], 'xyz': [0.0, 1.91450472600307, 3.144230933485082], 'label': 'Mo', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'S', 'occu': 1}], 'abc': [0.0, 0.41385619, 0.74667973], 'xyz': [0.0, 3.775969577006438, 4.695880351287347], 'label': 'S', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'S', 'occu': 1}], 'abc': [0.5, 0.92253292, 0.74215852], 'xyz': [1.637195825, 6.658158685998702, 4.66936354658801], 'label': 'S', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'S', 'occu': 1}], 'abc': [0.0, 0.57994267, 0.25306427], 'xyz': [0.0, 3.778445473950326, 1.593174085970842], 'label': 'S', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'S', 'occu': 1}], 'abc': [0.5, 0.08538689000000001, 0.25777627000000003], 'xyz': [1.637195825, 0.9768696381722001, 1.620943334961497], 'label': 'S', 'properties': {'magmom': 0.0}}]}","TaMoS4 is Molybdenite-derived structured and crystallizes in the monoclinic Pm space group. The structure is two-dimensional and consists of one TaMoS4 sheet oriented in the (0, 0, 1) direction. Ta(1) is bonded to two equivalent S(2,4) and four equivalent S(1,3) atoms to form distorted edge-sharing TaS6 pentagonal pyramids. Both Ta(1)–S(2,4) bond lengths are 2.47 Å. There are two shorter (2.44 Å) and two longer (2.45 Å) Ta(1)–S(1,3) bond lengths. Mo(1) is bonded in a 6-coordinate geometry to two equivalent S(1,3) and four equivalent S(2,4) atoms. Both Mo(1)–S(1,3) bond lengths are 2.42 Å. All Mo(1)–S(2,4) bond lengths are 2.42 Å. There are two inequivalent S sites. In the first S site, S(1,3) is bonded in a 3-coordinate geometry to two equivalent Ta(1) and one Mo(1) atom. In the second S site, S(2,4) is bonded in a distorted T-shaped geometry to one Ta(1) and two equivalent Mo(1) atoms.",-1.276612008750001,0.0190772616666521,-7.818148696666667,False,0.0,4.42229083,5.751776129048602,19.49438073260136,116.96628439560811,False,"# generated using pymatgen
+data_TaMoS4
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.27439165
+_cell_length_b   5.68300485
+_cell_length_c   6.56983708
+_cell_angle_alpha   73.08702673
+_cell_angle_beta   90.00000000
+_cell_angle_gamma   90.00000000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   TaMoS4
+_chemical_formula_sum   'Ta1 Mo1 S4'
+_cell_volume   116.96628440
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Ta  Ta0  1  0.50000000  0.66259802  0.50010078  1
+  Mo  Mo1  1  -0.00000000  0.16908231  0.50002043  1
+  S  S2  1  0.00000000  0.41385619  0.74667973  1
+  S  S3  1  0.50000000  0.92253292  0.74215852  1
+  S  S4  1  0.00000000  0.57994267  0.25306427  1
+  S  S5  1  0.50000000  0.08538689  0.25777627  1
+"
+mp-1079080,CsCd4As3,"{'@module': 'pymatgen.core.structure', '@class': 'Structure', 'charge': 0, 'lattice': {'matrix': [[4.54215438, 0.0, -0.0], [0.0, 4.54215438, 0.0], [-0.0, 0.0, 10.94793811]], 'pbc': [True, True, True], 'a': 4.54215438, 'b': 4.54215438, 'c': 10.94793811, 'alpha': 90.0, 'beta': 90.0, 'gamma': 90.0, 'volume': 225.8687330129847}, 'sites': [{'species': [{'element': 'Cs', 'occu': 1}], 'abc': [-0.0, -0.0, 0.5], 'xyz': [0.0, 0.0, 5.473969055], 'label': 'Cs', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Cd', 'occu': 1}], 'abc': [0.5, 0.0, 0.8388008], 'xyz': [2.27107719, 0.0, 9.18313924501849], 'label': 'Cd', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Cd', 'occu': 1}], 'abc': [0.0, 0.5, 0.8388008], 'xyz': [0.0, 2.27107719, 9.18313924501849], 'label': 'Cd', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Cd', 'occu': 1}], 'abc': [0.5, 0.0, 0.1611992], 'xyz': [2.27107719, 0.0, 1.764798864981512], 'label': 'Cd', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Cd', 'occu': 1}], 'abc': [-0.0, 0.5, 0.1611992], 'xyz': [0.0, 2.27107719, 1.764798864981512], 'label': 'Cd', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.5, 0.5, 0.70311108], 'xyz': [2.27107719, 2.27107719, 7.69761658829526], 'label': 'As', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.5, 0.5, 0.29688892], 'xyz': [2.27107719, 2.27107719, 3.250321521704741], 'label': 'As', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [-0.0, -0.0, -0.0], 'xyz': [0.0, 0.0, 0.0], 'label': 'As', 'properties': {'magmom': -0.0}}]}","CsCd4As3 crystallizes in the tetragonal P4/mmm space group. Cs(1) is bonded in a body-centered cubic geometry to eight equivalent As(1) atoms. All Cs(1)–As(1) bond lengths are 3.91 Å. Cd(1) is bonded to two equivalent As(1) and two equivalent As(2) atoms to form a mixture of edge and corner-sharing CdAs4 tetrahedra. Both Cd(1)–As(1) bond lengths are 2.71 Å. Both Cd(1)–As(2) bond lengths are 2.88 Å. There are two inequivalent As sites. In the first As site, As(1) is bonded in a 8-coordinate geometry to four equivalent Cs(1) and four equivalent Cd(1) atoms. In the second As site, As(2) is bonded in a body-centered cubic geometry to eight equivalent Cd(1) atoms.",-0.2523012753663791,0.0,-2.57284085375,True,0.2198000000000002,2.32277016,5.935203321062754,28.233591626623088,225.8687330129847,True,"# generated using pymatgen
+data_CsCd4As3
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   4.54215438
+_cell_length_b   4.54215438
+_cell_length_c   10.94793811
+_cell_angle_alpha   90.00000000
+_cell_angle_beta   90.00000000
+_cell_angle_gamma   90.00000000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   CsCd4As3
+_chemical_formula_sum   'Cs1 Cd4 As3'
+_cell_volume   225.86873301
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Cs  Cs0  1  -0.00000000  -0.00000000  0.50000000  1
+  Cd  Cd1  1  0.50000000  0.00000000  0.83880080  1
+  Cd  Cd2  1  0.00000000  0.50000000  0.83880080  1
+  Cd  Cd3  1  0.50000000  0.00000000  0.16119920  1
+  Cd  Cd4  1  -0.00000000  0.50000000  0.16119920  1
+  As  As5  1  0.50000000  0.50000000  0.70311108  1
+  As  As6  1  0.50000000  0.50000000  0.29688892  1
+  As  As7  1  -0.00000000  -0.00000000  -0.00000000  1
+"
+mp-23995,Al2P3(HO3)3,"{'@module': 'pymatgen.core.structure', '@class': 'Structure', 'charge': 0, 'lattice': {'matrix': [[3.99135, -6.913222, 0.0], [3.99135, 6.913222, 0.0], [0.0, 0.0, 7.18166]], 'pbc': [True, True, True], 'a': 7.98270087400148, 'b': 7.98270087400148, 'c': 7.18166, 'alpha': 90.0, 'beta': 90.0, 'gamma': 120.00000724359742, 'volume': 396.3283617767426}, 'sites': [{'species': [{'element': 'Al', 'occu': 1}], 'abc': [0.333333, 0.666667, 0.9453779999999999], 'xyz': [3.99135, 2.304411942148, 6.78938336748], 'label': 'Al', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Al', 'occu': 1}], 'abc': [0.666667, 0.333333, 0.445378], 'xyz': [3.99135, -2.304411942148, 3.198553367479999], 'label': 'Al', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Al', 'occu': 1}], 'abc': [0.666667, 0.333333, 0.054622], 'xyz': [3.99135, -2.304411942148, 0.39227663252], 'label': 'Al', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'Al', 'occu': 1}], 'abc': [0.333333, 0.666667, 0.554622], 'xyz': [3.99135, 2.304411942148, 3.9831066325199993], 'label': 'Al', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'P', 'occu': 1}], 'abc': [0.362793, 0.049367, 0.75], 'xyz': [1.6450748160000002, -2.166783518572, 5.386245], 'label': 'P', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'P', 'occu': 1}], 'abc': [0.049367, 0.686574, 0.25], 'xyz': [2.93739811035, 4.405153450954001, 1.795415], 'label': 'P', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'P', 'occu': 1}], 'abc': [0.686574, 0.637207, 0.75], 'xyz': [5.28367329435, -0.34128503047400005, 5.386245], 'label': 'P', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'P', 'occu': 1}], 'abc': [0.313426, 0.362793, 0.25], 'xyz': [2.6990267056499997, 0.34128503047399905, 1.795415], 'label': 'P', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'P', 'occu': 1}], 'abc': [0.637207, 0.950633, 0.25], 'xyz': [6.337625184, 2.166783518572, 1.795415], 'label': 'P', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'P', 'occu': 1}], 'abc': [0.950633, 0.313426, 0.75], 'xyz': [5.04530188965, -4.405153450954, 5.386245], 'label': 'P', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'H', 'occu': 1}], 'abc': [0.8231229999999999, 0.8354309999999999, 0.75], 'xyz': [6.619869507900001, 0.08508793637599901, 5.386245], 'label': 'H', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'H', 'occu': 1}], 'abc': [0.9876919999999999, 0.8231229999999999, 0.25], 'xyz': [7.22759645025, -1.137702031318, 1.795415], 'label': 'H', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'H', 'occu': 1}], 'abc': [0.8354309999999999, 0.012308, 0.25], 'xyz': [3.38362305765, -5.690432032306, 1.795415], 'label': 'H', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'H', 'occu': 1}], 'abc': [0.164569, 0.9876919999999999, 0.75], 'xyz': [4.59907694235, 5.690432032306, 5.386245], 'label': 'H', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'H', 'occu': 1}], 'abc': [0.012308, 0.17687699999999998, 0.75], 'xyz': [0.7551035497499999, 1.137702031318, 5.386245], 'label': 'H', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'H', 'occu': 1}], 'abc': [0.17687699999999998, 0.164569, 0.25], 'xyz': [1.3628304921, -0.08508793637600001, 1.795415], 'label': 'H', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.138239, 0.516743, 0.75], 'xyz': [2.6142624057, 2.616682179888, 5.386245], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.621495, 0.138239, 0.25], 'xyz': [3.0323643009, -3.340856010832, 1.795415], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.516743, 0.378505, 0.25], 'xyz': [3.573248104799999, -0.955669982835999, 1.795415], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.483257, 0.621495, 0.75], 'xyz': [4.4094518952, 0.955669982836, 5.386245], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.16392199999999998, 0.718634, 0.071291], 'xyz': [3.5225898906, 3.834847202064, 0.51198772306], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.44528799999999996, 0.16392199999999998, 0.571291], 'xyz': [2.4315703335, -1.945145621252, 4.10281772306], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.718634, 0.554712, 0.571291], 'xyz': [5.0823695571, -1.133229176684, 4.10281772306], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.281366, 0.44528799999999996, 0.071291], 'xyz': [2.9003304429, 1.133229176684, 0.51198772306], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.554712, 0.836078, 0.071291], 'xyz': [5.5511296665, 1.945145621252, 0.51198772306], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.836078, 0.281366, 0.571291], 'xyz': [4.4601101094, -3.834847202064, 4.10281772306], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.836078, 0.281366, 0.928709], 'xyz': [4.4601101094, -3.834847202064, 6.66967227694], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.554712, 0.836078, 0.428709], 'xyz': [5.5511296665, 1.945145621252, 3.07884227694], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.281366, 0.44528799999999996, 0.428709], 'xyz': [2.9003304429, 1.133229176684, 3.07884227694], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.718634, 0.554712, 0.928709], 'xyz': [5.0823695571, -1.133229176684, 6.66967227694], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.44528799999999996, 0.16392199999999998, 0.928709], 'xyz': [2.4315703335, -1.945145621252, 6.66967227694], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.16392199999999998, 0.718634, 0.428709], 'xyz': [3.5225898906, 3.834847202064, 3.07884227694], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.861761, 0.483257, 0.25], 'xyz': [5.3684375943, -2.616682179888, 1.795415], 'label': 'O', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'O', 'occu': 1}], 'abc': [0.378505, 0.861761, 0.75], 'xyz': [4.9503356991, 3.340856010832, 5.386245], 'label': 'O', 'properties': {'magmom': 0.0}}]}","Al2P3(HO3)3 crystallizes in the hexagonal P6_3/m space group. Al(1) is bonded to three equivalent O(1) and three equivalent O(2) atoms to form AlO6 octahedra that share corners with six equivalent P(1)HO3 tetrahedra and  a faceface with one Al(1)O6 octahedra. All Al(1)–O(1) bond lengths are 1.99 Å. All Al(1)–O(2) bond lengths are 1.84 Å. P(1) is bonded to one H(1), one O(1), and two equivalent O(2) atoms to form distorted PHO3 tetrahedra that share corners with four equivalent Al(1)O6 octahedra. The corner-sharing octahedral tilt angles range from 34–47°. The P(1)–H(1) bond length is 1.40 Å. The P(1)–O(1) bond length is 1.56 Å. Both P(1)–O(2) bond lengths are 1.52 Å. H(1) is bonded in a single-bond geometry to one P(1) atom. There are two inequivalent O sites. In the first O site, O(1) is bonded in a distorted T-shaped geometry to two equivalent Al(1) and one P(1) atom. In the second O site, O(2) is bonded in a bent 150 degrees geometry to one Al(1) and one P(1) atom.",-2.4497606244117653,0.0,-7.063930410294118,True,6.2699,0.83463587,2.4627914646239137,11.656716522845372,396.3283617767426,False,"# generated using pymatgen
+data_Al2P3(HO3)3
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   7.98270087
+_cell_length_b   7.98270087
+_cell_length_c   7.18166000
+_cell_angle_alpha   90.00000000
+_cell_angle_beta   90.00000000
+_cell_angle_gamma   120.00000724
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   Al2P3(HO3)3
+_chemical_formula_sum   'Al4 P6 H6 O18'
+_cell_volume   396.32836178
+_cell_formula_units_Z   2
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Al  Al0  1  0.33333300  0.66666700  0.94537800  1
+  Al  Al1  1  0.66666700  0.33333300  0.44537800  1
+  Al  Al2  1  0.66666700  0.33333300  0.05462200  1
+  Al  Al3  1  0.33333300  0.66666700  0.55462200  1
+  P  P4  1  0.36279300  0.04936700  0.75000000  1
+  P  P5  1  0.04936700  0.68657400  0.25000000  1
+  P  P6  1  0.68657400  0.63720700  0.75000000  1
+  P  P7  1  0.31342600  0.36279300  0.25000000  1
+  P  P8  1  0.63720700  0.95063300  0.25000000  1
+  P  P9  1  0.95063300  0.31342600  0.75000000  1
+  H  H10  1  0.82312300  0.83543100  0.75000000  1
+  H  H11  1  0.98769200  0.82312300  0.25000000  1
+  H  H12  1  0.83543100  0.01230800  0.25000000  1
+  H  H13  1  0.16456900  0.98769200  0.75000000  1
+  H  H14  1  0.01230800  0.17687700  0.75000000  1
+  H  H15  1  0.17687700  0.16456900  0.25000000  1
+  O  O16  1  0.13823900  0.51674300  0.75000000  1
+  O  O17  1  0.62149500  0.13823900  0.25000000  1
+  O  O18  1  0.51674300  0.37850500  0.25000000  1
+  O  O19  1  0.48325700  0.62149500  0.75000000  1
+  O  O20  1  0.16392200  0.71863400  0.07129100  1
+  O  O21  1  0.44528800  0.16392200  0.57129100  1
+  O  O22  1  0.71863400  0.55471200  0.57129100  1
+  O  O23  1  0.28136600  0.44528800  0.07129100  1
+  O  O24  1  0.55471200  0.83607800  0.07129100  1
+  O  O25  1  0.83607800  0.28136600  0.57129100  1
+  O  O26  1  0.83607800  0.28136600  0.92870900  1
+  O  O27  1  0.55471200  0.83607800  0.42870900  1
+  O  O28  1  0.28136600  0.44528800  0.42870900  1
+  O  O29  1  0.71863400  0.55471200  0.92870900  1
+  O  O30  1  0.44528800  0.16392200  0.92870900  1
+  O  O31  1  0.16392200  0.71863400  0.42870900  1
+  O  O32  1  0.86176100  0.48325700  0.25000000  1
+  O  O33  1  0.37850500  0.86176100  0.75000000  1
+"
+mp-1198391,LaAgAs2,"{'@module': 'pymatgen.core.structure', '@class': 'Structure', 'charge': 0, 'lattice': {'matrix': [[5.87806, 0.0, 0.0], [0.0, 5.906248, 0.0], [0.0, 0.0, 21.477906]], 'pbc': [True, True, True], 'a': 5.87806, 'b': 5.906248, 'c': 21.477906, 'alpha': 90.0, 'beta': 90.0, 'gamma': 90.0, 'volume': 745.6544789689734}, 'sites': [{'species': [{'element': 'La', 'occu': 1}], 'abc': [0.75, 0.514447, 0.8856449999999999], 'xyz': [4.408545, 3.038451564856, 19.02180005937], 'label': 'La', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'La', 'occu': 1}], 'abc': [0.25, 0.48555299999999996, 0.114355], 'xyz': [1.469515, 2.8677964351439993, 2.45610594063], 'label': 'La', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'La', 'occu': 1}], 'abc': [0.25, 0.514447, 0.614355], 'xyz': [1.469515, 3.038451564856, 13.19505894063], 'label': 'La', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'La', 'occu': 1}], 'abc': [0.75, 0.48555299999999996, 0.38564499999999996], 'xyz': [4.408545, 2.8677964351439993, 8.28284705937], 'label': 'La', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'La', 'occu': 1}], 'abc': [0.75, 0.016385, 0.619433], 'xyz': [4.408545, 0.09677387348, 13.304123747298], 'label': 'La', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'La', 'occu': 1}], 'abc': [0.25, 0.9836149999999999, 0.380567], 'xyz': [1.469515, 5.80947412652, 8.173782252702], 'label': 'La', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'La', 'occu': 1}], 'abc': [0.25, 0.016385, 0.880567], 'xyz': [1.469515, 0.09677387348, 18.912735252702], 'label': 'La', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'La', 'occu': 1}], 'abc': [0.75, 0.9836149999999999, 0.119433], 'xyz': [4.408545, 5.80947412652, 2.565170747298], 'label': 'La', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Ag', 'occu': 1}], 'abc': [0.0, 0.23505299999999998, 0.25], 'xyz': [0.0, 1.388281311144, 5.3694765], 'label': 'Ag', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Ag', 'occu': 1}], 'abc': [0.5, 0.7649469999999999, 0.75], 'xyz': [2.93903, 4.517966688856, 16.1084295], 'label': 'Ag', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Ag', 'occu': 1}], 'abc': [0.0, 0.7649469999999999, 0.75], 'xyz': [0.0, 4.517966688856, 16.1084295], 'label': 'Ag', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Ag', 'occu': 1}], 'abc': [0.5, 0.23505299999999998, 0.25], 'xyz': [2.93903, 1.388281311144, 5.3694765], 'label': 'Ag', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Ag', 'occu': 1}], 'abc': [0.0, 0.731649, 0.25], 'xyz': [0.0, 4.321300442951999, 5.3694765], 'label': 'Ag', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Ag', 'occu': 1}], 'abc': [0.5, 0.268351, 0.75], 'xyz': [2.93903, 1.5849475570479998, 16.1084295], 'label': 'Ag', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Ag', 'occu': 1}], 'abc': [0.0, 0.268351, 0.75], 'xyz': [0.0, 1.5849475570479998, 16.1084295], 'label': 'Ag', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'Ag', 'occu': 1}], 'abc': [0.5, 0.731649, 0.25], 'xyz': [2.93903, 4.321300442951999, 5.3694765], 'label': 'Ag', 'properties': {'magmom': 0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.75, 0.5166339999999999, 0.662682], 'xyz': [4.408545, 3.051368529232, 14.233021703892], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.25, 0.48336599999999996, 0.337318], 'xyz': [1.469515, 2.854879470768, 7.244884296108], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.25, 0.5166339999999999, 0.837318], 'xyz': [1.469515, 3.051368529232, 17.983837296108], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.75, 0.48336599999999996, 0.162682], 'xyz': [4.408545, 2.854879470768, 3.494068703892], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.75, 0.015902, 0.8362759999999999], 'xyz': [4.408545, 0.093921155695999, 17.961457318056002], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.25, 0.9840979999999999, 0.16372399999999998], 'xyz': [1.469515, 5.812326844304, 3.516448681944], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.25, 0.015902, 0.663724], 'xyz': [1.469515, 0.093921155695999, 14.255401681944], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.75, 0.9840979999999999, 0.33627599999999996], 'xyz': [4.408545, 5.812326844304, 7.222504318056001], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.031103, 0.217519, 0.498523], 'xyz': [0.182825300179999, 1.284721158712, 10.707230132838001], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.531103, 0.782481, 0.501477], 'xyz': [3.121855300179999, 4.621526841287999, 10.770675867162], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.968897, 0.217519, 0.001477], 'xyz': [5.695234699819999, 1.284721158712, 0.031722867162], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.46889699999999995, 0.782481, 0.9985229999999999], 'xyz': [2.75620469982, 4.621526841287999, 21.446183132838], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.968897, 0.782481, 0.501477], 'xyz': [5.695234699819999, 4.621526841287999, 10.770675867162], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.46889699999999995, 0.217519, 0.498523], 'xyz': [2.75620469982, 1.284721158712, 10.707230132838001], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.031103, 0.782481, 0.9985229999999999], 'xyz': [0.182825300179999, 4.621526841287999, 21.446183132838], 'label': 'As', 'properties': {'magmom': -0.0}}, {'species': [{'element': 'As', 'occu': 1}], 'abc': [0.531103, 0.217519, 0.001477], 'xyz': [3.121855300179999, 1.284721158712, 0.031722867162], 'label': 'As', 'properties': {'magmom': -0.0}}]}","LaAgAs2 crystallizes in the orthorhombic Pbcm space group. There are two inequivalent La sites. In the first La site, La(1) is bonded in a 8-coordinate geometry to two equivalent Ag(1), two equivalent Ag(2), two equivalent As(1), two equivalent As(2), and four equivalent As(3) atoms. Both La(1)–Ag(1) bond lengths are 3.58 Å. Both La(1)–Ag(2) bond lengths are 3.57 Å. Both La(1)–As(1) bond lengths are 3.12 Å. There is one shorter (3.13 Å) and one longer (3.15 Å) La(1)–As(2) bond length. There are two shorter (3.30 Å) and two longer (3.33 Å) La(1)–As(3) bond lengths. In the second La site, La(2) is bonded to two equivalent Ag(1), two equivalent Ag(2), two equivalent As(1), two equivalent As(2), and four equivalent As(3) atoms to form distorted LaAg4As8 cuboctahedra that share corners with four equivalent La(2)Ag4As8 cuboctahedra, edges with four equivalent La(2)Ag4As8 cuboctahedra, edges with four equivalent Ag(1)La4Ag4As4 cuboctahedra, edges with four equivalent Ag(2)La4Ag4As4 cuboctahedra, faces with two equivalent Ag(1)La4Ag4As4 cuboctahedra, and faces with two equivalent Ag(2)La4Ag4As4 cuboctahedra. Both La(2)–Ag(1) bond lengths are 3.50 Å. Both La(2)–Ag(2) bond lengths are 3.50 Å. There is one shorter (3.09 Å) and one longer (3.10 Å) La(2)–As(1) bond length. Both La(2)–As(2) bond lengths are 3.09 Å. There are two shorter (3.16 Å) and two longer (3.30 Å) La(2)–As(3) bond lengths. There are two inequivalent Ag sites. In the first Ag site, Ag(1) is bonded to two equivalent La(1), two equivalent La(2), two equivalent Ag(1), two equivalent Ag(2), two equivalent As(1), and two equivalent As(2) atoms to form distorted AgLa4Ag4As4 cuboctahedra that share corners with four equivalent Ag(1)La4Ag4As4 cuboctahedra, edges with four equivalent La(2)Ag4As8 cuboctahedra, faces with two equivalent La(2)Ag4As8 cuboctahedra, faces with two equivalent Ag(1)La4Ag4As4 cuboctahedra, and faces with six equivalent Ag(2)La4Ag4As4 cuboctahedra. Both Ag(1)–Ag(1) bond lengths are 2.94 Å. There is one shorter (2.93 Å) and one longer (2.97 Å) Ag(1)–Ag(2) bond length. Both Ag(1)–As(1) bond lengths are 2.80 Å. Both Ag(1)–As(2) bond lengths are 2.79 Å. In the second Ag site, Ag(2) is bonded to two equivalent La(1), two equivalent La(2), two equivalent Ag(1), two equivalent Ag(2), two equivalent As(1), and two equivalent As(2) atoms to form distorted AgLa4Ag4As4 cuboctahedra that share corners with four equivalent Ag(2)La4Ag4As4 cuboctahedra, edges with four equivalent La(2)Ag4As8 cuboctahedra, faces with two equivalent La(2)Ag4As8 cuboctahedra, faces with two equivalent Ag(2)La4Ag4As4 cuboctahedra, and faces with six equivalent Ag(1)La4Ag4As4 cuboctahedra. Both Ag(2)–Ag(2) bond lengths are 2.94 Å. Both Ag(2)–As(1) bond lengths are 2.80 Å. Both Ag(2)–As(2) bond lengths are 2.80 Å. There are three inequivalent As sites. In the first As site, As(1) is bonded in a 8-coordinate geometry to two equivalent La(1), two equivalent La(2), two equivalent Ag(1), and two equivalent Ag(2) atoms. In the second As site, As(2) is bonded in a 8-coordinate geometry to two equivalent La(1), two equivalent La(2), two equivalent Ag(1), and two equivalent Ag(2) atoms. In the third As site, As(3) is bonded in a distorted hexagonal planar geometry to two equivalent La(1), two equivalent La(2), and two equivalent As(3) atoms. There is one shorter (2.57 Å) and one longer (2.60 Å) As(3)–As(3) bond length.",-0.8333995226041662,0.0,-5.1050995021875,True,0.0,5.84284322,7.06598378399889,23.30170246778042,745.6544789689734,False,"# generated using pymatgen
+data_LaAgAs2
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   5.87806000
+_cell_length_b   5.90624800
+_cell_length_c   21.47790600
+_cell_angle_alpha   90.00000000
+_cell_angle_beta   90.00000000
+_cell_angle_gamma   90.00000000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   LaAgAs2
+_chemical_formula_sum   'La8 Ag8 As16'
+_cell_volume   745.65447897
+_cell_formula_units_Z   8
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  La  La0  1  0.75000000  0.51444700  0.88564500  1
+  La  La1  1  0.25000000  0.48555300  0.11435500  1
+  La  La2  1  0.25000000  0.51444700  0.61435500  1
+  La  La3  1  0.75000000  0.48555300  0.38564500  1
+  La  La4  1  0.75000000  0.01638500  0.61943300  1
+  La  La5  1  0.25000000  0.98361500  0.38056700  1
+  La  La6  1  0.25000000  0.01638500  0.88056700  1
+  La  La7  1  0.75000000  0.98361500  0.11943300  1
+  Ag  Ag8  1  0.00000000  0.23505300  0.25000000  1
+  Ag  Ag9  1  0.50000000  0.76494700  0.75000000  1
+  Ag  Ag10  1  0.00000000  0.76494700  0.75000000  1
+  Ag  Ag11  1  0.50000000  0.23505300  0.25000000  1
+  Ag  Ag12  1  0.00000000  0.73164900  0.25000000  1
+  Ag  Ag13  1  0.50000000  0.26835100  0.75000000  1
+  Ag  Ag14  1  0.00000000  0.26835100  0.75000000  1
+  Ag  Ag15  1  0.50000000  0.73164900  0.25000000  1
+  As  As16  1  0.75000000  0.51663400  0.66268200  1
+  As  As17  1  0.25000000  0.48336600  0.33731800  1
+  As  As18  1  0.25000000  0.51663400  0.83731800  1
+  As  As19  1  0.75000000  0.48336600  0.16268200  1
+  As  As20  1  0.75000000  0.01590200  0.83627600  1
+  As  As21  1  0.25000000  0.98409800  0.16372400  1
+  As  As22  1  0.25000000  0.01590200  0.66372400  1
+  As  As23  1  0.75000000  0.98409800  0.33627600  1
+  As  As24  1  0.03110300  0.21751900  0.49852300  1
+  As  As25  1  0.53110300  0.78248100  0.50147700  1
+  As  As26  1  0.96889700  0.21751900  0.00147700  1
+  As  As27  1  0.46889700  0.78248100  0.99852300  1
+  As  As28  1  0.96889700  0.78248100  0.50147700  1
+  As  As29  1  0.46889700  0.21751900  0.49852300  1
+  As  As30  1  0.03110300  0.78248100  0.99852300  1
+  As  As31  1  0.53110300  0.21751900  0.00147700  1
+"
