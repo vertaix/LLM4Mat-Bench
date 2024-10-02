@@ -159,7 +159,7 @@ def generate_prompt(data_path, dataset_name, tokenizer, zs_max_words, fs_max_wor
         print(f"Finished {property_name} data")
         print('-'*50)
     data_df = pd.DataFrame(data)
-    data_df.to_csv(f"{data_path}/{dataset_name}/unfiltered/{dataset_name}_inference_prompts_data.csv", index=False)
+    data_df.to_csv(f"{data_path}/{dataset_name}/{dataset_name}_inference_prompts_data.csv", index=False)
 
 if __name__=='__main__':
     # parse Arguments
