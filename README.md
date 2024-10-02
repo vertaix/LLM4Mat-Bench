@@ -35,7 +35,7 @@ python code/llama/llama_inference.py \
 Then run ```bash scripts/llama_inference.sh```
 
 ### Evaluating the LLaMA results
-After running ```bash scripts/llama_inference.sh```, add the following scripts to [llama_evaluate.sh](scripts/llama_inference.sh)
+After running ```bash scripts/llama_inference.sh```, add the following scripts to [llama_evaluate.sh](scripts/llama_evaluate.sh)
 ```bash
 #!/usr/bin/env bash
 
