@@ -99,9 +99,9 @@ def generate_prompt(data_path, dataset_name, tokenizer, zs_max_words, fs_max_wor
         e.g: use llama tokenizer to truncate the description or structure string to fit within the length limit
     4. Save each dataset as a whole separately
     """
-   
-    train = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/train.csv")
-    test = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/test.csv")
+    
+    train = pd.read_csv(f"{data_path}/{dataset_name}/train.csv")
+    test = pd.read_csv(f"{data_path}/{dataset_name}/test.csv")
 
     if dataset_name == "mp":
         test = test.rename(columns={"formula_pretty":"formula"})
@@ -165,7 +165,7 @@ if __name__=='__main__':
     # parse Arguments
     parser = argparse.ArgumentParser(description='prepare_prompts')
     parser.add_argument('--dataset_name',
-                        help='Any dataset name that is in LLM4MatBench',
+                        help='Any dataset name that is in LLM4MatBench: ["mp","oqmd","jarvis_qe_tb","jarvis_dft","qmof","cantor_hea","snumat","gnome","hmof","omdb"]',
                         type=str,
                         default='mp')
     parser.add_argument('--zs_max_words',
@@ -177,7 +177,7 @@ if __name__=='__main__':
                         type=int,
                         default=10)
     parser.add_argument('--data_path',
-                        help='A path tom load data from and also save prompts',
+                        help='A path to load data from and also save prompts',
                         type=str,
                         default="")
     args = parser.parse_args()
@@ -189,10 +189,11 @@ if __name__=='__main__':
     fs_max_words = config.get('fs_max_words')
     tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-chat-hf")
     
-    # ["mp","oqmd","qe_tb","jarvis","qmof","hea","snumat","gnome","hmof","omdb"]
-    # dataset_path = f"{data_path}/{dataset_name}/"
-    # if not os.path.exists(dataset_path):
-    #     os.makedirs(dataset_path)
+    dataset_path = f"{data_path}/{dataset_name}/"
+    if not os.path.exists(dataset_path):
+        os.makedirs(dataset_path)
+        print(f'Download the data and save it to <{dataset_path}> first')
+        
     generate_prompt(data_path, dataset_name,  tokenizer, zs_max_words, fs_max_words)
     print("Finished to process the data for ", dataset_name)
     print('@'*50)

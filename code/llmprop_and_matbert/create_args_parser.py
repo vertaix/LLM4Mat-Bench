@@ -37,9 +37,9 @@ def args_parser():
                         type=str,
                         default="no_stopwords_and_lengths_and_angles_replaced")
     parser.add_argument('--tokenizer',
-                        help='Tokenizer name: "t5_tokenizer" or "modified"',
+                        help='Tokenizer name: "t5_tokenizer", "llmprop_tokenizer", or "matbert_tokenizer"',
                         type=str,
-                        default="modified")
+                        default="llmprop_tokenizer")
     parser.add_argument('--pooling', 
                         help='Pooling method. "cls" or "mean"',
                         type=str,
@@ -89,7 +89,7 @@ def args_parser():
                         type=str,
                         default="mp")
     parser.add_argument('--model_name',
-                        help="llmprop, ...",
+                        help="llmprop or matbert",
                         type=str,
                         default="llmprop")
     parser.add_argument('--regressor',
