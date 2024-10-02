@@ -7,6 +7,7 @@ import time
 import pandas as pd
 import json
 import argparse
+from create_args_parser import *
 
 from huggingface_hub import login
 token = "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"
@@ -76,51 +77,6 @@ def generate(model, tokenizer, prompts, max_len, batch_size):
     return results
 
 if __name__ == "__main__":
-    # parse Arguments
-    parser = argparse.ArgumentParser(description='llama_inference')
-    parser.add_argument('--dataset_name',
-                        help='Name of the dataset',
-                        type=str,
-                        default='mp')
-    parser.add_argument('--input_type',
-                        help='Type of input',
-                        type=str,
-                        default="formula")
-    parser.add_argument('--batch_size',
-                        help='Batch size',
-                        type=int,
-                        default=8)
-    parser.add_argument('--prompt_type',
-                        help='Type of the prompt',
-                        type=str,
-                        default="zero_shot")
-    parser.add_argument('--property_name',
-                        help='Name of the property',
-                        type=str,
-                        default="band_gap")
-    parser.add_argument('--max_len',
-                        help='Max output sequence length',
-                        type=int,
-                        default=800)
-    parser.add_argument('--model_name',
-                        help='Name of the model',
-                        type=str,
-                        default="llama")
-    parser.add_argument('--data_path',
-                        help='A path to prompts',
-                        type=str,
-                        default="")
-    parser.add_argument('--results_path',
-                        help='A path of where the results will be saved',
-                        type=str,
-                        default="")
-    args = parser.parse_args()
-    config = vars(args)
-
-    # print(os.environ['TRANSFORMERS_CACHE'])
-    print(os.environ['HF_HOME'])
-    print(os.environ['HF_DATASETS_CACHE'])
-
     # check if the GPU is available
     if torch.cuda.is_available():
         device = torch.device("cuda")
@@ -134,6 +90,9 @@ if __name__ == "__main__":
         device = torch.device("cpu")
 
     # set parameters
+    args = args_parser()
+    config = vars(args)
+    
     dataset_name = config.get('dataset_name')
     input_type = config.get('input_type')
     prompt_type = config.get('prompt_type')
@@ -153,7 +112,7 @@ if __name__ == "__main__":
     model = "meta-llama/Llama-2-7b-chat-hf" 
     tokenizer = AutoTokenizer.from_pretrained(model, padding=True) 
 
-    data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/{dataset_name}_prompting_data_chat_struct_and_descr.csv")
+    data = pd.read_csv(f"{data_path}/{dataset_name}/{dataset_name}_inference_prompts_data.csv")
     data = data.dropna(subset=[property_name])
 
     prompts = list(data[f'{property_name}_{input_type}_{prompt_type}'])

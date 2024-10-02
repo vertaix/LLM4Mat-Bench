@@ -7,6 +7,8 @@ import re
 from torchmetrics.classification import BinaryAUROC
 from sklearn import metrics
 
+from create_args_parser import *
+
 def readJSON(input_file):
     """
     1. arguments
@@ -156,131 +158,44 @@ def extract_snumat_soc_predictions(sentence):
         result = None
     return result 
 
-def extract_predictions(dataset_name, data_path, results_path, input_type="formula", prompt_type="zero_shot"):
+def extract_predictions(dataset_name, model_name, data_path, results_path, input_type, prompt_type, property_name, max_len, batch_size, min_samples):
     print(f"Results on {dataset_name}:\n")
+
+    data = pd.read_csv(f"{data_path}/{dataset_name}/{dataset_name}_inference_prompts_data.csv")
+
+    data_dp = data.dropna(subset=[property_name])
+    predictions = readJSON(f"{results_path}/{dataset_name}/{model_name}_test_stats_for_{property_name}_{input_type}_{prompt_type}_{max_len}_{batch_size}.json")
+
+    results_df = pd.DataFrame({f'{property_name}_target': list(data_dp[property_name]), f'{property_name}_predicted': predictions})
+    print(f'original results for {property_name}:', len(results_df))
     
-    max_len = 800
-    batch_size = 8
-    data = pd.read_csv(f"{data_path}/{dataset_name}/unfiltered/{dataset_name}_prompting_data_chat.csv")
+    results_df = results_df[~results_df.isin([np.inf, -np.inf]).any(axis=1)]
+    results_df = results_df.dropna(subset=[f'{property_name}_target']).reset_index(drop=True)
+    print(f'after dropping target nans:', len(results_df)) 
 
-    if dataset_name == "mp":
-        property_names = ["formation_energy_per_atom","band_gap","energy_per_atom","energy_above_hull","efermi","volume","density","density_atomic","is_gap_direct","is_stable"] 
-    elif dataset_name == "hea":
-        property_names = ["Ef_per_atom","e_per_atom", "e_above_hull","volume_per_atom"]
-    elif dataset_name == "snumat":
-        property_names = ["Band_gap_GGA","Band_gap_HSE","Band_gap_GGA_optical","Band_gap_HSE_optical","Direct_or_indirect","Direct_or_indirect_HSE","SOC"]
-    elif dataset_name == "gnome":
-        property_names = ["Formation_Energy_Per_Atom","Bandgap", "Decomposition_Energy_Per_Atom", "Corrected_Energy", "Volume", "Density"] 
-    elif dataset_name == "hmof":
-        property_names = ["max_co2_adsp", "min_co2_adsp", "lcd", "pld", "void_fraction", "surface_area_m2g", "surface_area_m2cm3"]
-    elif dataset_name == "omdb":
-        property_names = ["bandgap"]
-    elif dataset_name == "oqmd":
-        property_names = ["e_form","bandgap"]
-    elif dataset_name == "qe_tb":
-        property_names = ["f_enp","energy_per_atom", "final_energy", "indir_gap"]
-    elif dataset_name == "qmof":
-        property_names = ["bandgap", "energy_total",  "lcd", "pld"]
-    elif dataset_name == "jarvis":
-        property_names = ["formation_energy_peratom","optb88vdw_bandgap","optb88vdw_total_energy","ehull","mbj_bandgap","bulk_modulus_kv","shear_modulus_gv","slme", "spillage","mepsx","dfpt_piezo_max_dielectric","dfpt_piezo_max_dij","dfpt_piezo_max_eij","max_efg","exfoliation_energy","avg_elec_mass","n-Seebeck","n-powerfact","p-Seebeck","p-powerfact"] 
-    
-    for property_name in property_names:
-        data_dp = data.dropna(subset=[property_name])
-        predictions = readJSON(f"{results_path}/{dataset_name}/llama_test_stats_for_{property_name}_{input_type}_{prompt_type}_{max_len}_{batch_size}.json")
+    results_df[f'{property_name}_predicted'] = results_df[f'{property_name}_predicted'].replace('', pd.NA)
+    results_df = results_df.dropna(subset=[f'{property_name}_predicted']).reset_index(drop=True) 
+    print(f'after dropping predicted nans:', len(results_df))
 
-        results_df = pd.DataFrame({f'{property_name}_target': list(data_dp[property_name]), f'{property_name}_predicted': predictions})
-        print(f'original results for {property_name}:', len(results_df))
-        
-        results_df = results_df[~results_df.isin([np.inf, -np.inf]).any(axis=1)]
-        results_df = results_df.dropna(subset=[f'{property_name}_target']).reset_index(drop=True)
-        print(f'after dropping target nans:', len(results_df)) 
-
-        results_df[f'{property_name}_predicted'] = results_df[f'{property_name}_predicted'].replace('', pd.NA)
-        results_df = results_df.dropna(subset=[f'{property_name}_predicted']).reset_index(drop=True) 
-        print(f'after dropping predicted nans:', len(results_df))
-
-        if dataset_name == 'mp': 
-            if property_name == 'is_gap_direct':
-                results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_mp_gap_direct_predictions)
-                results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
-                print(f'after extracting predictions:', len(results_df)) 
-                if len(results_df) >= 10:
-                    roc_score = metrics.roc_auc_score(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
-                    print('ROC Score: ', roc_score)
-                else:
-                    print('Invalid')
-            elif property_name == 'is_stable':
-                results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_mp_stability_predictions)
-                results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
-                print(f'after extracting predictions:', len(results_df)) 
-                if len(results_df) >= 10:
-                    roc_score = metrics.roc_auc_score(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
-                    print('ROC Score: ', roc_score)
-                else:
-                    print('Invalid')
+    if dataset_name == 'mp': 
+        if property_name == 'is_gap_direct':
+            results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_mp_gap_direct_predictions)
+            results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
+            print(f'after extracting predictions:', len(results_df)) 
+            if len(results_df) >= min_samples:
+                roc_score = metrics.roc_auc_score(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
+                print('ROC Score: ', roc_score)
             else:
-                results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_values)
-                results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
-                print(f'after extracting predictions:', len(results_df)) 
-                print('max: ', results_df[f'{property_name}_extracted_predictions'].max())
-                print('min: ', results_df[f'{property_name}_extracted_predictions'].min())
-
-                if len(results_df) >= 10:
-                    mae = metrics.mean_absolute_error(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
-                    rmse = metrics.mean_squared_error(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']), squared=False)
-                    print('MAE: ', mae)
-                    print('RMSE: ', rmse)
-                else:
-                    print('Invalid')
-
-        elif dataset_name == 'snumat':
-            results_df = results_df.drop(results_df[results_df[f'{property_name}_target'] == 'Null'].index).reset_index(drop=True)
-            results_df.loc[results_df[f'{property_name}_target'] == "Direct", f'{property_name}_target'] = 1.0
-            results_df.loc[results_df[f'{property_name}_target'] == "Indirect", f'{property_name}_target'] = 0.0
-            results_df[f'{property_name}_target'] = results_df[f'{property_name}_target'].astype(float)
-
-            if property_name == 'Direct_or_indirect':
-                results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_snumat_direct_predictions)
-                results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
-                print(f'after extracting predictions:', len(results_df)) 
-                if len(results_df) >= 10:
-                    roc_score = metrics.roc_auc_score(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
-                    print('ROC Score: ', roc_score)
-                else:
-                    print("Invalid")
-            elif property_name == 'Direct_or_indirect_HSE':
-                results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_snumat_direct_hse_predictions)
-                results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
-                print(f'after extracting predictions:', len(results_df)) 
-                if len(results_df) >= 10:
-                    roc_score = metrics.roc_auc_score(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
-                    print('ROC Score: ', roc_score)
-                else:
-                    print("Invalid")
-            elif property_name == "SOC":
-                results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_snumat_soc_predictions)
-                results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
-                print(f'after extracting predictions:', len(results_df)) 
-                if len(results_df) >= 10: 
-                    roc_score = metrics.roc_auc_score(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
-                    print('ROC Score: ', roc_score)
-                else:
-                    print("Invalid")
+                print('Invalid')
+        elif property_name == 'is_stable':
+            results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_mp_stability_predictions)
+            results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
+            print(f'after extracting predictions:', len(results_df)) 
+            if len(results_df) >= min_samples:
+                roc_score = metrics.roc_auc_score(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
+                print('ROC Score: ', roc_score)
             else:
-                results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_values)
-                results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
-                print(f'after extracting predictions:', len(results_df)) 
-                print('max: ', results_df[f'{property_name}_extracted_predictions'].max())
-                print('min: ', results_df[f'{property_name}_extracted_predictions'].min())
-
-                if len(results_df) >= 10:
-                    mae = metrics.mean_absolute_error(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
-                    rmse = metrics.mean_squared_error(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']), squared=False)
-                    print('MAE: ', mae)
-                    print('RMSE: ', rmse)
-                else:
-                    print("Invalid")
-        
+                print('Invalid')
         else:
             results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_values)
             results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
@@ -288,44 +203,95 @@ def extract_predictions(dataset_name, data_path, results_path, input_type="formu
             print('max: ', results_df[f'{property_name}_extracted_predictions'].max())
             print('min: ', results_df[f'{property_name}_extracted_predictions'].min())
 
-            if len(results_df) >= 10:
+            if len(results_df) >= min_samples:
+                mae = metrics.mean_absolute_error(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
+                rmse = metrics.mean_squared_error(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']), squared=False)
+                print('MAE: ', mae)
+                print('RMSE: ', rmse)
+            else:
+                print('Invalid')
+
+    elif dataset_name == 'snumat':
+        results_df = results_df.drop(results_df[results_df[f'{property_name}_target'] == 'Null'].index).reset_index(drop=True)
+        results_df.loc[results_df[f'{property_name}_target'] == "Direct", f'{property_name}_target'] = 1.0
+        results_df.loc[results_df[f'{property_name}_target'] == "Indirect", f'{property_name}_target'] = 0.0
+        results_df[f'{property_name}_target'] = results_df[f'{property_name}_target'].astype(float)
+
+        if property_name == 'Direct_or_indirect':
+            results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_snumat_direct_predictions)
+            results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
+            print(f'after extracting predictions:', len(results_df)) 
+            if len(results_df) >= min_samples:
+                roc_score = metrics.roc_auc_score(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
+                print('ROC Score: ', roc_score)
+            else:
+                print("Invalid")
+        elif property_name == 'Direct_or_indirect_HSE':
+            results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_snumat_direct_hse_predictions)
+            results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
+            print(f'after extracting predictions:', len(results_df)) 
+            if len(results_df) >= min_samples:
+                roc_score = metrics.roc_auc_score(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
+                print('ROC Score: ', roc_score)
+            else:
+                print("Invalid")
+        elif property_name == "SOC":
+            results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_snumat_soc_predictions)
+            results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
+            print(f'after extracting predictions:', len(results_df)) 
+            if len(results_df) >= min_samples: 
+                roc_score = metrics.roc_auc_score(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
+                print('ROC Score: ', roc_score)
+            else:
+                print("Invalid")
+        else:
+            results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_values)
+            results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
+            print(f'after extracting predictions:', len(results_df)) 
+            print('max: ', results_df[f'{property_name}_extracted_predictions'].max())
+            print('min: ', results_df[f'{property_name}_extracted_predictions'].min())
+
+            if len(results_df) >= min_samples:
                 mae = metrics.mean_absolute_error(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
                 rmse = metrics.mean_squared_error(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']), squared=False)
                 print('MAE: ', mae)
                 print('RMSE: ', rmse)
             else:
                 print("Invalid")
+    
+    else:
+        results_df[f'{property_name}_extracted_predictions'] = results_df[f'{property_name}_predicted'].apply(extract_values)
+        results_df = results_df.dropna(subset=[f'{property_name}_extracted_predictions']).reset_index(drop=True)
+        print(f'after extracting predictions:', len(results_df)) 
+        print('max: ', results_df[f'{property_name}_extracted_predictions'].max())
+        print('min: ', results_df[f'{property_name}_extracted_predictions'].min())
 
-        results_df.to_csv(f"{results_path}/{dataset_name}/llama_test_stats_for_{property_name}_{input_type}_{prompt_type}_{max_len}_{batch_size}.csv", index=False)
-        print('-'*50)
+        if len(results_df) >= min_samples:
+            mae = metrics.mean_absolute_error(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']))
+            rmse = metrics.mean_squared_error(list(results_df[f'{property_name}_target']), list(results_df[f'{property_name}_extracted_predictions']), squared=False)
+            print('MAE: ', mae)
+            print('RMSE: ', rmse)
+        else:
+            print("Invalid")
+
+    results_df.to_csv(f"{results_path}/{dataset_name}/{model_name}_test_stats_for_{property_name}_{input_type}_{prompt_type}_{max_len}_{batch_size}.csv", index=False)
+    print('-'*50)
         
 if __name__=='__main__':
-    # parse Arguments
-    parser = argparse.ArgumentParser(description='evaluate')
-    parser.add_argument('--dataset_names',
-                        help='A list of dataset names',
-                        type=list,
-                        default=['mp'])
-    parser.add_argument('--data_path',
-                        help='A path to prompts',
-                        type=str,
-                        default="")
-    parser.add_argument('--results_path',
-                        help='A path of where the results will be saved',
-                        type=str,
-                        default="")
-    args = parser.parse_args()
+    # set parameters
+    args = args_parser()
     config = vars(args)
     
-    dataset_names = config.get('dataset_names')
-    data_path = config.get('data_path')
-    results_path = config.get('results_path')
+    dataset_name = config.get('dataset_name')
+    input_type = config.get('input_type')
+    prompt_type = config.get('prompt_type')
+    batch_size = config.get("batch_size")
+    max_len = config.get('max_len')
+    property_name = config.get("property_name")
+    model_name = config.get("model_name")
+    data_path = config.get("data_path")
+    results_path = config.get("results_path")
+    min_samples = config.get("min_samples")
 
-    for dataset_name in dataset_names:
-        for input_type in ["description", "cif_structure", "formula"]:
-            for prompt_type in ["zero_shot", "few_shot"]: 
-                extract_predictions(dataset_name, data_path, results_path, input_type=input_type, prompt_type=prompt_type)
-                print(f"Finished {prompt_type} results.")
-                print("@"*50)
-            print(f'Finished {input_type} results.')
-            print("+"*50)
+    extract_predictions(dataset_name, model_name, data_path, results_path, input_type, prompt_type, property_name, max_len, batch_size, min_samples)
+    print(f"Done!")

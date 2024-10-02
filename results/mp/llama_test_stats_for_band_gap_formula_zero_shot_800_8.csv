@@ -1,0 +1,16 @@
+band_gap_target,band_gap_predicted,band_gap_extracted_predictions
+0.0,"{
+""band_gap"": 3.2 eV
+}",3.2
+1.9765,{band_gap: 3.2 eV},3.2
+0.0,{band_gap: 3.55 eV},3.55
+3.4571,"{
+""band_gap"": 3.2
+}",3.2
+0.0,"{
+""band_gap"": 3.2 eV
+}",3.2
+1.3642000000000003,{band_gap: 2.1 eV},2.1
+2.2547,"{
+""band_gap"": 2.2
+}",2.2
