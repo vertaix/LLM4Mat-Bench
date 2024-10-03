@@ -7,7 +7,7 @@ import torch
 import pandas as pd
 import numpy as np
 from torch.utils.data import DataLoader, TensorDataset
-from llmprop_utils import *
+from utils import *
 
 np.random.seed(42)
 
@@ -77,12 +77,15 @@ def create_dataloaders(
     input_tensor = torch.tensor(input_ids)
     mask_tensor = torch.tensor(attention_masks)
     labels_tensor = torch.tensor(labels)
+    
+    if batch_size <= 0:
+        raise ValueError(f"Invalid batch_size={batch_size}. Must be a positive integer.")
 
     if normalize:
         if normalizer == 'z_norm':
             normalized_labels = z_normalizer(labels_tensor)
         elif normalizer == 'mm_norm':
-           normalized_labels = min_max_scaling(labels_tensor)
+            normalized_labels = min_max_scaling(labels_tensor)
         elif normalizer == 'ls_norm':
             normalized_labels = log_scaling(labels_tensor)
         elif normalizer == 'no_norm':
