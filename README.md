@@ -20,8 +20,8 @@ conda activate <environment_name>
 - Save the data into [data folder](data/) where LLM4Mat-Bench is the parent directory.
 
 ### Get the checkpoints
-- Download the LLM-Prop and MatBERT checkpoint from [this link]().
-- Save the checkpoint into [checkpoints folder](checkpoints/) where LLM4Mat-Bench is the parent directory.
+- Download the LLM-Prop and MatBERT checkpoints from [this link]().
+- Save the checkpoints folder into LLM4Mat-Bench directory.
 
 ### Evaluating the trained LLM-Prop and MatBERT
 Add any modification to the following scripts to [evaluate.sh](scripts/evaluate.sh)
