@@ -41,8 +41,6 @@ from statistics import stdev
 
 from datetime import timedelta
 
-import bitsandbytes as bnb
-from bitsandbytes.optim import Adam8bit
 import subprocess
 
 def evaluate(
@@ -156,31 +154,43 @@ if __name__ == "__main__":
     input_type = config.get('input_type')
     dataset_name = config.get('dataset_name')
     model_name = config.get('model_name')
-    checkpoints_folder = config.get('checkpoints_folder')
-    results_folder = config.get('results_folder')
+    checkpoints_path = config.get('checkpoints_path')
+    results_path = config.get('results_path')
+    tokenizers_path = config.get('tokenizers_path')
     
     if model_name == "matbert":
         pooling = None
 
     # checkpoints directory
-    checkpoints_path = f"{checkpoints_folder}/{dataset_name}/"
+    checkpoints_path = f"{checkpoints_path}/{dataset_name}/"
     if not os.path.exists(checkpoints_path):
         os.makedirs(checkpoints_path)
 
     # training statistics directory
-    results_path = f"{results_folder}/{dataset_name}/"
+    results_path = f"{results_path}/{dataset_name}/"
     if not os.path.exists(results_path):
         os.makedirs(results_path)
 
     # prepare the data
     train_data = pd.read_csv(f"{data_path}/{dataset_name}/train.csv")
-    test_data = pd.read_csv(f"/{data_path}/{dataset_name}/test.csv")
+    valid_data = pd.read_csv(f"{data_path}/{dataset_name}/validation.csv")
+    test_data = pd.read_csv(f"{data_path}/{dataset_name}/test.csv")
+    
+    if dataset_name == "mp":
+        test_data = test_data.rename(columns={"formula_pretty":"formula"})
+        valid_data = valid_data.rename(columns={"formula_pretty":"formula"})
+        train_data = train_data.rename(columns={"formula_pretty":"formula"})
+    elif dataset_name == "cantor_hea":
+        test_data = test_data.rename(columns={"reduced_formula":"formula"})
+        valid_data = valid_data.rename(columns={"reduced_formula":"formula"})
+        train_data = train_data.rename(columns={"reduced_formula":"formula"})
     
     # drop duplicates in test data
     test_data = test_data.drop_duplicates(subset=['material_id']).reset_index(drop=True)
     
     # drop samples with nan input values
     train_data = train_data.dropna(subset=[input_type]).reset_index(drop=True)
+    valid_data = valid_data.dropna(subset=[input_type]).reset_index(drop=True)
     test_data = test_data.dropna(subset=[input_type]).reset_index(drop=True)
 
     if dataset_name in ["gnome"]:
@@ -287,11 +297,11 @@ if __name__ == "__main__":
     if tokenizer_name == 't5_tokenizer':
         tokenizer = AutoTokenizer.from_pretrained("t5-small") 
 
-    elif tokenizer_name == 'llmprop_tokenizer':
-        tokenizer = AutoTokenizer.from_pretrained(f"{tokenizer_path}/llmprop_tokenizer") 
+    elif tokenizer_name == 'llmprop_tokenizer' or model_name == 'llmprop':
+        tokenizer = AutoTokenizer.from_pretrained(f"{tokenizers_path}/llmprop_tokenizer") 
 
-    elif tokenizer_name == 'matbert_tokenizer':
-        tokenizer = BertTokenizerFast.from_pretrained(f"{tokenizer_path}/matbert-base-uncased", do_lower_case=True)
+    elif tokenizer_name == 'matbert_tokenizer' or model_name == 'matbert':
+        tokenizer = BertTokenizerFast.from_pretrained(f"{tokenizers_path}/matbert-base-uncased", do_lower_case=True)
 
     # add defined special tokens to the tokenizer
     if pooling == 'cls':
@@ -370,7 +380,7 @@ if __name__ == "__main__":
         # this is to avoid the "RuntimeError: CUDA error: device-side assert triggered" error
         base_model.resize_token_embeddings(len(tokenizer))
         
-        best_model_path = f"{checkpoints_path}/{dataset_name}/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_len}_tokens.pt"
+        best_model_path = f"{checkpoints_path}/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.pt"
         best_model = Predictor(base_model, base_model_output_size, drop_rate=drop_rate, pooling=pooling, model_name=model_name)
 
         device_ids = [d for d in range(torch.cuda.device_count())]

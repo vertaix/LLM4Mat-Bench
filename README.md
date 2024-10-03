@@ -8,12 +8,54 @@ LLM4Mat-Bench is the largest benchmark to date for evaluating the performance of
 </p>
 
 ## How to use
-### Training LLM-Prop and MatBERT
-Add the following scripts to [train.sh](scripts/train.sh)
+### Installation
+```
+git clone https://github.com/vertaix/LLM4Mat-Bench.git
+cd LLM4Mat-Bench
+conda create -n <environment_name> requirement.txt
+conda activate <environment_name>
+```
+### Get the data
+- Download the LLM4Mat-Bench data from [this link](https://drive.google.com/drive/folders/1HpGhuNHG4EQCQMZaKPwEQNH9stJKw-ht). Each dataset includes a fixed train/validation/test split for reproducibility and fair model comparison. 
+- Save the data into [data folder](data/) where LLM4Mat-Bench is the parent directory.
+
+### Get the checkpoints
+- Download the LLM-Prop and MatBERT checkpoint from [this link]().
+- Save the checkpoint into [checkpoints folder](checkpoints/) where LLM4Mat-Bench is the parent directory.
+
+### Evaluating the trained LLM-Prop and MatBERT
+Add any modification to the following scripts to [evaluate.sh](scripts/evaluate.sh)
 ```bash
 #!/usr/bin/env bash
 
-DATA_PATH='data/' # where LLM4Mat_Bench is saved
+DATA_PATH='data/' # where LLM4Mat_Bench data is saved
+RESULTS_PATH='results/' # where to save the results
+CHECKPOINTS_PATH='checkpoints/' # where model weights were saved
+MODEL_NAME='llmprop' # or 'matbert'
+DATASET_NAME='mp' # any dataset name in LLM4Mat_Bench
+INPUT_TYPE='formula' # other values: 'cif_structure' and 'description'
+PROPERTY_NAME='band_gap' # any property name in $DATASET_NAME. Please check the property names associated with each dataset first
+
+python code/llmprop_and_matbert/evaluate.py \
+--data_path $DATA_PATH \
+--results_path $RESULTS_PATH \
+--checkpoints_path $CHECKPOINTS_PATH \
+--model_name $MODEL_NAME \
+--dataset_name $DATASET_NAME \
+--input_type $INPUT_TYPE \
+--property_name $PROPERTY_NAME
+``` 
+Then run 
+```bash
+ bash scripts/evaluate.sh
+ ```
+
+### Training LLM-Prop and MatBERT from scratch
+Add any modification to the following scripts to [train.sh](scripts/train.sh)
+```bash
+#!/usr/bin/env bash
+
+DATA_PATH='data/' # where LLM4Mat_Bench data is saved
 RESULTS_PATH='results/' # where to save the results
 CHECKPOINTS_PATH='checkpoints/' # where to save model weights 
 MODEL_NAME='llmprop' # or 'matbert'
@@ -34,19 +76,17 @@ python code/llmprop_and_matbert/train.py \
 --max_len $MAX_LEN \
 --epochs $EPOCHS
 ```
-Then run ``` bash scripts/train.sh```
-
-TODO:
-llmprop has passed the test for training
-checking matbert and see how I can add default values
-checking the evaluation part
+Then run 
+```bash
+bash scripts/train.sh
+```
 
 ### Generating the property values with LLaMA2-7b-chat model
-Add the following scripts to [llama_inference.sh](scripts/llama_inference.sh)
+Add any modification to the following scripts to [llama_inference.sh](scripts/llama_inference.sh)
 ```bash
 #!/usr/bin/env bash
 
-DATA_PATH='data/' # where LLM4Mat_Bench is saved
+DATA_PATH='data/' # where LLM4Mat_Bench data is saved
 RESULTS_PATH='results/' # where to save the results
 DATASET_NAME='mp' # any dataset name in LLM4Mat_Bench
 INPUT_TYPE='formula' # other values: 'cif_structure' and 'description'
@@ -65,14 +105,17 @@ python code/llama/llama_inference.py \
 --max_len $MAX_LEN \
 --batch_size $BATCH_SIZE
 ```
-Then run ```bash scripts/llama_inference.sh```
+Then run 
+```bash
+bash scripts/llama_inference.sh
+```
 
 ### Evaluating the LLaMA results
-After running ```bash scripts/llama_inference.sh```, add the following scripts to [llama_evaluate.sh](scripts/llama_evaluate.sh)
+After running ```bash scripts/llama_inference.sh```, add any modification to the following scripts to [llama_evaluate.sh](scripts/llama_evaluate.sh)
 ```bash
 #!/usr/bin/env bash
 
-DATA_PATH='data/' # where LLM4Mat_Bench is saved
+DATA_PATH='data/' # where LLM4Mat_Bench data is saved
 RESULTS_PATH='results/' # where to save the results
 DATASET_NAME='mp' # any dataset name in LLM4Mat_Bench
 INPUT_TYPE='formula' # other values: 'cif_structure' and 'description'
@@ -93,13 +136,10 @@ python code/llama/evaluate.py \
 --batch_size $BATCH_SIZE \
 --min_samples $MIN_SAMPLES
 ```
-Then run ```bash scripts/llama_evaluate.sh```
+Then run 
+```bash 
+bash scripts/llama_evaluate.sh
+```
 
-## Data Availability
-The data collected for the LLM4Mat-Bench can be found [here](https://drive.google.com/drive/folders/1HpGhuNHG4EQCQMZaKPwEQNH9stJKw-ht). Each dataset includes a fixed train/validation/test split for reproducibility and fair model comparison. The data **LICENSE** belongs to the original creators of each dataset/database.
-
-## TODOs
-- Adding the link to the paper
-- Adding the detailed guidelines on how to run the models we evaluated on LLM4Mat-Bench
-- Adding how to cite LLM4Mat-Bench
-- Adding the leaderboard (Optional)
+## Data LICENSE
+The data **LICENSE** belongs to the original creators of each dataset/database.

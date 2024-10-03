@@ -67,19 +67,19 @@ def args_parser():
     parser.add_argument('--data_path',
                         help="the path to the data",
                         type=str,
-                        default="/n/fs/rnspace/projects/vertaix/nlp4matbench/data")                    
-    parser.add_argument('--checkpoint_folder',
+                        default="data/")                    
+    parser.add_argument('--checkpoints_path',
                         help="the path to the best checkpoint for evaluation",
                         type=str,
-                        default="")
-    parser.add_argument('--results_folder',
+                        default="checkpoints/")
+    parser.add_argument('--results_path',
                         help="the path to the directory where results are saved",
                         type=str,
-                        default="")
-    parser.add_argument('--tokenizers_folder',
+                        default="results/")
+    parser.add_argument('--tokenizers_path',
                         help="the path to the directory where tokenizers are saved",
                         type=str,
-                        default="") 
+                        default="tokenizers/") 
     parser.add_argument('--input_type',
                         help="description, structure, or composition",
                         type=str,

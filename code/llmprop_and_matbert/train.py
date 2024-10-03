@@ -215,8 +215,8 @@ def train(
                     }
                 )
 
-                saveCSV(pd.DataFrame(data=training_stats), f"{results_path}/{dataset_name}/{model_name}_training_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
-                saveCSV(pd.DataFrame(validation_predictions), f"{results_path}/{dataset_name}/{model_name}_validation_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
+                saveCSV(pd.DataFrame(data=training_stats), f"{results_path}/{dataset_name}/{model_name}_training_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.csv")
+                saveCSV(pd.DataFrame(validation_predictions), f"{results_path}/{dataset_name}/{model_name}_validation_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.csv")
 
             else:
                 best_roc = best_roc
@@ -233,7 +233,7 @@ def train(
                 best_epoch = epoch+1
 
                 # save the best model checkpoint
-                save_to_path = checkpoints_path + f"/{dataset_name}/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.pt"
+                save_to_path = checkpoints_path + f"/{dataset_name}/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.pt"
 
                 if isinstance(model, nn.DataParallel):
                     torch.save(model.module.state_dict(), save_to_path)
@@ -257,8 +257,8 @@ def train(
                     }
                 )
 
-                saveCSV(pd.DataFrame(data=training_stats), f"{results_path}/{dataset_name}/{model_name}_training_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
-                saveCSV(pd.DataFrame(validation_predictions), f"{results_path}/{dataset_name}/{model_name}_validation_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
+                saveCSV(pd.DataFrame(data=training_stats), f"{results_path}/{dataset_name}/{model_name}_training_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.csv")
+                saveCSV(pd.DataFrame(validation_predictions), f"{results_path}/{dataset_name}/{model_name}_validation_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.csv")
 
             else:
                 best_loss = best_loss
@@ -752,7 +752,7 @@ if __name__ == "__main__":
     # show_gpu('after training')
     
     print("======= Evaluating on test set ========")
-    best_model_path = f"{checkpoints_path}/{dataset_name}/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.pt" 
+    best_model_path = f"{checkpoints_path}/{dataset_name}/{model_name}_best_checkpoint_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.pt" 
     best_model = Predictor(base_model, base_model_output_size, drop_rate=drop_rate, pooling=pooling, model_name=model_name)
 
     if torch.cuda.is_available():
@@ -788,6 +788,6 @@ if __name__ == "__main__":
 
     # save the averaged predictions
     test_predictions = {f"material_id":list(test_data['material_id']), f"actual_{property}":list(test_data[property]), f"predicted_{property}":averaged_predictions}
-    saveCSV(pd.DataFrame(test_predictions), f"{results_path}/{dataset_name}/{model_name}_test_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}_{max_length}_tokens.csv")
+    saveCSV(pd.DataFrame(test_predictions), f"{results_path}/{dataset_name}/{model_name}_test_stats_for_{property}_{task_name}_{input_type}_{preprocessing_strategy}.csv")
     
     
