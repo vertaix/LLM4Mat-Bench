@@ -2,7 +2,7 @@
 LLM4Mat-Bench is the largest benchmark to date for evaluating the performance of large language models (LLMs) for materials property prediction.
 
 <p align="center" width="100%">
-    <img src="figures/llm4mat-bench_stats.png" alt="image" width="50%" height="auto">
+    <img src="figures/llm4mat-bench_stats.png" alt="image" width="100%" height="auto">
     <br>
     <em>LLM4Mat-Bench Statistics. *https://www.snumat.com/apis</em>
 </p>
