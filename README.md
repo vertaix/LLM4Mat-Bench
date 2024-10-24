@@ -593,49 +593,47 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
   </tbody>
 </table>
 
-<table style="border-collapse: collapse; width: 100%; overflow-x: auto; display: block; white-space: nowrap;">
+<table style="display: inline-block; margin-right: 20px; border-collapse: collapse; width: 48%;">
+    <caption>Results for JARVIS-DFT. The performance on regression tasks is evaluated in terms of MAD:MAE ratio (the higher the better). FEPA: Formation Energy Per Atom, Tot. En.: Total Energy, Exf. En.: Exfoliation Energy.</caption>
     <thead>
         <tr>
-            <th></th>
-            <th></th>
-            <th>&#x03B5; (DFPT)</th>
-            <th>Max. Piezo. (dij)</th>
-            <th>Max. Piezo. (eij)</th>
-            <th>Max. EFG</th>
-            <th>Exf. En.</th>
-            <th>Avg. m<sub>e</sub></th>
-            <th>n-Seebeck</th>
-            <th>n-PF</th>
-            <th>p-Seebeck</th>
-            <th>p-PF</th>
-            <th></th>
-            <th></th>
-            <th>&#x03B5; (DFPT)</th>
-            <th>Max. Piezo. (dij)</th>
-            <th>Max. Piezo. (eij)</th>
-            <th>Max. EFG</th>
-            <th>Exf. En.</th>
-            <th>Avg. m<sub>e</sub></th>
-            <th>n-Seebeck</th>
-            <th>n-PF</th>
-            <th>p-Seebeck</th>
-            <th>p-PF</th>
+            <th rowspan="2">Input</th>
+            <th rowspan="2">Model</th>
+            <th colspan="20">JARVIS-DFT Dataset</th>
         </tr>
         <tr>
-            <th></th>
-            <th></th>
-            <th>4.7K</th>
-            <th>3.3K</th>
-            <th>4.7K</th>
-            <th>11.8K</th>
-            <th>0.8K</th>
-            <th>17.6K</th>
-            <th>23.2K</th>
-            <th>23.2K</th>
-            <th>23.2K</th>
-            <th>23.2K</th>
-            <th></th>
-            <th></th>
+            <th>FEPA</th>
+            <th>Bandgap (OPT)</th>
+            <th>Tot. En.</th>
+            <th>Ehull</th>
+            <th>Bandgap (MBJ)</th>
+            <th>Kv</th>
+            <th>Gv</th>
+            <th>SLME</th>
+            <th>Spillage</th>
+            <th>&#x03B5;<sub>x</sub> (OPT)</th>
+            <th>&#x03B5; (DFPT)</th>
+            <th>Max. Piezo. (dij)</th>
+            <th>Max. Piezo. (eij)</th>
+            <th>Max. EFG</th>
+            <th>Exf. En.</th>
+            <th>Avg. m<sub>e</sub></th>
+            <th>n-Seebeck</th>
+            <th>n-PF</th>
+            <th>p-Seebeck</th>
+            <th>p-PF</th> 
+        </tr>
+        <tr>
+            <th>75.9K</th>
+            <th>75.9K</th>
+            <th>75.9K</th>
+            <th>75.9K</th>
+            <th>19.8K</th>
+            <th>23.8K</th>
+            <th>23.8K</th>
+            <th>9.7K</th>
+            <th>11.3K</th>
+            <th>18.2K</th>
             <th>4.7K</th>
             <th>3.3K</th>
             <th>4.7K</th>
@@ -652,18 +650,16 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
         <tr>
             <td>CIF</td>
             <td>CGCNN (baseline)</td>
-            <td>1.12</td>
-            <td>0.418</td>
-            <td>1.291</td>
-            <td>1.787</td>
-            <td>0.842</td>
-            <td>1.796</td>
-            <td>2.23</td>
+            <td>13.615</td>
+            <td>4.797</td>
+            <td>22.906</td>
             <td>1.573</td>
-            <td>3.963</td>
-            <td>1.59</td>
-            <td>CIF</td>
-            <td>CGCNN (baseline)</td>
+            <td>4.497</td>
+            <td>3.715</td>
+            <td>2.337</td>
+            <td>1.862</td>
+            <td>1.271</td>
+            <td>2.425</td>
             <td>1.12</td>
             <td>0.418</td>
             <td>1.291</td>
@@ -678,18 +674,16 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
         <tr>
             <td rowspan="4">Comp.</td>
             <td>Llama 2-7b-chat:0S</td>
-            <td>0.012</td>
-            <td>0.121</td>
-            <td>0.001</td>
-            <td>0.141</td>
-            <td>0.384</td>
-            <td>0.028</td>
-            <td>0.874</td>
-            <td>0.801</td>
-            <td>0.971</td>
-            <td>0.874</td>
-            <td rowspan="4">Comp.</td>
-            <td>Llama 2-7b-chat:0S</td>
+            <td>0.021</td>
+            <td>0.011</td>
+            <td>0.02</td>
+            <td>0.005</td>
+            <td>0.92</td>
+            <td>0.428</td>
+            <td>0.374</td>
+            <td>0.148</td>
+            <td style="background-color: #FFCCED;">Inval.</td>
+            <td>0.18</td>
             <td>0.012</td>
             <td>0.121</td>
             <td>0.001</td>
@@ -703,17 +697,16 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
         </tr>
         <tr>
             <td>Llama 2-7b-chat:5S</td>
-            <td>1.416</td>
-            <td>1.289</td>
-            <td>1.305</td>
-            <td>0.765</td>
-            <td>0.512</td>
-            <td>0.535</td>
-            <td>1.008</td>
-            <td>1.04</td>
-            <td>0.93</td>
-            <td>0.568</td>
-            <td>Llama 2-7b-chat:5S</td>
+            <td>0.886</td>
+            <td>0.011</td>
+            <td>0.02</td>
+            <td>1.292</td>
+            <td>0.979</td>
+            <td>0.88</td>
+            <td>0.992</td>
+            <td>0.456</td>
+            <td>0.85</td>
+            <td>1.148</td>
             <td>1.416</td>
             <td>1.289</td>
             <td>1.305</td>
@@ -727,17 +720,16 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
         </tr>
         <tr>
             <td>MatBERT-109M</td>
-            <td style="font-weight: bold;">1.533</td>
-            <td style="font-weight: bold;">1.464</td>
-            <td style="font-weight: bold;">1.426</td>
-            <td style="font-weight: bold;">1.658</td>
-            <td style="font-weight: bold;">1.124</td>
-            <td style="font-weight: bold;">2.093</td>
-            <td style="font-weight: bold;">1.908</td>
-            <td style="font-weight: bold;">1.318</td>
-            <td style="font-weight: bold;">2.752</td>
-            <td style="font-weight: bold;">1.356</td>
-            <td>MatBERT-109M</td>
+            <td style="font-weight: bold;">6.808</td>
+            <td style="font-weight: bold;">4.083</td>
+            <td style="font-weight: bold;">9.21</td>
+            <td style="font-weight: bold;">2.786</td>
+            <td style="font-weight: bold;">3.755</td>
+            <td style="font-weight: bold;">2.906</td>
+            <td style="font-weight: bold;">1.928</td>
+            <td style="font-weight: bold;">1.801</td>
+            <td style="font-weight: bold;">1.243</td>
+            <td style="font-weight: bold;">2.017</td>
             <td style="font-weight: bold;">1.533</td>
             <td style="font-weight: bold;">1.464</td>
             <td style="font-weight: bold;">1.426</td>
@@ -751,17 +743,16 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
         </tr>
         <tr>
             <td>LLM-Prop-35M</td>
-            <td>1.454</td>
-            <td>1.447</td>
-            <td style="font-weight: bold;">1.573</td>
-            <td>1.38</td>
-            <td>1.042</td>
-            <td>1.658</td>
-            <td>1.725</td>
-            <td>1.145</td>
-            <td>2.233</td>
-            <td>1.285</td>
-            <td>LLM-Prop-35M</td>
+            <td>4.765</td>
+            <td>2.621</td>
+            <td>5.936</td>
+            <td>2.073</td>
+            <td>2.922</td>
+            <td>2.162</td>
+            <td>1.654</td>
+            <td>1.575</td>
+            <td>1.14</td>
+            <td>1.734</td>
             <td>1.454</td>
             <td>1.447</td>
             <td style="font-weight: bold;">1.573</td>
@@ -776,104 +767,191 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
         <tr>
             <td rowspan="4">CIF</td>
             <td>Llama 2-7b-chat:0S</td>
+            <td>0.023</td>
+            <td>0.011</td>
+            <td>0.02</td>
+            <td>0.002</td>
+            <td>0.193</td>
+            <td>0.278</td>
+            <td>0.358</td>
+            <td>0.186</td>
+            <td>0.702</td>
+            <td>0.781</td>
             <td>0.033</td>
             <td>0.104</td>
             <td>0.001</td>
             <td>0.246</td>
             <td>0.411</td>
             <td>0.041</td>
-            <td>0.945</td>
-            <td>0.905</td>
-            <td>0.934</td>
-            <td>0.803</td>
-            <td rowspan="4">CIF</td>
+            <td>0.429</td>
+            <td>0.766</td>
+            <td>0.83</td>
+            <td>0.826</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.859</td>
+            <td style="background-color: #FFCCED;">Inval.</td>
+            <td style="background-color: #FFCCED;">Inval.</td>
+            <td>1.173</td>
+            <td>1.054</td>
+            <td>0.874</td>
+            <td>0.91</td>
+            <td>0.486</td>
+            <td>0.916</td>
+            <td>1.253</td>
+            <td style="background-color: #FFCCED;">Inval.</td>
+            <td style="background-color: #FFCCED;">Inval.</td>
+            <td style="background-color: #FFCCED;">Inval.</td>
+            <td>0.796</td>
+            <td>0.51</td>
+            <td style="background-color: #FFCCED;">Inval.</td>
+            <td>1.039</td>
+            <td>1.396</td>
+            <td style="background-color: #FFCCED;">Inval.</td>
+            <td style="background-color: #FFCCED;">Inval.</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td>10.211</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">5.483</td>
+            <td>15.673</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">4.862</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">5.344</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">4.283</td>
+            <td style="font-weight: bold;">2.6</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">2.208</td>
+            <td style="font-weight: bold;">1.444</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">2.408</td>
+            <td>1.509</td>
+            <td>1.758</td>
+            <td style="font-weight: bold;">2.405</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">2.143</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">1.374</td>
+            <td style="font-weight: bold;">2.45</td>
+            <td style="font-weight: bold;">2.268</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">1.446</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">3.337</td>
+            <td style="font-weight: bold;">1.476</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">12.996</td>
+            <td>3.331</td>
+            <td style="font-weight: bold;">22.058</td>
+            <td>2.648</td>
+            <td>4.93</td>
+            <td>4.121</td>
+            <td>2.409</td>
+            <td>2.175</td>
+            <td>1.37</td>
+            <td>2.135</td>
+            <td style="font-weight: bold;">1.578</td>
+            <td style="font-weight: bold;">2.103</td>
+            <td style="font-weight: bold;">2.405</td>
+            <td>1.936</td>
+            <td>1.044</td>
+            <td>1.796</td>
+            <td>1.955</td>
+            <td>1.332</td>
+            <td>2.503</td>
+            <td>1.399</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Descr.</td>
             <td>Llama 2-7b-chat:0S</td>
-            <td>0.033</td>
-            <td>0.104</td>
+            <td>0.007</td>
+            <td>0.011</td>
+            <td>0.02</td>
+            <td>0.004</td>
+            <td>0.94</td>
+            <td>0.498</td>
+            <td>0.382</td>
+            <td>0.07</td>
+            <td>0.135</td>
+            <td>0.647</td>
+            <td>0.08</td>
+            <td>0.266</td>
             <td>0.001</td>
-            <td>0.246</td>
-            <td>0.411</td>
-            <td>0.041</td>
-            <td>0.945</td>
-            <td>0.905</td>
-            <td>0.934</td>
-            <td>0.803</td>
+            <td>0.138</td>
+            <td>0.285</td>
+            <td>0.019</td>
+            <td>0.769</td>
+            <td>0.793</td>
+            <td>0.825</td>
+            <td>0.829</td>
         </tr>
         <tr>
             <td>Llama 2-7b-chat:5S</td>
-            <td>1.497</td>
-            <td>1.411</td>
-            <td>1.284</td>
-            <td>0.909</td>
-            <td>0.571</td>
-            <td>0.574</td>
-            <td>1.128</td>
-            <td>1.043</td>
-            <td>0.942</td>
-            <td>0.604</td>
-            <td>Llama 2-7b-chat:5S</td>
-            <td>1.497</td>
-            <td>1.411</td>
-            <td>1.284</td>
-            <td>0.909</td>
-            <td>0.571</td>
-            <td>0.574</td>
-            <td>1.128</td>
-            <td>1.043</td>
-            <td>0.942</td>
-            <td>0.604</td>
+            <td>0.845</td>
+            <td>0.011</td>
+            <td>0.02</td>
+            <td>1.273</td>
+            <td>1.033</td>
+            <td>0.87</td>
+            <td>0.969</td>
+            <td>0.461</td>
+            <td>0.857</td>
+            <td>1.201</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">1.649</td>
+            <td>1.174</td>
+            <td>1.152</td>
+            <td>0.806</td>
+            <td>0.661</td>
+            <td>0.523</td>
+            <td>1.098</td>
+            <td>1.024</td>
+            <td>0.948</td>
+            <td>0.563</td>
         </tr>
         <tr>
             <td>MatBERT-109M</td>
-            <td style="font-weight: bold;">1.433</td>
-            <td style="font-weight: bold;">1.438</td>
-            <td style="font-weight: bold;">1.57</td>
-            <td style="font-weight: bold;">1.637</td>
-            <td style="font-weight: bold;">1.024</td>
-            <td style="font-weight: bold;">2.097</td>
-            <td style="font-weight: bold;">1.823</td>
-            <td style="font-weight: bold;">1.314</td>
-            <td style="font-weight: bold;">2.517</td>
-            <td style="font-weight: bold;">1.479</td>
-            <td>MatBERT-109M</td>
-            <td style="font-weight: bold;">1.433</td>
-            <td style="font-weight: bold;">1.438</td>
-            <td style="font-weight: bold;">1.57</td>
-            <td style="font-weight: bold;">1.637</td>
-            <td style="font-weight: bold;">1.024</td>
-            <td style="font-weight: bold;">2.097</td>
-            <td style="font-weight: bold;">1.823</td>
-            <td style="font-weight: bold;">1.314</td>
-            <td style="font-weight: bold;">2.517</td>
-            <td style="font-weight: bold;">1.479</td>
+            <td>10.211</td>
+            <td style="font-weight: bold;">5.33</td>
+            <td>15.141</td>
+            <td style="font-weight: bold;">4.691</td>
+            <td style="font-weight: bold;">5.01</td>
+            <td style="font-weight: bold;">4.252</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">2.623</td>
+            <td style="font-weight: bold;">2.178</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">1.452</td>
+            <td style="font-weight: bold;">2.384</td>
+            <td>1.534</td>
+            <td>1.807</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">2.556</td>
+            <td style="font-weight: bold;">2.081</td>
+            <td style="font-weight: bold;">1.36</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">2.597</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">2.241</td>
+            <td style="font-weight: bold;">1.432</td>
+            <td style="font-weight: bold;">3.26</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">1.565</td>
         </tr>
         <tr>
             <td>LLM-Prop-35M</td>
-            <td>1.634</td>
+            <td style="font-weight: bold;">12.614</td>
+            <td>3.427</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">23.509</td>
+            <td>4.532</td>
+            <td>4.983</td>
+            <td>4.128</td>
+            <td>2.419</td>
+            <td>2.061</td>
+            <td>1.307</td>
+            <td>2.334</td>
             <td>1.64</td>
-            <td style="font-weight: bold;">1.487</td>
-            <td>1.195</td>
-            <td>1.079</td>
-            <td>1.748</td>
-            <td>1.789</td>
-            <td>1.256</td>
-            <td>2.144</td>
-            <td>1.196</td>
-            <td>LLM-Prop-35M</td>
-            <td>1.634</td>
-            <td>1.64</td>
-            <td style="font-weight: bold;">1.487</td>
-            <td>1.195</td>
-            <td>1.079</td>
-            <td>1.748</td>
-            <td>1.789</td>
-            <td>1.256</td>
-            <td>2.144</td>
-            <td>1.196</td>
+            <td style="background-color: #CCEDFF; font-weight: bold;">2.116</td>
+            <td>2.315</td>
+            <td>1.978</td>
+            <td>1.168</td>
+            <td>1.858</td>
+            <td>2.154</td>
+            <td>1.364</td>
+            <td>2.61</td>
+            <td>1.407</td>
         </tr>
     </tbody>
 </table>
-
 
 <table>
   <caption>Results for SNUMAT. The performance on regression tasks is evaluated in terms of MAD:MAE ratio (the higher the better) while that of classification tasks (Is Direct, Is Direct HSE, and SOC) is evaluated in terms of AUC score.</caption>
