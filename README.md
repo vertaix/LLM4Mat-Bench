@@ -900,4 +900,673 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
     </tbody>
 </table>
 
+<table style="width: 100%; border-collapse: collapse;">
+    <caption>
+        Results for hMOF. The performance on regression tasks is evaluated in terms of MAD:MAE ratio (the higher the better).
+    </caption>
+    <thead>
+        <tr>
+            <th rowspan="2">Input</th>
+            <th rowspan="2">Model</th>
+            <th colspan="6">hMOF Dataset</th>
+        </tr>
+        <tr>
+            <th>Max CO2</th>
+            <th>Min CO2</th>
+            <th>LCD</th>
+            <th>PLD</th>
+            <th>Void Fraction</th>
+            <th>Surface Area m<sup>2</sup>g</th>
+            <th>Surface Area m<sup>2</sup>cm<sup>3</sup></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CIF</td>
+            <td>CGCNN (baseline)</td>
+            <td>1.719</td>
+            <td>1.617</td>
+            <td>1.989</td>
+            <td>1.757</td>
+            <td>2.912</td>
+            <td>3.765</td>
+            <td>2.039</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Comp.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.011</td>
+            <td>0.002</td>
+            <td>0.009</td>
+            <td>0.008</td>
+            <td>0.5</td>
+            <td>0.454</td>
+            <td>0.233</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.679</td>
+            <td>0.058</td>
+            <td>0.949</td>
+            <td>1.026</td>
+            <td>0.945</td>
+            <td>0.567</td>
+            <td>0.366</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td>1.335</td>
+            <td style="font-weight: bold;">1.41</td>
+            <td style="font-weight: bold;">1.435</td>
+            <td>1.378</td>
+            <td>1.57</td>
+            <td>1.517</td>
+            <td style="font-weight: bold;">1.367</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="font-weight: bold;">1.41</td>
+            <td>1.392</td>
+            <td style="font-weight: bold;">1.432</td>
+            <td style="font-weight: bold;">1.468</td>
+            <td style="font-weight: bold;">1.672</td>
+            <td style="font-weight: bold;">1.657</td>
+            <td>1.321</td>
+        </tr>
+        <tr>
+            <td rowspan="4">CIF</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.017</td>
+            <td>0.003</td>
+            <td>0.016</td>
+            <td>0.011</td>
+            <td>0.549</td>
+            <td>0.54</td>
+            <td>0.359</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+            <td>0.951</td>
+            <td>1.067</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td>1.421</td>
+            <td style="font-weight: bold;">1.428</td>
+            <td>1.544</td>
+            <td style="font-weight: bold;">1.482</td>
+            <td>1.641</td>
+            <td>1.622</td>
+            <td style="font-weight: bold;">1.461</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="font-weight: bold;">1.564</td>
+            <td>1.41</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">1.753</td>
+            <td>1.435</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">1.9</td>
+            <td style="font-weight: bold;">1.926</td>
+            <td>1.374</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Descr.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.129</td>
+            <td>0.014</td>
+            <td>0.026</td>
+            <td>0.006</td>
+            <td>0.382</td>
+            <td>0.497</td>
+            <td>0.299</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.684</td>
+            <td>0.058</td>
+            <td>0.955</td>
+            <td>1.006</td>
+            <td>0.931</td>
+            <td>0.571</td>
+            <td>0.37</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td>1.438</td>
+            <td>1.466</td>
+            <td>1.602</td>
+            <td>1.511</td>
+            <td>1.719</td>
+            <td>1.697</td>
+            <td>1.475</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">1.659</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">1.486</td>
+            <td>1.623</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">1.789</td>
+            <td>1.736</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">2.144</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">1.508</td>
+        </tr>
+    </tbody>
+</table>
+
+<table style="width: 100%; border-collapse: collapse;">
+    <caption>
+        Results for Cantor HEA. The performance on regression tasks is evaluated in terms of MAD:MAE ratio (the higher the better). FEPA: Formation Energy Per Atom, EPA: Energy Per Atom, VPA: Volume Per Atom.
+    </caption>
+    <thead>
+        <tr>
+            <th rowspan="2">Input</th>
+            <th rowspan="2">Model</th>
+            <th colspan="4">Cantor HEA Dataset</th>
+        </tr>
+        <tr>
+            <th>FEPA</th>
+            <th>EPA</th>
+            <th>Ehull</th>
+            <th>VPA</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CIF</td>
+            <td>CGCNN (baseline)</td>
+            <td>9.036</td>
+            <td>49.521</td>
+            <td>9.697</td>
+            <td>2.869</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Comp.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.005</td>
+            <td>0.098</td>
+            <td>0.003</td>
+            <td>0.031</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.896</td>
+            <td>0.658</td>
+            <td>0.928</td>
+            <td>0.986</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td style="font-weight: bold;">3.286</td>
+            <td>16.17</td>
+            <td style="font-weight: bold;">5.134</td>
+            <td>2.489</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="font-weight: bold;">3.286</td>
+            <td style="font-weight: bold;">22.638</td>
+            <td style="font-weight: bold;">5.134</td>
+            <td style="font-weight: bold;">2.543</td>
+        </tr>
+        <tr>
+            <td rowspan="4">CIF</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.001</td>
+            <td>0.084</td>
+            <td>0.0</td>
+            <td>0.004</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td>7.229</td>
+            <td>17.607</td>
+            <td>9.187</td>
+            <td>5.809</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">8.341</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">36.015</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">11.636</td>
+            <td style="font-weight: bold;">6.919</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Descr.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.001</td>
+            <td>0.101</td>
+            <td>0.164</td>
+            <td>0.011</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.797</td>
+            <td>0.615</td>
+            <td>0.938</td>
+            <td>0.93</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td>7.229</td>
+            <td>17.607</td>
+            <td>9.187</td>
+            <td>5.881</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">8.341</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">36.015</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">11.636</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">7.713</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table style="width: 100%; border-collapse: collapse;">
+    <caption>
+        Results for QMOF. The performance on regression tasks is evaluated in terms of MAD:MAE ratio (the higher the better). Tot. En.: Total Energy.
+    </caption>
+    <thead>
+        <tr>
+            <th rowspan="2">Input</th>
+            <th rowspan="2">Model</th>
+            <th colspan="4">QMOF Dataset</th>
+        </tr>
+        <tr>
+            <th>Bandgap</th>
+            <th>Tot. En.</th>
+            <th>LCD</th>
+            <th>PLD</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CIF</td>
+            <td>CGCNN (baseline)</td>
+            <td>2.431</td>
+            <td>1.489</td>
+            <td>4.068</td>
+            <td>4.317</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Comp.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.901</td>
+            <td>0.26</td>
+            <td>0.045</td>
+            <td>0.009</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.648</td>
+            <td>0.754</td>
+            <td>1.241</td>
+            <td>1.086</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td style="font-weight: bold;">1.823</td>
+            <td style="font-weight: bold;">1.695</td>
+            <td style="font-weight: bold;">2.329</td>
+            <td style="font-weight: bold;">2.349</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td>1.759</td>
+            <td>1.621</td>
+            <td>2.293</td>
+            <td>2.157</td>
+        </tr>
+        <tr>
+            <td rowspan="4">CIF</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.201</td>
+            <td>0.244</td>
+            <td>0.02</td>
+            <td>0.011</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td>1.994</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">4.378</td>
+            <td>2.908</td>
+            <td>2.818</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">2.166</td>
+            <td>4.323</td>
+            <td style="font-weight: bold;">2.947</td>
+            <td style="font-weight: bold;">2.87</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Descr.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.358</td>
+            <td>0.217</td>
+            <td>0.025</td>
+            <td>0.006</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.777</td>
+            <td>0.713</td>
+            <td>1.125</td>
+            <td>1.17</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">2.166</td>
+            <td>4.133</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">2.981</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">2.941</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td>2.091</td>
+            <td style="font-weight: bold;">4.312</td>
+            <td>2.831</td>
+            <td>2.829</td>
+        </tr>
+    </tbody>
+</table>
+
+<table style="width: 100%; border-collapse: collapse;">
+    <caption>
+        Results for JARVIS-QETB. The performance on regression tasks is evaluated in terms of MAD:MAE ratio (the higher the better). FEPA: Formation Energy Per Atom, EPA: Energy Per Atom, Tot. En.: Total Energy, Ind. Bandgap: Indirect Bandgap.
+    </caption>
+    <thead>
+        <tr>
+            <th rowspan="2">Input</th>
+            <th rowspan="2">Model</th>
+            <th colspan="4">JARVIS-QETB Dataset</th>
+        </tr>
+        <tr>
+            <th>FEPA</th>
+            <th>EPA</th>
+            <th>Tot. En.</th>
+            <th>Ind. Bandgap</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CIF</td>
+            <td>CGCNN (baseline)</td>
+            <td>1.964</td>
+            <td>228.201</td>
+            <td>11.218</td>
+            <td>5.534</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Comp.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.003</td>
+            <td>0.369</td>
+            <td>0.172</td>
+            <td>0.21</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.812</td>
+            <td>1.037</td>
+            <td>1.032</td>
+            <td>1.306</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td>1.431</td>
+            <td>37.979</td>
+            <td>8.19</td>
+            <td>0.21</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="font-weight: bold;">2.846</td>
+            <td style="font-weight: bold;">211.757</td>
+            <td style="font-weight: bold;">21.309</td>
+            <td style="font-weight: bold;">1.861</td>
+        </tr>
+        <tr>
+            <td rowspan="4">CIF</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.003</td>
+            <td>0.412</td>
+            <td>0.656</td>
+            <td>0.04</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.8</td>
+            <td>1.024</td>
+            <td>1.076</td>
+            <td>1.71</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td>24.72</td>
+            <td>135.156</td>
+            <td>26.094</td>
+            <td style="font-weight: bold;">4.779</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td>23.346</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">318.291</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">48.192</td>
+            <td>1.845</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Descr.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.003</td>
+            <td>0.408</td>
+            <td>0.484</td>
+            <td>0.16</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.85</td>
+            <td>1.015</td>
+            <td>1.035</td>
+            <td>1.021</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">26.265</td>
+            <td>122.884</td>
+            <td>29.409</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">7.788</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td>22.513</td>
+            <td>312.218</td>
+            <td>35.43</td>
+            <td>1.845</td>
+        </tr>
+    </tbody>
+</table>
+
+<table style="width: 100%; border-collapse: collapse;">
+    <caption>
+        Results for OQMD. The performance on regression tasks is evaluated in terms of MAD:MAE ratio (the higher the better). FEPA: Formation Energy Per Atom.
+    </caption>
+    <thead>
+        <tr>
+            <th rowspan="2">Input</th>
+            <th rowspan="2">Model</th>
+            <th colspan="2">OQMD Dataset</th>
+        </tr>
+        <tr>
+            <th>FEPA</th>
+            <th>Bandgap</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CIF</td>
+            <td>CGCNN (baseline)</td>
+            <td>22.291</td>
+            <td>6.701</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Comp.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.019</td>
+            <td>0.192</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>1.013</td>
+            <td>1.306</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td>7.662</td>
+            <td style="font-weight: bold;">3.883</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="font-weight: bold;">9.195</td>
+            <td>2.845</td>
+        </tr>
+        <tr>
+            <td rowspan="4">CIF</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.009</td>
+            <td>0.047</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>1.051</td>
+            <td>1.731</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td>13.879</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">7.163</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">18.861</td>
+            <td>3.22</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Descr.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.025</td>
+            <td>0.187</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.991</td>
+            <td>1.468</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td>15.012</td>
+            <td style="font-weight: bold;">7.041</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="font-weight: bold;">16.346</td>
+            <td>3.644</td>
+        </tr>
+    </tbody>
+</table>
+
+<table style="width: 100%; border-collapse: collapse;">
+    <caption>
+        Results for OMDB. The performance on regression tasks is evaluated in terms of MAD:MAE ratio (the higher the better).
+    </caption>
+    <thead>
+        <tr>
+            <th rowspan="2">Input</th>
+            <th rowspan="2">Model</th>
+            <th colspan="1">OMDB Dataset</th>
+        </tr>
+        <tr>
+            <th>Bandgap</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CIF</td>
+            <td>CGCNN (baseline)</td>
+            <td>2.751</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Comp.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.886</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>1.009</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td style="font-weight: bold;">1.554</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td>1.507</td>
+        </tr>
+        <tr>
+            <td rowspan="4">CIF</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.159</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.930</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td style="font-weight: bold;">1.777</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="font-weight: bold;">1.777</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Descr.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.155</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>1.002</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">1.847</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td>1.656</td>
+        </tr>
+    </tbody>
+</table>
+
 
