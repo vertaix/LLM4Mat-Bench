@@ -585,5 +585,319 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <td>2.74</td>
       <td style="background-color:#CCE5FF;"><strong>4.598</strong></td>
       <td style="background-color:#CCE5FF;"><strong>14.388</strong></td>
-      <td>4
+      <td>4.063</td>
+      <td style="background-color:#CCE5FF;"><strong>8.888</strong></td>
+      <td style="background-color:#CCE5FF;"><strong>0.794</strong></td>
+      <td>0.690</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <caption>Results for SNUMAT. The performance on regression tasks is evaluated in terms of MAD:MAE ratio (the higher the better) while that of classification tasks (Is Direct, Is Direct HSE, and SOC) is evaluated in terms of AUC score.</caption>
+  <thead>
+    <tr>
+      <th rowspan="2">Input</th>
+      <th rowspan="2">Model</th>
+      <th>Bandgap GGA</th>
+      <th>Bandgap HSE</th>
+      <th>Bandgap GGA Optical</th>
+      <th>Bandgap HSE Optical</th>
+      <th>Is Direct</th>
+      <th>Is Direct HSE</th>
+      <th>SOC</th>
+    </tr>
+    <tr>
+      <th>10.3K</th>
+      <th>10.3K</th>
+      <th>10.3K</th>
+      <th>10.3K</th>
+      <th>10.3K</th>
+      <th>10.3K</th>
+      <th>10.3K</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CIF</td>
+      <td>CGCNN (baseline)</td>
+      <td>2.075</td>
+      <td>2.257</td>
+      <td>1.727</td>
+      <td>1.835</td>
+      <td>0.691</td>
+      <td>0.675</td>
+      <td>0.800</td>
+    </tr>
+    <tr>
+      <td rowspan="4">Comp.</td>
+      <td>Llama 2-7b-chat:0S</td>
+      <td>0.797</td>
+      <td>0.948</td>
+      <td>1.156</td>
+      <td>0.859</td>
+      <td>0.503</td>
+      <td>0.484</td>
+      <td style="background-color:#FFCCE5;">Inval.</td>
+    </tr>
+    <tr>
+      <td>Llama 2-7b-chat:5S</td>
+      <td>1.267</td>
+      <td>1.327</td>
+      <td>0.862</td>
+      <td>1.174</td>
+      <td>0.475</td>
+      <td>0.468</td>
+      <td>0.455</td>
+    </tr>
+    <tr>
+      <td>MatBERT-109M</td>
+      <td><strong>1.899</strong></td>
+      <td><strong>1.975</strong></td>
+      <td><strong>1.646</strong></td>
+      <td><strong>1.793</strong></td>
+      <td><strong>0.671</strong></td>
+      <td><strong>0.645</strong></td>
+      <td>0.820</td>
+    </tr>
+    <tr>
+      <td>LLM-Prop-35M</td>
+      <td>1.533</td>
+      <td>1.621</td>
+      <td>1.392</td>
+      <td>1.491</td>
+      <td>0.647</td>
+      <td>0.624</td>
+      <td><strong>0.829</strong></td>
+    </tr>
+    <tr>
+      <td rowspan="4">CIF</td>
+      <td>Llama 2-7b-chat:0S</td>
+      <td>0.346</td>
+      <td>0.454</td>
+      <td>1.09</td>
+      <td>0.838</td>
+      <td>0.479</td>
+      <td>0.488</td>
+      <td>0.500</td>
+    </tr>
+    <tr>
+      <td>Llama 2-7b-chat:5S</td>
+      <td style="background-color:#FFCCE5;">Inval.</td>
+      <td style="background-color:#FFCCE5;">Inval.</td>
+      <td style="background-color:#FFCCE5;">Inval.</td>
+      <td style="background-color:#FFCCE5;">Inval.</td>
+      <td>0.494</td>
+      <td>0.500</td>
+      <td>0.427</td>
+    </tr>
+    <tr>
+      <td>MatBERT-109M</td>
+      <td><strong>2.28</strong></td>
+      <td style="background-color:#CCE5FF;"><strong>2.472</strong></td>
+      <td><strong>1.885</strong></td>
+      <td>1.889</td>
+      <td><strong>0.677</strong></td>
+      <td>0.650</td>
+      <td><strong>0.823</strong></td>
+    </tr>
+    <tr>
+      <td>LLM-Prop-35M</td>
+      <td>1.23</td>
+      <td>2.401</td>
+      <td>1.786</td>
+      <td><strong>1.9</strong></td>
+      <td>0.661</td>
+      <td style="background-color:#CCE5FF;"><strong>0.664</strong></td>
+      <td>0.656</td>
+    </tr>
+    <tr>
+      <td rowspan="4">Descr.</td>
+      <td>Llama 2-7b-chat:0S</td>
+      <td>0.802</td>
+      <td>0.941</td>
+      <td>1.013</td>
+      <td>0.779</td>
+      <td>0.499</td>
+      <td>0.509</td>
+      <td style="background-color:#FFCCE5;">Inval.</td>
+    </tr>
+    <tr>
+      <td>Llama 2-7b-chat:5S</td>
+      <td>0.774</td>
+      <td>1.315</td>
+      <td>0.901</td>
+      <td>1.172</td>
+      <td>0.594</td>
+      <td>0.623</td>
+      <td>0.486</td>
+    </tr>
+    <tr>
+      <td>MatBERT-109M</td>
+      <td style="background-color:#CCE5FF;"><strong>2.298</strong></td>
+      <td><strong>2.433</strong></td>
+      <td style="background-color:#CCE5FF;"><strong>1.901</strong></td>
+      <td style="background-color:#CCE5FF;"><strong>1.978</strong></td>
+      <td style="background-color:#CCE5FF;"><strong>0.683</strong></td>
+      <td>0.645</td>
+      <td>0.862</td>
+    </tr>
+    <tr>
+      <td>LLM-Prop-35M</td>
+      <td>2.251</td>
+      <td>2.142</td>
+      <td>1.84</td>
+      <td>1.569</td>
+      <td>0.681</td>
+      <td><strong>0.657</strong></td>
+      <td style="background-color:#CCE5FF;"><strong>0.866</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<table style="width: 100%; border-collapse: collapse;">
+    <caption>
+        Results for GNoME. The performance on regression tasks is evaluated in terms of MAD:MAE ratio (the higher the better). 
+        FEPA: Formation Energy Per Atom, DEPA: Decomposition Energy Per Atom, Tot. En.: Total Energy.
+    </caption>
+    <thead>
+        <tr>
+            <th rowspan="2">Input</th>
+            <th rowspan="2">Model</th>
+            <th colspan="6">GNoME Dataset</th>
+        </tr>
+        <tr>
+            <th>FEPA</th>
+            <th>Bandgap</th>
+            <th>DEPA</th>
+            <th>Tot. En.</th>
+            <th>Volume</th>
+            <th>Density</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>CIF</td>
+            <td>CGCNN (baseline)</td>
+            <td>34.57</td>
+            <td>8.549</td>
+            <td>2.787</td>
+            <td>7.443</td>
+            <td>7.967</td>
+            <td>56.077</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Comp.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.002</td>
+            <td>0.177</td>
+            <td>0.0</td>
+            <td>0.088</td>
+            <td>0.455</td>
+            <td>0.368</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.194</td>
+            <td>0.086</td>
+            <td>0.255</td>
+            <td>0.765</td>
+            <td>1.006</td>
+            <td>0.865</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">30.248</td>
+            <td><strong>4.692</strong></td>
+            <td><strong>2.787</strong></td>
+            <td>8.57</td>
+            <td>13.157</td>
+            <td>15.145</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td>25.472</td>
+            <td>3.735</td>
+            <td>1.858</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">21.624</td>
+            <td><strong>16.556</strong></td>
+            <td><strong>25.615</strong></td>
+        </tr>
+        <tr>
+            <td rowspan="4">CIF</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.003</td>
+            <td>0.045</td>
+            <td>0.0</td>
+            <td>0.706</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">43.331</td>
+            <td>0.794</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+            <td>0.087</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+            <td style="background-color: rgb(255, 204, 229);">Inval.</td>
+            <td>1.029</td>
+            <td>0.878</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td>24.199</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">9.16</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">3.716</td>
+            <td>15.309</td>
+            <td>16.691</td>
+            <td>16.467</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td style="font-weight: bold;">28.469</td>
+            <td>3.926</td>
+            <td>3.344</td>
+            <td style="font-weight: bold;">17.837</td>
+            <td>17.082</td>
+            <td style="font-weight: bold;">25.615</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Descr.</td>
+            <td>Llama 2-7b-chat:0S</td>
+            <td>0.002</td>
+            <td>0.114</td>
+            <td>0.0</td>
+            <td>0.661</td>
+            <td>0.654</td>
+            <td>0.805</td>
+        </tr>
+        <tr>
+            <td>Llama 2-7b-chat:5S</td>
+            <td>0.192</td>
+            <td>0.086</td>
+            <td>0.106</td>
+            <td>0.75</td>
+            <td>1.006</td>
+            <td>0.891</td>
+        </tr>
+        <tr>
+            <td>MatBERT-109M</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">30.248</td>
+            <td><strong>5.829</strong></td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">3.716</td>
+            <td style="font-weight: bold;">18.205</td>
+            <td><strong>17.824</strong></td>
+            <td>16.599</td>
+        </tr>
+        <tr>
+            <td>LLM-Prop-35M</td>
+            <td>28.469</td>
+            <td>5.27</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">3.716</td>
+            <td>17.02</td>
+            <td>17.02</td>
+            <td style="background-color: rgb(204, 229, 255); font-weight: bold;">25.936</td>
+        </tr>
+    </tbody>
+</table>
+
 
