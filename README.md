@@ -149,8 +149,8 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
 <table>
   <thead>
     <tr>
-      <th rowspan="3">Input</th>
-      <th rowspan="3">Model</th>
+      <th style="position: sticky; left: 0; background: white;" rowspan="3">Input</th>
+      <th style="position: sticky; left: 60px; background: white; z-index: 1;" rowspan="3">Model</th>
       <th colspan="2"> MP</th>
       <th>JARVIS-DFT</th>
       <th>GNoME</th>
@@ -193,8 +193,8 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
   </thead>
   <tbody>
     <tr>
-      <td>CIF</td>
-      <td>CGCNN (baseline)</td>
+      <td style="position: sticky; left: 0; background: white;">CIF</td>
+      <td style="position: sticky; left: 60px; background: white; z-index: 1;">CGCNN (baseline)</td>
       <td>5.319</td>
       <td>0.846</td>
       <td>7.048</td>
@@ -209,8 +209,8 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <td>2.751</td>
     </tr>
     <tr>
-      <td rowspan="4">Comp.</td>
-      <td>Llama 2-7b-chat:0S</td>
+      <td style="position: sticky; left: 0; background: white;" rowspan="4">Comp.</td>
+      <td style="position: sticky; left: 60px; background: white; z-index: 1;">Llama 2-7b-chat:0S</td>
       <td>0.389</td>
       <td>0.491</td>
       <td>Inval.</td>
@@ -225,7 +225,7 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <td>0.885</td>
     </tr>
     <tr>
-      <td>Llama 2-7b-chat:5S</td>
+      <td style="position: sticky; left: 60px; background: white; z-index: 1;">Llama 2-7b-chat:5S</td>
       <td>0.627</td>
       <td>0.507</td>
       <td>0.704</td>
@@ -240,7 +240,7 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <td>1.009</td>
     </tr>
     <tr>
-      <td>MatBERT-109M</td>
+      <td style="position: sticky; left: 60px; background: white; z-index: 1;">MatBERT-109M</td>
       <td><b>5.317</b></td>
       <td>0.722</td>
       <td><b>4.103</b></td>
@@ -255,7 +255,7 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <td><b>1.554</b></td>
     </tr>
     <tr>
-      <td>LLM-Prop-35M</td>
+      <td style="position: sticky; left: 60px; background: white; z-index: 1;">LLM-Prop-35M</td>
       <td>4.394</td>
       <td>0.691</td>
       <td>2.912</td>
@@ -270,8 +270,8 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <td>1.507</td>
     </tr>
     <tr>
-      <td rowspan="4">CIF</td>
-      <td>Llama 2-7b-chat:0S</td>
+      <td style="position: sticky; left: 0; background: white;" rowspan="4">CIF</td>
+      <td style="position: sticky; left: 60px; background: white; z-index: 1;">Llama 2-7b-chat:0S</td>
       <td>0.392</td>
       <td>0.501</td>
       <td>0.216</td>
@@ -286,7 +286,7 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <td>0.159</td>
     </tr>
     <tr>
-      <td>Llama 2-7b-chat:5S</td>
+      <td style="position: sticky; left: 60px; background: white; z-index: 1;">Llama 2-7b-chat:5S</td>
       <td>Inval.</td>
       <td>0.502</td>
       <td>Inval.</td>
@@ -301,7 +301,7 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <td>0.930</td>
     </tr>
     <tr>
-      <td>MatBERT-109M</td>
+      <td style="position: sticky; left: 60px; background: white; z-index: 1;">MatBERT-109M</td>
       <td>7.452</td>
       <td>0.750</td>
       <td>6.211</td>
@@ -316,7 +316,7 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <td><b>1.777</b></td>
     </tr>
     <tr>
-      <td>LLM-Prop-35M</td>
+      <td style="position: sticky; left: 60px; background: white; z-index: 1;">LLM-Prop-35M</td>
       <td><b>8.554</b></td>
       <td>0.738</td>
       <td><b>6.756</b></td>
@@ -331,8 +331,8 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <td><b>1.777</b></td>
     </tr>
     <tr>
-      <td rowspan="4">Descr.</td>
-      <td>Llama 2-7b-chat:0S</td>
+      <td style="position: sticky; left: 0; background: white;" rowspan="4">Descr.</td>
+      <td style="position: sticky; left: 60px; background: white; z-index: 1;">Llama 2-7b-chat:0S</td>
       <td>0.437</td>
       <td>0.500</td>
       <td>0.247</td>
@@ -347,7 +347,7 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <td>0.155</td>
     </tr>
     <tr>
-      <td>Llama 2-7b-chat:5S</td>
+      <td style="position: sticky; left: 60px; background: white; z-index: 1;">Llama 2-7b-chat:5S</td>
       <td>0.635</td>
       <td>0.502</td>
       <td>0.703</td>
@@ -362,7 +362,7 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <td>1.001</td>
     </tr>
     <tr>
-      <td>MatBERT-109M</td>
+      <td style="position: sticky; left: 60px; background: white; z-index: 1;">MatBERT-109M</td>
       <td>7.651</td>
       <td>0.735</td>
       <td>6.083</td>
@@ -377,7 +377,7 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <td><b>1.847</b></td>
     </tr>
     <tr>
-      <td>LLM-Prop-35M</td>
+      <td style="position: sticky; left: 60px; background: white; z-index: 1;">LLM-Prop-35M</td>
       <td><b>9.116</b></td>
       <td>0.742</td>
       <td><b>7.204</b></td>
