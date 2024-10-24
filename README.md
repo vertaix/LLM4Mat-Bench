@@ -597,8 +597,8 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
     <caption>Results for JARVIS-DFT. The performance on regression tasks is evaluated in terms of MAD:MAE ratio (the higher the better). FEPA: Formation Energy Per Atom, Tot. En.: Total Energy, Exf. En.: Exfoliation Energy.</caption>
     <thead>
         <tr>
-            <th rowspan="2">Input</th>
-            <th rowspan="2">Model</th>
+            <th rowspan="3">Input</th>
+            <th rowspan="3">Model</th>
             <th colspan="20">JARVIS-DFT Dataset</th>
         </tr>
         <tr>
@@ -624,6 +624,8 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
             <th>p-PF</th> 
         </tr>
         <tr>
+            <th></th>
+            <th></th>
             <th>75.9K</th>
             <th>75.9K</th>
             <th>75.9K</th>
