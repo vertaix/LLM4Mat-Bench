@@ -624,8 +624,6 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
             <th>p-PF</th> 
         </tr>
         <tr>
-            <th></th>
-            <th></th>
             <th>75.9K</th>
             <th>75.9K</th>
             <th>75.9K</th>
