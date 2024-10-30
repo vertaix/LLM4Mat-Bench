@@ -399,8 +399,8 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
   <caption>Results for MP dataset. The performance on regression tasks is evaluated in terms of MAD:MAE ratio (the higher the better) while that of classification tasks (Is Stable and Is Gab Direct) is evaluated in terms of AUC score. FEPA: Formation Energy Per Atom, EPA: Energy Per Atom.</caption>
   <thead>
     <tr>
-      <th rowspan="2">Input</th>
-      <th rowspan="2">Model</th>
+      <th rowspan="3">Input</th>
+      <th rowspan="3">Model</th>
       <th colspan="10">MP Dataset</th>
     </tr>
     <tr>
@@ -414,6 +414,18 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
       <th>Volume</th>
       <th>Is Stable</th>
       <th>Is Gab Direct</th>
+    </tr>
+    <tr>
+        <th>145.2K</th>
+        <th>145.3K</th>
+        <th>145.2K</th>
+        <th>145.2K</th>
+        <th>145.2K</th>
+        <th>145.2K</th>
+        <th>145.2K</th>
+        <th>145.2K</th>
+        <th>145.2K</th>
+        <th>145.2K</th>
     </tr>
   </thead>
   <tbody>
@@ -957,8 +969,11 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
   <caption>Results for SNUMAT. The performance on regression tasks is evaluated in terms of MAD:MAE ratio (the higher the better) while that of classification tasks (Is Direct, Is Direct HSE, and SOC) is evaluated in terms of AUC score.</caption>
   <thead>
     <tr>
-      <th rowspan="2">Input</th>
-      <th rowspan="2">Model</th>
+      <th rowspan="3">Input</th>
+      <th rowspan="3">Model</th>
+      <th colspan="7"> SNUMAT Dataset </th>
+    </tr>
+    <tr>
       <th>Bandgap GGA</th>
       <th>Bandgap HSE</th>
       <th>Bandgap GGA Optical</th>
@@ -1122,8 +1137,8 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
     </caption>
     <thead>
         <tr>
-            <th rowspan="2">Input</th>
-            <th rowspan="2">Model</th>
+            <th rowspan="3">Input</th>
+            <th rowspan="3">Model</th>
             <th colspan="6">GNoME Dataset</th>
         </tr>
         <tr>
@@ -1133,6 +1148,14 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
             <th>Tot. En.</th>
             <th>Volume</th>
             <th>Density</th>
+        </tr>
+        <tr>
+            <th>376.2K</th>
+            <th>282.7K</th>
+            <th>376.2K</th>
+            <th>282.7K</th>
+            <th>282.7K</th>
+            <th>282.7K</th> 
         </tr>
     </thead>
     <tbody>
@@ -1266,8 +1289,8 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
     </caption>
     <thead>
         <tr>
-            <th rowspan="2">Input</th>
-            <th rowspan="2">Model</th>
+            <th rowspan="3">Input</th>
+            <th rowspan="3">Model</th>
             <th colspan="7">hMOF Dataset</th>
         </tr>
         <tr>
@@ -1278,6 +1301,15 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
             <th>Void Fraction</th>
             <th>Surface Area m<sup>2</sup>g</th>
             <th>Surface Area m<sup>2</sup>cm<sup>3</sup></th>
+        </tr>
+        <tr>
+            <th>132.7K</th>
+            <th>132.7K</th>
+            <th>132.7K</th>
+            <th>132.7K</th>
+            <th>132.7K</th>
+            <th>132.7K</th>
+            <th>132.7K</th>
         </tr>
     </thead>
     <tbody>
@@ -1424,8 +1456,8 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
     </caption>
     <thead>
         <tr>
-            <th rowspan="2">Input</th>
-            <th rowspan="2">Model</th>
+            <th rowspan="3">Input</th>
+            <th rowspan="3">Model</th>
             <th colspan="4">Cantor HEA Dataset</th>
         </tr>
         <tr>
@@ -1433,6 +1465,12 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
             <th>EPA</th>
             <th>Ehull</th>
             <th>VPA</th>
+        </tr>
+        <tr>
+            <th>84.0K</th>
+            <th>84.0K</th>
+            <th>84.0K</th>
+            <th>84.0K</th>
         </tr>
     </thead>
     <tbody>
@@ -1541,8 +1579,8 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
     </caption>
     <thead>
         <tr>
-            <th rowspan="2">Input</th>
-            <th rowspan="2">Model</th>
+            <th rowspan="3">Input</th>
+            <th rowspan="3">Model</th>
             <th colspan="4">QMOF Dataset</th>
         </tr>
         <tr>
@@ -1550,6 +1588,12 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
             <th>Tot. En.</th>
             <th>LCD</th>
             <th>PLD</th>
+        </tr>
+        <tr>
+            <th>7.6K</th>
+            <th>7.6K</th>
+            <th>7.6K</th>
+            <th>7.6K</th>
         </tr>
     </thead>
     <tbody>
@@ -1657,8 +1701,8 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
     </caption>
     <thead>
         <tr>
-            <th rowspan="2">Input</th>
-            <th rowspan="2">Model</th>
+            <th rowspan="3">Input</th>
+            <th rowspan="3">Model</th>
             <th colspan="4">JARVIS-QETB Dataset</th>
         </tr>
         <tr>
@@ -1666,6 +1710,12 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
             <th>EPA</th>
             <th>Tot. En.</th>
             <th>Ind. Bandgap</th>
+        </tr>
+        <tr>
+            <th>623.9K</th>
+            <th>623.9K</th>
+            <th>623.9K</th>
+            <th>623.9K</th>
         </tr>
     </thead>
     <tbody>
@@ -1773,13 +1823,17 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
     </caption>
     <thead>
         <tr>
-            <th rowspan="2">Input</th>
-            <th rowspan="2">Model</th>
+            <th rowspan="3">Input</th>
+            <th rowspan="3">Model</th>
             <th colspan="2">OQMD Dataset</th>
         </tr>
         <tr>
             <th>FEPA</th>
             <th>Bandgap</th>
+        </tr>
+        <tr>
+            <th>963.5K</th>
+            <th>963.5K</th>
         </tr>
     </thead>
     <tbody>
@@ -1861,12 +1915,15 @@ The data **LICENSE** belongs to the original creators of each dataset/database.
     </caption>
     <thead>
         <tr>
-            <th rowspan="2">Input</th>
-            <th rowspan="2">Model</th>
+            <th rowspan="3">Input</th>
+            <th rowspan="3">Model</th>
             <th colspan="1">OMDB Dataset</th>
         </tr>
         <tr>
             <th>Bandgap</th>
+        </tr>
+        <tr>
+            <th>12.1K</th>
         </tr>
     </thead>
     <tbody>
