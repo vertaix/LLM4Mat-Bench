@@ -414,9 +414,13 @@ if __name__ == "__main__":
     averaged_predictions = np.mean(np.array(predictions), axis=0)
     averaged_loss = np.mean(np.array(test_results))
     confidence_score = stdev(np.array(test_results))
+    
+    # calculate MAD
+    mad = calculate_mad(test_data[property].tolist())
 
     print('#'*50)
-    print('The averaged test performance over 5 runs:', averaged_loss)
+    print('The averaged MAE over 5 runs:', averaged_loss)
+    print('MAD:MAE ratio:', mad/averaged_loss)
     print('The standard deviation:', confidence_score)
     print('#'*50)
 

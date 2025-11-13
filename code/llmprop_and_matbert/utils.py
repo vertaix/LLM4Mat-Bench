@@ -193,3 +193,17 @@ def get_roc_score(predictions, targets):
     y = torch.round(torch.sigmoid(y))
     roc_score = roc_fn(y, x)
     return roc_score
+
+def calculate_mad(targets):
+    """
+    Calculates the Mean Absolute Deviation (MAD) of a dataset.
+    Args:
+        data (list or array-like): The input dataset.
+    Returns:
+        float: The Mean Absolute Deviation (MAD) of the dataset.
+    """
+    
+    mean_value = np.mean(targets)
+    absolute_deviations = np.abs(targets - mean_value)
+    mad = np.mean(absolute_deviations)
+    return mad
