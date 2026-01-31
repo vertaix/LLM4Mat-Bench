@@ -141,6 +141,24 @@ Then run
 bash scripts/llama_evaluate.sh
 ```
 
+## Citation
+```bib
+@article{rubungo2025llm4mat,
+  title={LLM4Mat-bench: benchmarking large language models for materials property prediction},
+  author={Rubungo, Andre Niyongabo and Li, Kangming and Hattrick-Simpers, Jason and Dieng, Adji Bousso},
+  journal={Machine Learning: Science and Technology},
+  volume={6},
+  number={2},
+  pages={020501},
+  year={2025},
+  publisher={IOP Publishing}
+}
+```
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=vertaix/LLM4Mat-Bench&type=date&legend=top-left)](https://www.star-history.com/#vertaix/LLM4Mat-Bench&type=date&legend=top-left)
+
 ## Data LICENSE
 The data **LICENSE** belongs to the original creators of each dataset/database.
 
